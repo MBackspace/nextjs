@@ -1,0 +1,65 @@
+services:
+  nextjs-mongo:
+    image: mongo:latest
+    container_name: nextjs-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=m11615
+      - MONGO_INITDB_DATABASE=nextjs
+    volumes:
+      - nextjs-mongo-data:/data/db
+    networks:
+      - nextjs-net
+    restart: always
+
+  nextjs-server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    container_name: nextjs-server
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGO_URL=mongodb://admin:m11615@nextjs-mongo:27017/nextjs?authSource=admin
+      - CORS_ORIGIN_URL=http://nextjs-client:4001
+    volumes:
+      - nextjs-server-data:/usr/nextjs
+    networks:
+      - nextjs-net
+    depends_on:
+      - nextjs-mongo
+    restart: always
+
+  nextjs-client:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+    container_name: nextjs-client
+    ports:
+      - "4001:4001"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://nextjs-server:4000/api
+    volumes:
+      - nextjs-client-data:/usr/nextjs
+    networks:
+      - nextjs-net
+    depends_on:
+      - nextjs-server
+    restart: always
+
+volumes:
+  nextjs-mongo-data:
+    driver: local
+
+  nextjs-server-data:
+    driver: local
+
+  nextjs-client-data:
+    driver: local
+
+networks:
+  nextjs-net:
+    driver: bridge

@@ -1,0 +1,21 @@
+{
+  "name": "nextjs",
+  "packageManager": "yarn@4.6.0",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build": "turbo run build --concurrency=3",
+    "test": "turbo run test --concurrency=3",
+    "dev": "turbo run dev --concurrency=3",
+    "docker:build": "docker compose build --no-cache",
+    "docker:up": "docker compose up -d --build",
+    "docker:start": "docker compose start",
+    "docker:stop": "docker compose stop",
+    "docker:rm": "docker compose rm"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.3"
+  }
+}
