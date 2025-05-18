@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Preferences } from "./CookieBanner";
 import { useT } from "@/app/i18n/client";
 
@@ -57,7 +58,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
     } else {
       setExpandedIds([...expandedIds, category.id]);
     }
-    setRenderKey(renderKey > 10 ? renderKey + 1 : 0);
+    setRenderKey(renderKey < 10 ? renderKey + 1 : 0);
   };
 
   const toggle = (category: Category): void => {
@@ -69,10 +70,10 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 font-[family-name:var(--font-geist-sans)]">
         <div className="bg-[#ffffff] w-full max-w-[600px] min-h-[500px] rounded-[12px] animate-slide-in">
           <div className="flex justify-between mb-5 pt-6 px-6">
-            <h1 className="text-[22px] text-[#171717] font-semibold">
+            <h1 className="text-[22px] text-[#171717] font-bold">
               {t("consentModal.title")}
             </h1>
           </div>
@@ -86,7 +87,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
                   className={`flex items-center justify-between px-4 py-[10px] cursor-pointer ${index !== categories.length - 1 ? 'border-b border-[#ededed]' : ''}`}
                   onClick={() => onCategoryClick(category)}
                 >
-                  <span className="text-[14px] text-[#171717]">{category.name}</span>
+                  <span className="text-[14px] text-[#171717] font-medium">{category.name}</span>
                   <label onClick={(e) => e.stopPropagation()}>
                     <input
                       type="checkbox"
@@ -117,7 +118,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
           <div className="flex justify-between items-center border-t border-[#ededed] p-6 pb-0">
             <div className="flex gap-3">
               <button
-                className="border border-[#ededed] text-[14px] text-[#171717] px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2]"
+                className="border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                 onClick={() => {
                   handleDeny();
                   handleModalClose();
@@ -126,7 +127,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
                 {t("consentModal.deny")}
               </button>
               <button
-                className="border border-[#ededed] text-[14px] text-[#171717] px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2]"
+                className="border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                 onClick={() => {
                   handleAcceptAll();
                   handleModalClose();
@@ -136,7 +137,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
               </button>
             </div>
             <button
-              className="border border-[#171717] bg-[#171717] text-[14px] text-[#ededed] px-3 py-[5px] rounded-lg hover:bg-[#666666] hover:border-[#666666]"
+              className="border border-[#171717] bg-[#171717] text-[14px] text-[#ededed] font-medium px-3 py-[5px] rounded-lg hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
               onClick={() => {
                 handleSave(localPreferences);
                 handleModalClose();
@@ -147,9 +148,9 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
           </div>
           <p className="text-[12px] mt-4 text-[#666666] p-6 pt-0">
             {t("consentModal.privacyPolicy")}{" "}
-            <a href="#" className="text-[#171717] hover:text-[#666666]">
+            <Link href="#" className="text-[#171717] hover:text-[#666666]">
               {t("consentModal.privacyPolicyLink")}
-            </a>
+            </Link>
           </p>
         </div>
       </div>

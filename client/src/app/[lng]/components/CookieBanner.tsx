@@ -86,25 +86,25 @@ export default function CookieBanner(): React.ReactNode {
 
       {visible && (
         <>
-          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] border border-[#ededed] shadow-sm rounded-2xl z-50 animate-slide-in">
+          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] border border-[#ededed] shadow-sm rounded-2xl z-50 animate-slide-in font-[family-name:var(--font-geist-sans)]">
             <p className="text-[#171717] text-[14px] mb-3 mr-2">
               {t("cookieBanner.message")}
             </p>
             <div className="flex justify-between items-center">
               <div className="flex gap-[12px]">
                 <button
-                  className="border border-[#ededed] text-[#171717] px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+                  className="border border-[#ededed] text-[#171717] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                   onClick={() => handleDeny()}>
                   {t("cookieBanner.deny")}
                 </button>
                 <button
-                  className="border border-[#ededed] text-[#171717] px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+                  className="border border-[#ededed] text-[#171717] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                   onClick={() => handleAcceptAll()}>
                   {t("cookieBanner.acceptAll")}
                 </button>
               </div>
               <button
-                className="border border-[#171717] bg-[#171717] text-[#ededed] px-3 py-[5px] rounded-full text-[14px] hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
+                className="border border-[#171717] bg-[#171717] text-[#ededed] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
                 onClick={() => {
                   setVisible(false);
                   handleOpenModal();

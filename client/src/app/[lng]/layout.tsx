@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { getT } from "@/app/i18n/index";
 import "./globals.css";
+import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
 
 const geistSans: NextFontWithVariable = Geist({
@@ -34,6 +35,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
         {children}
         <CookieBanner />
       </body>
