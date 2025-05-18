@@ -18,7 +18,7 @@ interface Category {
   description: string;
 }
 
-const getCategories = (): Category[] => {
+const useGetCategories = (): Category[] => {
   const { t } = useT("app", {});
   return [
     {
@@ -48,7 +48,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
   const { t } = useT("app", {});
   const [localPreferences, setLocalPreferences] = useState<Preferences>({ ...preferences });
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
-  const categories: Category[] = getCategories();
+  const categories: Category[] = useGetCategories();
 
   const onCategoryClick = (category: Category) => {
     if (expandedIds.includes(category.id)) {
