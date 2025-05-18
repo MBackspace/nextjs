@@ -48,6 +48,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
   const { t } = useT("app", {});
   const [localPreferences, setLocalPreferences] = useState<Preferences>({ ...preferences });
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [renderKey, setRenderKey] = useState(0);
   const categories: Category[] = useGetCategories();
 
   const onCategoryClick = (category: Category) => {
@@ -56,6 +57,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
     } else {
       setExpandedIds([...expandedIds, category.id]);
     }
+    setRenderKey(renderKey > 10 ? renderKey + 1 : 0);
   };
 
   const toggle = (category: Category): void => {
@@ -77,7 +79,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
           <p className="text-[16px] text-[#171717] mb-5 px-6">
             {t("consentModal.description")}
           </p>
-          <div className="rounded-lg overflow-hidden border border-[#ededed] mb-[45px] m-6">
+          <div key={renderKey} className="rounded-lg border border-[#ededed] mb-[45px] m-6">
             {categories.map((category, index) => (
               <div key={category.id}>
                 <div
@@ -85,7 +87,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
                   onClick={() => onCategoryClick(category)}
                 >
                   <span className="text-[14px] text-[#171717]">{category.name}</span>
-                  <label className="relative inline-flex items-center" onClick={(e) => e.stopPropagation()}>
+                  <label onClick={(e) => e.stopPropagation()}>
                     <input
                       type="checkbox"
                       className="sr-only peer"
@@ -94,18 +96,18 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
                       disabled={category.id === "essential"}
                     />
                     <div
-                      className={`border w-[42px] h-[26px] rounded-full transition-all relative flex items-center
+                      className={`border w-[42px] h-[26.4px] rounded-full transition-all
                       ${category.id === "essential" ? "bg-[#ffffff] border-[#dfdfdf] cursor-not-allowed" : "bg-[#f2f2f2] border-[#dfdfdf] peer-checked:bg-[#0070f1] peer-checked:border-[#0070f1] cursor-pointer"}`}
                     >
                       <div
-                        className={`absolute w-[24px] h-[24px] rounded-full shadow-sm transition-transform
+                        className={`w-[24.6px] h-[24.6px] rounded-full shadow-sm transition-transform
                         ${category.id === "essential" ? "bg-[#ebebeb]" : "bg-[#ffffff]"} ${localPreferences[category.id] ? "translate-x-4" : "translate-x-0"}`}
                       />
                     </div>
                   </label>
                 </div>
                 {expandedIds.includes(category.id) && (
-                  <div className={`px-4 py-2 text-[14px] text-[#666666] border-[#ededed] ${index !== categories.length - 1 ? 'border-b' : 'border-t'}`}>
+                  <div className={`px-4 py-3 text-[14px] text-[#666666] border-[#ededed] ${index !== categories.length - 1 ? 'border-b' : 'border-t'}`}>
                     {category.description}
                   </div>
                 )}
