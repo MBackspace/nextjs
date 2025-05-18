@@ -1771,7 +1771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:15.3.2":
+"@next/env@npm:15.3.2, @next/env@npm:^15.3.2":
   version: 15.3.2
   resolution: "@next/env@npm:15.3.2"
   checksum: 10c0/bebc8acbe2fdaadc8cc9ae6dbf4fe1a2e183e1bc417742213ae6d246f8be9416b2af8e703e2faa1792c167245ea1918547c62cf7be88c35429f3494e71e4b429
@@ -4207,6 +4207,7 @@ __metadata:
   resolution: "client@workspace:client"
   dependencies:
     "@eslint/eslintrc": "npm:^3"
+    "@next/env": "npm:^15.3.2"
     "@tailwindcss/postcss": "npm:^4"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"

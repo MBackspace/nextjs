@@ -1,5 +1,4 @@
 import Image from "next/image";
-import App from "./components/App";
 import { getT } from "@/app/i18n/index";
 
 export default async function Home(): Promise<React.ReactNode> {
@@ -53,8 +52,6 @@ export default async function Home(): Promise<React.ReactNode> {
             {t("app.readDocs")}
           </a>
         </div>
-
-        <App />
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a

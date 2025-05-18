@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import "./globals.css";
 import { getT } from "@/app/i18n/index";
+import "./globals.css";
+import CookieBanner from "./components/CookieBanner";
 
 const geistSans: NextFontWithVariable = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

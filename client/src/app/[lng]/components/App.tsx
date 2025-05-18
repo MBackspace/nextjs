@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { app } from "@/app/services/app";
 import { getT } from "@/app/i18n/index";
 
-async function Fallback(): Promise<React.ReactNode> {
+const Fallback = async (): Promise<React.ReactNode> => {
   const { t } = await getT("app", [null, "app"]);
   return (
     <div className="p-4">
@@ -12,12 +12,12 @@ async function Fallback(): Promise<React.ReactNode> {
   );
 }
 
-async function Text(): Promise<React.ReactNode> {
+const Text = async (): Promise<React.ReactNode> => {
   const response: Response = await app();
   return <p className="text-sm">{response.text()}</p>;
 }
 
-export default async function App() {
+export default async function App(): Promise<React.ReactNode> {
   const { t } = await getT("app", [null, "app"]);
   return (
     <Suspense fallback={<Fallback />}>

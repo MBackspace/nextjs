@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/env": "^15.3.2",
     "accept-language": "^3.0.20",
     "cross-env": "^7.0.3",
     "i18next": "^25.1.2",
