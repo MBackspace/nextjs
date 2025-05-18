@@ -5,7 +5,8 @@ WORKDIR /usr/nextjs
 COPY ./client/package.json .
 COPY ./yarn.lock .
 
-RUN yarn install
+RUN mkdir node_modules
+COPY ./node_modules ./node_modules
 
 RUN mkdir .next
 RUN mkdir public
