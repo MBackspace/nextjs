@@ -8,7 +8,8 @@ import Image from "next/image";
 interface SearchModalProps {
   t: TFunction<string | string[], undefined>;
   i18n: i18n;
-  setIsSearchOpen: (isSearchOpen: boolean) => void;
+  isClosing: boolean;
+  handleSearchClose: () => void;
   selectedResultIndex: number;
   setSelectedResultIndex: (selectedResultIndex: number) => void;
 }
@@ -18,7 +19,7 @@ interface SearchResult {
   label: string;
 }
 
-export default function SearchModal({ t, i18n, setIsSearchOpen, selectedResultIndex, setSelectedResultIndex }: SearchModalProps): React.ReactNode {
+export default function SearchModal({ t, i18n, isClosing, handleSearchClose, selectedResultIndex, setSelectedResultIndex }: SearchModalProps): React.ReactNode {
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
   const SearchResults: SearchResult[] = [
     { href: `/${i18n.language}/docs`, label: t("header.search.introduction") },
@@ -34,10 +35,10 @@ export default function SearchModal({ t, i18n, setIsSearchOpen, selectedResultIn
     <>
       <div
         className="fixed inset-0 bg-gradient-to-t from-[#ffffff]/100 to-transparen flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]"
-        onClick={() => setIsSearchOpen(false)}
+        onClick={() => handleSearchClose()}
       >
         <div
-          className="bg-[#ffffff] w-full max-w-[640px] min-h-[380px] border border-[#ededed] shadow rounded-[12px] animate-fade-in"
+          className={`bg-[#ffffff] w-full max-w-[640px] min-h-[380px] border border-[#ededed] shadow rounded-[12px] ${isClosing ? "animate-fade-out" : "animate-fade-in"}`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-3 border-b border-[#ededed]">
@@ -63,7 +64,7 @@ export default function SearchModal({ t, i18n, setIsSearchOpen, selectedResultIn
               />
               <span
                 className="cursor-pointer transition duration-200 ease-in-out border border-[#dfdfdf] bg-[#ffffff] text-[12px] text-[#171717] px-[4px] py-[1px] rounded hover:bg-[#f2f2f2]"
-                onClick={() => setIsSearchOpen(false)}
+                onClick={() => handleSearchClose()}
               >
                 Esc
               </span>
@@ -96,6 +97,21 @@ export default function SearchModal({ t, i18n, setIsSearchOpen, selectedResultIn
 
       <style>
         {`
+          .animate-fade-out {
+            animation: scale-out 0.2s ease forwards;
+          }
+
+          @keyframes scale-out {
+            from {
+              transform: scale(1);
+              opacity: 1;
+            }
+            to {
+              transform: scale(0.8);
+              opacity: 0;
+            }
+          }
+
           .animate-fade-in {
             animation: scale-in 0.2s ease forwards;
           }

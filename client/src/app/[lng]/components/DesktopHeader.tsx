@@ -9,7 +9,7 @@ import Image from "next/image";
 interface DesktopHeaderProps {
   t: TFunction<string | string[], undefined>;
   i18n: i18n;
-  toggleSearch: () => void;
+  handleSearchOpen: () => void;
 }
 
 interface NavLink {
@@ -18,7 +18,7 @@ interface NavLink {
   isExternal: boolean;
 }
 
-export default function DesktopHeader({ t, i18n, toggleSearch }: DesktopHeaderProps): React.ReactNode {
+export default function DesktopHeader({ t, i18n, handleSearchOpen }: DesktopHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
   const router: AppRouterInstance = useRouter();
   const navLinks: NavLink[] = [
@@ -34,7 +34,7 @@ export default function DesktopHeader({ t, i18n, toggleSearch }: DesktopHeaderPr
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full h-[65px] z-50 flex items-center border-b border-[#ededed] px-14 py-[15px] bg-[#ffffff] font-[family-name:var(--font-geist-sans)]">
+    <>
       <div className="flex items-center space-x-4 mr-10">
         <Link href="/">
           <Image
@@ -85,7 +85,7 @@ export default function DesktopHeader({ t, i18n, toggleSearch }: DesktopHeaderPr
       <div className="flex space-x-3 ml-auto">
         <button
           className="cursor-pointer border border-[#f2f2f2] bg-[#f2f2f2] text-[14px] text-[#666666] px-[10px] pl-[8px] pr-[5px] rounded-lg hover:bg-[#ebebeb] hover:border-[#ebebeb] transition duration-200 ease-in-out"
-          onClick={toggleSearch}
+          onClick={handleSearchOpen}
         >
           {t("header.search.button")}
           <span className="border border-[#dfdfdf] bg-[#ffffff] text-[12px] text-[#171717] font-medium px-[6px] py-[3px] rounded-lg ml-10">
@@ -115,6 +115,6 @@ export default function DesktopHeader({ t, i18n, toggleSearch }: DesktopHeaderPr
           {t("header.learn")}
         </button>
       </div>
-    </header>
+    </>
   );
 }

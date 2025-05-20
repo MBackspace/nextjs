@@ -10,6 +10,7 @@ export default function Header(): React.ReactNode {
   const { t, i18n } = useT("app", {});
   const [hydrated, setHydrated] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
 
@@ -30,10 +31,10 @@ export default function Header(): React.ReactNode {
     const handleKeyDown = (e: KeyboardEvent): void => {
       if (e.ctrlKey && e.key === "k") {
         e.preventDefault();
-        toggleSearch();
+        handleSearchOpen();
       }
       if (e.key === "Escape" && isSearchOpen) {
-        setIsSearchOpen(false);
+        handleSearchClose();
       }
     };
 
@@ -43,9 +44,17 @@ export default function Header(): React.ReactNode {
     };
   }, [isSearchOpen]);
 
-  const toggleSearch = (): void => {
+  const handleSearchOpen = (): void => {
     setSelectedResultIndex(0);
-    setIsSearchOpen(!isSearchOpen);
+    setIsSearchOpen(true);
+  };
+
+  const handleSearchClose = (): void => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsSearchOpen(false);
+      setIsClosing(false);
+    }, 200);
   };
 
   if (!hydrated) return null;
@@ -57,13 +66,13 @@ export default function Header(): React.ReactNode {
           <DesktopHeader
             t={t}
             i18n={i18n}
-            toggleSearch={toggleSearch}
+            handleSearchOpen={handleSearchOpen}
           />
         ) : (
           <MobileHeader
             t={t}
             i18n={i18n}
-            toggleSearch={toggleSearch}
+            handleSearchOpen={handleSearchOpen}
           />
         )}
       </header>
@@ -72,7 +81,8 @@ export default function Header(): React.ReactNode {
         <SearchModal
           t={t}
           i18n={i18n}
-          setIsSearchOpen={setIsSearchOpen}
+          isClosing={isClosing}
+          handleSearchClose={handleSearchClose}
           selectedResultIndex={selectedResultIndex}
           setSelectedResultIndex={setSelectedResultIndex}
         />
