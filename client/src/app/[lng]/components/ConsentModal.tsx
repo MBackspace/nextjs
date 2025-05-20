@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Preferences } from "./CookieBanner";
 import { useT } from "@/app/i18n/client";
+import { Preferences } from "./CookieBanner";
 
 interface ConsentModalProps {
   preferences: Preferences;
@@ -19,9 +19,12 @@ interface Category {
   description: string;
 }
 
-const useGetCategories = (): Category[] => {
+export default function ConsentModal({ preferences, handleDeny, handleAcceptAll, handleSave, handleModalClose }: ConsentModalProps): React.ReactNode {
   const { t } = useT("app", {});
-  return [
+  const [localPreferences, setLocalPreferences] = useState<Preferences>({ ...preferences });
+  const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [renderKey, setRenderKey] = useState(0);
+  const categories: Category[] = [
     {
       id: "essential",
       name: t("consentModal.categories.essential.name"),
@@ -43,14 +46,6 @@ const useGetCategories = (): Category[] => {
       description: t("consentModal.categories.functional.description")
     }
   ];
-};
-
-export default function ConsentModal({ preferences, handleDeny, handleAcceptAll, handleSave, handleModalClose }: ConsentModalProps): React.ReactNode {
-  const { t } = useT("app", {});
-  const [localPreferences, setLocalPreferences] = useState<Preferences>({ ...preferences });
-  const [expandedIds, setExpandedIds] = useState<string[]>([]);
-  const [renderKey, setRenderKey] = useState(0);
-  const categories: Category[] = useGetCategories();
 
   const onCategoryClick = (category: Category) => {
     if (expandedIds.includes(category.id)) {
@@ -70,7 +65,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 font-[family-name:var(--font-geist-sans)]">
+      <div className="fixed inset-0 bg-[#171717]/45 flex items-center justify-center z-50 font-[family-name:var(--font-geist-sans)]">
         <div className="bg-[#ffffff] w-full max-w-[600px] min-h-[500px] rounded-[12px] animate-slide-in">
           <div className="flex justify-between mb-5 pt-6 px-6">
             <h1 className="text-[22px] text-[#171717] font-bold">
@@ -84,7 +79,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
             {categories.map((category, index) => (
               <div key={category.id}>
                 <div
-                  className={`flex items-center justify-between px-4 py-[10px] cursor-pointer ${index !== categories.length - 1 ? 'border-b border-[#ededed]' : ''}`}
+                  className={`flex items-center justify-between px-4 py-[10px] cursor-pointer ${index !== categories.length - 1 ? "border-b border-[#ededed]" : ""}`}
                   onClick={() => onCategoryClick(category)}
                 >
                   <span className="text-[14px] text-[#171717] font-medium">{category.name}</span>
@@ -101,14 +96,14 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
                       ${category.id === "essential" ? "bg-[#ffffff] border-[#dfdfdf] cursor-not-allowed" : "bg-[#f2f2f2] border-[#dfdfdf] peer-checked:bg-[#0070f1] peer-checked:border-[#0070f1] cursor-pointer"}`}
                     >
                       <div
-                        className={`w-[24.6px] h-[24.6px] rounded-full shadow-sm transition-transform
+                        className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform
                         ${category.id === "essential" ? "bg-[#ebebeb]" : "bg-[#ffffff]"} ${localPreferences[category.id] ? "translate-x-4" : "translate-x-0"}`}
                       />
                     </div>
                   </label>
                 </div>
                 {expandedIds.includes(category.id) && (
-                  <div className={`px-4 py-3 text-[14px] text-[#666666] border-[#ededed] ${index !== categories.length - 1 ? 'border-b' : 'border-t'}`}>
+                  <div className={`px-4 py-3 text-[14px] text-[#666666] border-[#ededed] ${index !== categories.length - 1 ? "border-b" : "border-t"}`}>
                     {category.description}
                   </div>
                 )}
@@ -118,7 +113,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
           <div className="flex justify-between items-center border-t border-[#ededed] p-6 pb-0">
             <div className="flex gap-3">
               <button
-                className="border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+                className="cursor-pointer border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                 onClick={() => {
                   handleDeny();
                   handleModalClose();
@@ -127,7 +122,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
                 {t("consentModal.deny")}
               </button>
               <button
-                className="border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+                className="cursor-pointer border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                 onClick={() => {
                   handleAcceptAll();
                   handleModalClose();
@@ -137,7 +132,7 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
               </button>
             </div>
             <button
-              className="border border-[#171717] bg-[#171717] text-[14px] text-[#ededed] font-medium px-3 py-[5px] rounded-lg hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
+              className="cursor-pointer border border-[#171717] bg-[#171717] text-[14px] text-[#ededed] font-medium px-3 py-[5px] rounded-lg hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
               onClick={() => {
                 handleSave(localPreferences);
                 handleModalClose();
@@ -155,22 +150,24 @@ export default function ConsentModal({ preferences, handleDeny, handleAcceptAll,
         </div>
       </div>
 
-      <style>{`
-        .animate-slide-in {
-          animation: slideIn 0.1s ease-out forwards;
-        }
+      <style>
+        {`
+          .animate-slide-in {
+            animation: slide-in 0.2s ease-out forwards;
+          }
 
-        @keyframes slideIn {
-          from {
-            transform: translateY(20px);
-            opacity: 0;
+          @keyframes slide-in {
+            from {
+              transform: translateY(20px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
           }
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-      `}</style>
+        `}
+      </style>
     </>
   );
 }

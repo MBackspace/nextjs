@@ -16,14 +16,14 @@ export default async function Home(): Promise<React.ReactNode> {
         />
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2 tracking-[-.01em]">
-            {t("app.getStarted")}{" "}
+            {t("page.getStarted")}{" "}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
               src/app/page.tsx
             </code>
             .
           </li>
           <li className="tracking-[-.01em]">
-            {t("app.saveChanges")}
+            {t("page.saveChanges")}
           </li>
         </ol>
 
@@ -41,7 +41,7 @@ export default async function Home(): Promise<React.ReactNode> {
               width={20}
               height={20}
             />
-            {t("app.deployNow")}
+            {t("page.deployNow")}
           </a>
           <a
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
@@ -49,7 +49,7 @@ export default async function Home(): Promise<React.ReactNode> {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("app.readDocs")}
+            {t("page.readDocs")}
           </a>
         </div>
       </main>
@@ -67,7 +67,7 @@ export default async function Home(): Promise<React.ReactNode> {
             width={16}
             height={16}
           />
-          {t("app.learn")}
+          {t("page.learn")}
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -82,7 +82,7 @@ export default async function Home(): Promise<React.ReactNode> {
             width={16}
             height={16}
           />
-          {t("app.examples")}
+          {t("page.examples")}
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -97,7 +97,7 @@ export default async function Home(): Promise<React.ReactNode> {
             width={16}
             height={16}
           />
-          {t("app.goToNextjs")}
+          {t("page.goToNextjs")}
         </a>
       </footer>
     </div>

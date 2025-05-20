@@ -32,7 +32,7 @@ export default function CookieBanner(): React.ReactNode {
     }
   }, []);
 
-  const savePreferences = (newPreferences: Preferences) => {
+  const savePreferences = (newPreferences: Preferences): void => {
     setCookie(COOKIE_KEY, JSON.stringify(newPreferences));
     setVisible(false);
   };
@@ -86,25 +86,25 @@ export default function CookieBanner(): React.ReactNode {
 
       {visible && (
         <>
-          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] border border-[#ededed] shadow-sm rounded-2xl z-50 animate-slide-in font-[family-name:var(--font-geist-sans)]">
+          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] shadow border border-[#ededed] rounded-2xl z-50 animate-slide-in font-[family-name:var(--font-geist-sans)]">
             <p className="text-[#171717] text-[14px] mb-3 mr-2">
               {t("cookieBanner.message")}
             </p>
             <div className="flex justify-between items-center">
               <div className="flex gap-[12px]">
                 <button
-                  className="border border-[#ededed] text-[#171717] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+                  className="cursor-pointer border border-[#ededed] text-[#171717] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                   onClick={() => handleDeny()}>
                   {t("cookieBanner.deny")}
                 </button>
                 <button
-                  className="border border-[#ededed] text-[#171717] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+                  className="cursor-pointer border border-[#ededed] text-[#171717] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
                   onClick={() => handleAcceptAll()}>
                   {t("cookieBanner.acceptAll")}
                 </button>
               </div>
               <button
-                className="border border-[#171717] bg-[#171717] text-[#ededed] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
+                className="cursor-pointer border border-[#171717] bg-[#171717] text-[#ededed] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
                 onClick={() => {
                   setVisible(false);
                   handleOpenModal();
@@ -115,22 +115,24 @@ export default function CookieBanner(): React.ReactNode {
             </div>
           </div>
 
-          <style>{`
-            .animate-slide-in {
-              animation: slideIn 0.5s ease-out forwards;
-            }
+          <style>
+            {`
+              .animate-slide-in {
+                animation: slide-in 0.8s ease-out forwards;
+              }
 
-            @keyframes slideIn {
-              from {
-                transform: translateY(100%);
-                opacity: 0;
+              @keyframes slide-in {
+                from {
+                  transform: translateY(100%);
+                  opacity: 0;
+                }
+                to {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
               }
-              to {
-                transform: translateY(0);
-                opacity: 1;
-              }
-            }
-          `}</style>
+            `}
+          </style>
         </>
       )}
     </>

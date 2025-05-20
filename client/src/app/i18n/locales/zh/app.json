@@ -3,8 +3,7 @@
     "title": "创建 Next 应用",
     "description": "由 create next app 生成"
   },
-  "app": {
-    "dataFromApi": "来自 API 的数据：",
+  "page": {
     "getStarted": "开始编辑以启动",
     "saveChanges": "保存后立即查看你的更改。",
     "deployNow": "立即部署",
