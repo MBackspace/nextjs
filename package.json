@@ -7,7 +7,6 @@
   ],
   "scripts": {
     "build": "turbo run build --concurrency=3",
-    "test": "turbo run test --concurrency=3",
     "dev": "turbo run dev --concurrency=3",
     "docker:build": "docker compose build",
     "docker:up": "docker compose up -d",
