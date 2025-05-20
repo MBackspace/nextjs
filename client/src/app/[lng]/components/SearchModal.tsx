@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react";
-import { i18n, TFunction } from "i18next";
 import Link from "next/link";
 import Image from "next/image";
+import { i18n, TFunction } from "i18next";
 
 interface SearchModalProps {
   t: TFunction<string | string[], undefined>;
@@ -101,6 +101,10 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
             animation: scale-out 0.2s ease forwards;
           }
 
+          .animate-fade-in {
+            animation: scale-in 0.2s ease forwards;
+          }
+
           @keyframes scale-out {
             from {
               transform: scale(1);
@@ -110,10 +114,6 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
               transform: scale(0.8);
               opacity: 0;
             }
-          }
-
-          .animate-fade-in {
-            animation: scale-in 0.2s ease forwards;
           }
 
           @keyframes scale-in {

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { TFunction } from "i18next";
 import Link from "next/link";
+import { TFunction } from "i18next";
 import { Preferences } from "./CookieBanner";
 
 

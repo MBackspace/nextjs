@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useT } from "@/app/i18n/client";
 import DesktopHeader from "./DesktopHeader";
 import MobileHeader from "./MobileHeader";
@@ -62,6 +64,33 @@ export default function Header(): React.ReactNode {
   return (
     <>
       <header className={`fixed top-0 left-0 w-full h-[65px] z-50 flex items-center border-b border-[#ededed] ${!isMobile ? "px-14" : "px-6"} py-[15px] bg-[#ffffff] font-[family-name:var(--font-geist-sans)]`}>
+        <div className="flex items-center space-x-3 mr-10">
+          <Link href="/">
+            <Image
+              className="invert"
+              src="/assets/vercel.svg"
+              alt="Vercel logo"
+              width={25.4}
+              height={22}
+              priority
+            />
+          </Link>
+          <span className="text-[#dfdfdf]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="26" viewBox="0 0 12 26" fill="none" stroke="currentColor" strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="0" y1="28" x2="14" y2="0" />
+            </svg>
+          </span>
+          <Link href="/">
+            <Image
+              className="dark:invert"
+              src="/assets/next.svg"
+              alt="Next.js logo"
+              width={89.76}
+              height={18}
+              priority
+            />
+          </Link>
+        </div>
         {!isMobile ? (
           <DesktopHeader
             t={t}

@@ -1,9 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { i18n, TFunction } from "i18next";
 import Link from "next/link";
-import Image from "next/image";
+import { i18n, TFunction } from "i18next";
 
 interface MobileHeaderProps {
   t: TFunction<string | string[], undefined>;
@@ -33,33 +32,6 @@ export default function MobileHeader({ t, i18n, handleSearchOpen }: MobileHeader
 
   return (
     <>
-      <div className="flex items-center space-x-4 mr-10">
-        <Link href="/">
-          <Image
-            className="invert"
-            src="/assets/vercel.svg"
-            alt="Vercel logo"
-            width={25.4}
-            height={22}
-            priority
-          />
-        </Link>
-        <span className="text-[#dfdfdf]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="26" viewBox="0 0 12 26" fill="none" stroke="currentColor" strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="0" y1="28" x2="14" y2="0" />
-          </svg>
-        </span>
-        <Link href="/">
-          <Image
-            className="dark:invert"
-            src="/assets/next.svg"
-            alt="Next.js logo"
-            width={89.76}
-            height={18}
-            priority
-          />
-        </Link>
-      </div>
       <div className="flex space-x-3 ml-auto">
         <button
           className="cursor-pointer flex items-center text-[14px] text-[#171717] font-medium px-1 py-[5px]"

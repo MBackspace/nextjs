@@ -35,33 +35,6 @@ export default function DesktopHeader({ t, i18n, handleSearchOpen }: DesktopHead
 
   return (
     <>
-      <div className="flex items-center space-x-4 mr-10">
-        <Link href="/">
-          <Image
-            className="invert"
-            src="/assets/vercel.svg"
-            alt="Vercel logo"
-            width={25.4}
-            height={22}
-            priority
-          />
-        </Link>
-        <span className="text-[#dfdfdf]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="26" viewBox="0 0 12 26" fill="none" stroke="currentColor" strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="0" y1="28" x2="14" y2="0" />
-          </svg>
-        </span>
-        <Link href="/">
-          <Image
-            className="dark:invert"
-            src="/assets/next.svg"
-            alt="Next.js logo"
-            width={89.76}
-            height={18}
-            priority
-          />
-        </Link>
-      </div>
       <nav className="flex space-x-6 text-[14px]">
         {navLinks.map(({ href, label, isExternal }) => (
           <Link
