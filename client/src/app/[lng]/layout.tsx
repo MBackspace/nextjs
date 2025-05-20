@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
 
+
 const geistSans: NextFontWithVariable = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"]

@@ -44,5 +44,31 @@
     "save": "Save",
     "privacyPolicy": "Read how we handle your data in our",
     "privacyPolicyLink": "Privacy Policy"
+  },
+  "header": {
+    "showcase": "Showcase",
+    "docs": "Docs",
+    "blog": "Blog",
+    "templates": "Templates",
+    "enterprise": "Enterprise",
+    "deploy": "Deploy",
+    "learn": "Learn",
+    "commerce": "Next.js Commerce",
+    "github": "Github",
+    "search": {
+      "button": "Search documentation...",
+      "input": "What are you searching for?",
+      "introduction": "Introduction",
+      "gettingStarted": "Getting Started",
+      "appRouter": "App Router",
+      "architecture": "Architecture",
+      "pagesRouter": "Pages Router",
+      "apiReference": "API Reference",
+      "accessibility": "Accessibility",
+      "activeTabs": {
+        "app": "App",
+        "pages": "Pages"
+      }
+    }
   }
 }

@@ -44,5 +44,31 @@
     "save": "保存",
     "privacyPolicy": "阅读我们如何处理您的数据，详情请见",
     "privacyPolicyLink": "隐私政策"
+  },
+  "header": {
+    "showcase": "案例展示",
+    "docs": "文档",
+    "blog": "博客",
+    "templates": "模板",
+    "enterprise": "企业版",
+    "deploy": "部署",
+    "learn": "学习",
+    "commerce": "Next.js 商业版",
+    "github": "GitHub",
+    "search": {
+      "button": "搜索文档...",
+      "input": "您想查找什么？",
+      "introduction": "介绍",
+      "gettingStarted": "快速开始",
+      "appRouter": "App 路由",
+      "architecture": "架构",
+      "pagesRouter": "Pages 路由",
+      "apiReference": "API 参考",
+      "accessibility": "无障碍支持",
+      "activeTabs": {
+        "app": "应用",
+        "pages": "页面"
+      }
+    }
   }
 }

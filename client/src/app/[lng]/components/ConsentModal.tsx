@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { TFunction } from "i18next";
 import Link from "next/link";
-import { useT } from "@/app/i18n/client";
 import { Preferences } from "./CookieBanner";
 
+
 interface ConsentModalProps {
+  t: TFunction<string | string[], undefined>;
   preferences: Preferences;
   handleDeny: () => void;
   handleAcceptAll: () => void;
@@ -19,8 +21,7 @@ interface Category {
   description: string;
 }
 
-export default function ConsentModal({ preferences, handleDeny, handleAcceptAll, handleSave, handleModalClose }: ConsentModalProps): React.ReactNode {
-  const { t } = useT("app", {});
+export default function ConsentModal({ t, preferences, handleDeny, handleAcceptAll, handleSave, handleModalClose }: ConsentModalProps): React.ReactNode {
   const [localPreferences, setLocalPreferences] = useState<Preferences>({ ...preferences });
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   const [renderKey, setRenderKey] = useState(0);

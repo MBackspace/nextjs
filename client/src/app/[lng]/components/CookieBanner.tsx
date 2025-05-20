@@ -16,8 +16,8 @@ export interface Preferences {
 
 export default function CookieBanner(): React.ReactNode {
   const { t } = useT("app", {});
-  const [showModal, setShowModal] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const preferences: Preferences = {
     essential: true,
     marketing: false,
@@ -74,16 +74,6 @@ export default function CookieBanner(): React.ReactNode {
 
   return (
     <>
-      {showModal && (
-        <ConsentModal
-          preferences={preferences}
-          handleDeny={handleDeny}
-          handleAcceptAll={handleAcceptAll}
-          handleSave={handleSave}
-          handleModalClose={handleModalClose}
-        />
-      )}
-
       {visible && (
         <>
           <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] shadow border border-[#ededed] rounded-2xl z-50 animate-slide-in font-[family-name:var(--font-geist-sans)]">
@@ -134,6 +124,17 @@ export default function CookieBanner(): React.ReactNode {
             `}
           </style>
         </>
+      )}
+
+      {showModal && (
+        <ConsentModal
+          t={t}
+          preferences={preferences}
+          handleDeny={handleDeny}
+          handleAcceptAll={handleAcceptAll}
+          handleSave={handleSave}
+          handleModalClose={handleModalClose}
+        />
       )}
     </>
   );
