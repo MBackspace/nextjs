@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { i18n, TFunction } from "i18next";
 
-interface MobileHeaderProps {
+interface ShortHeaderProps {
   t: TFunction<string | string[], undefined>;
   i18n: i18n;
   handleSearchOpen: () => void;
@@ -16,7 +16,7 @@ interface NavLink {
   isExternal: boolean;
 }
 
-export default function MobileHeader({ t, i18n, handleSearchOpen }: MobileHeaderProps): React.ReactNode {
+export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderProps): React.ReactNode {
   const navLinks: NavLink[] = [
     { href: `/${i18n.language}/learn`, label: t("header.learn"), isExternal: false },
     { href: `/${i18n.language}/deploy`, label: t("header.deploy"), isExternal: false },

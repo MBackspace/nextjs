@@ -6,7 +6,7 @@ import { i18n, TFunction } from "i18next";
 import Link from "next/link";
 import Image from "next/image";
 
-interface DesktopHeaderProps {
+interface LongHeaderProps {
   t: TFunction<string | string[], undefined>;
   i18n: i18n;
   handleSearchOpen: () => void;
@@ -18,7 +18,7 @@ interface NavLink {
   isExternal: boolean;
 }
 
-export default function DesktopHeader({ t, i18n, handleSearchOpen }: DesktopHeaderProps): React.ReactNode {
+export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
   const router: AppRouterInstance = useRouter();
   const navLinks: NavLink[] = [

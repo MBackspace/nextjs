@@ -34,7 +34,7 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
   return (
     <>
       <div
-        className="fixed inset-0 bg-gradient-to-t from-[#ffffff]/100 to-transparen flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]"
+        className={`fixed inset-0 ${isClosing ? "" : "bg-[#ffffff]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
         onClick={() => handleSearchClose()}
       >
         <div
@@ -44,7 +44,7 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
           <div className="p-3 border-b border-[#ededed]">
             <div className="flex items-center gap-2 mb-3">
               <button
-                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[#cce6ff] text-[#0070f1] bg-[#ebf5ff]" : "border-[#ededed] text-[#666666]"}`}
+                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[#cce6ff] text-[#0070f1] bg-[#ebf5ff]" : "border-[#ededed] text-[#666666] bg-[#ffffff]"}`}
                 onClick={() => setSearchActiveTab("app")}
               >
                 {t("header.search.activeTabs.app")}

@@ -1,6 +1,6 @@
 import i18next from "./i18next";
-import { headerName } from './settings';
-import { headers } from 'next/headers';
+import { headerName } from "./settings";
+import { headers } from "next/headers";
 import { KeyPrefix } from "i18next";
 import type {
   DefaultNamespace,

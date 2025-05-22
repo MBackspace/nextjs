@@ -12,39 +12,6 @@
     "examples": "Examples",
     "goToNextjs": "Go to nextjs.org →"
   },
-  "cookieBanner": {
-    "message": "This site uses tracking technologies. You may opt in or opt out of the use of these technologies.",
-    "deny": "Deny",
-    "acceptAll": "Accept all",
-    "settings": "Consent Settings"
-  },
-  "consentModal": {
-    "categories": {
-      "essential": {
-        "name": "Essential",
-        "description": "Essential cookies and services are used to enable core website features, such as ensuring the security of the website."
-      },
-      "marketing": {
-        "name": "Marketing",
-        "description": "Marketing cookies and services are used to deliver personalized advertisements, promotions, and offers. These technologies enable targeted advertising and marketing campaigns by collecting information about users' interests, preferences, and online activities."
-      },
-      "analytics": {
-        "name": "Analytics",
-        "description": "Analytics cookies and services are used for collecting statistical information about how visitors interact with a website. These technologies provide insights into website usage, visitor behavior, and site performance to understand and improve the site and enhance user experience."
-      },
-      "functional": {
-        "name": "Functional",
-        "description": "Functional cookies and services are used to offer enhanced and personalized functionalities. These technologies provide additional features and improved user experiences, such as remembering your language preferences, font sizes, region selections, and customized layouts. Opting out of these cookies may render certain services or functionality of the website unavailable."
-      }
-    },
-    "title": "Your Privacy",
-    "description": "This site uses tracking technologies. You may opt in or opt out of the use of these technologies.",
-    "deny": "Deny",
-    "acceptAll": "Accept all",
-    "save": "Save",
-    "privacyPolicy": "Read how we handle your data in our",
-    "privacyPolicyLink": "Privacy Policy"
-  },
   "header": {
     "showcase": "Showcase",
     "docs": "Docs",
@@ -70,5 +37,36 @@
         "pages": "Pages"
       }
     }
+  },
+  "cookieBanner": {
+    "message": "This site uses tracking technologies. You may opt in or opt out of the use of these technologies.",
+    "deny": "Deny",
+    "acceptAll": "Accept all",
+    "settings": "Consent Settings"
+  },
+  "consentModal": {
+    "essential": {
+      "name": "Essential",
+      "description": "Essential cookies and services are used to enable core website features, such as ensuring the security of the website."
+    },
+    "marketing": {
+      "name": "Marketing",
+      "description": "Marketing cookies and services are used to deliver personalized advertisements, promotions, and offers. These technologies enable targeted advertising and marketing campaigns by collecting information about users' interests, preferences, and online activities."
+    },
+    "analytics": {
+      "name": "Analytics",
+      "description": "Analytics cookies and services are used for collecting statistical information about how visitors interact with a website. These technologies provide insights into website usage, visitor behavior, and site performance to understand and improve the site and enhance user experience."
+    },
+    "functional": {
+      "name": "Functional",
+      "description": "Functional cookies and services are used to offer enhanced and personalized functionalities. These technologies provide additional features and improved user experiences, such as remembering your language preferences, font sizes, region selections, and customized layouts. Opting out of these cookies may render certain services or functionality of the website unavailable."
+    },
+    "title": "Your Privacy",
+    "description": "This site uses tracking technologies. You may opt in or opt out of the use of these technologies.",
+    "deny": "Deny",
+    "acceptAll": "Accept all",
+    "save": "Save",
+    "privacyPolicy": "Read how we handle your data in our",
+    "privacyPolicyLink": "Privacy Policy"
   }
 }

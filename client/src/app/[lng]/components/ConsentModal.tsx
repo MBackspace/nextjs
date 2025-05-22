@@ -28,23 +28,23 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
   const categories: Category[] = [
     {
       id: "essential",
-      name: t("consentModal.categories.essential.name"),
-      description: t("consentModal.categories.essential.description")
+      name: t("consentModal.essential.name"),
+      description: t("consentModal.essential.description")
     },
     {
       id: "marketing",
-      name: t("consentModal.categories.marketing.name"),
-      description: t("consentModal.categories.marketing.description")
+      name: t("consentModal.marketing.name"),
+      description: t("consentModal.marketing.description")
     },
     {
       id: "analytics",
-      name: t("consentModal.categories.analytics.name"),
-      description: t("consentModal.categories.analytics.description")
+      name: t("consentModal.analytics.name"),
+      description: t("consentModal.analytics.description")
     },
     {
       id: "functional",
-      name: t("consentModal.categories.functional.name"),
-      description: t("consentModal.categories.functional.description")
+      name: t("consentModal.functional.name"),
+      description: t("consentModal.functional.description")
     }
   ];
 

@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
-import DesktopHeader from "./DesktopHeader";
-import MobileHeader from "./MobileHeader";
+import LongHeader from "./LongHeader";
+import ShortHeader from "./ShortHeader";
 import SearchModal from "./SearchModal";
 
 export default function Header(): React.ReactNode {
   const { t, i18n } = useT("app", {});
-  const [hydrated, setHydrated] = useState(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [hydrated, setHydrated] = useState<boolean>(false);
+  const [isShortScreen, setIsShortScreen] = useState<boolean>(false);
+  const [isClosing, setIsClosing] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
 
@@ -22,7 +22,7 @@ export default function Header(): React.ReactNode {
 
   useEffect(() => {
     const handleResize = (): void => {
-      setIsMobile(window.innerWidth <= 1024);
+      setIsShortScreen(window.innerWidth <= 1024);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -63,7 +63,7 @@ export default function Header(): React.ReactNode {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full h-[65px] z-50 flex items-center border-b border-[#ededed] ${!isMobile ? "px-14" : "px-6"} py-[15px] bg-[#ffffff] font-[family-name:var(--font-geist-sans)]`}>
+      <header className={`fixed top-0 left-0 w-full h-[65px] z-60 flex items-center bg-[#ffffff]/80 backdrop-blur-[5px] border-b border-[#ededed] ${isShortScreen ? "px-6" : "px-14"} py-[15px] bg-[#ffffff] font-[family-name:var(--font-geist-sans)]`}>
         <div className="flex items-center space-x-3 mr-10">
           <Link href="/">
             <Image
@@ -91,14 +91,14 @@ export default function Header(): React.ReactNode {
             />
           </Link>
         </div>
-        {!isMobile ? (
-          <DesktopHeader
+        {isShortScreen ? (
+          <ShortHeader
             t={t}
             i18n={i18n}
             handleSearchOpen={handleSearchOpen}
           />
         ) : (
-          <MobileHeader
+          <LongHeader
             t={t}
             i18n={i18n}
             handleSearchOpen={handleSearchOpen}

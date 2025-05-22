@@ -17,7 +17,7 @@ export function middleware(req: NextRequest) {
   // Try to get language from cookie
   if (req.cookies.has(cookieName)) lng = acceptLanguage.get(req.cookies.get(cookieName)?.value);
   // If no cookie, check the Accept-Language header
-  if (!lng) lng = acceptLanguage.get(req.headers.get('Accept-Language'));
+  if (!lng) lng = acceptLanguage.get(req.headers.get("Accept-Language"));
   // Default to fallback language if still undefined
   if (!lng) lng = fallbackLng;
 
