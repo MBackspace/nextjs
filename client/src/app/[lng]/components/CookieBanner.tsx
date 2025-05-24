@@ -76,7 +76,7 @@ export default function CookieBanner(): React.ReactNode {
     <>
       {visible && (
         <>
-          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] shadow border border-[#ededed] rounded-2xl z-50 animate-slide-in font-[family-name:var(--font-geist-sans)]">
+          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[#ffffff] shadow border border-[#ededed] rounded-2xl z-60 animate-slide-in font-[family-name:var(--font-geist-sans)]">
             <p className="text-[#171717] text-[14px] mb-3 mr-2">
               {t("cookieBanner.message")}
             </p>

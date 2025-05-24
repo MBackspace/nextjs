@@ -66,7 +66,7 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
 
   return (
     <>
-      <div className="fixed inset-0 bg-[#171717]/45 flex items-center justify-center z-50 font-[family-name:var(--font-geist-sans)]">
+      <div className="fixed inset-0 bg-[#171717]/45 flex items-center justify-center z-60 font-[family-name:var(--font-geist-sans)]">
         <div className="bg-[#ffffff] w-full max-w-[600px] min-h-[500px] rounded-[12px] animate-slide-in">
           <div className="flex justify-between mb-5 pt-6 px-6">
             <h1 className="text-[22px] text-[#171717] font-bold">

@@ -1,10 +1,9 @@
 "use client"
 
-import { useRouter, usePathname } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { i18n, TFunction } from "i18next";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { i18n, TFunction } from "i18next";
 
 interface LongHeaderProps {
   t: TFunction<string | string[], undefined>;
@@ -20,7 +19,6 @@ interface NavLink {
 
 export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
-  const router: AppRouterInstance = useRouter();
   const navLinks: NavLink[] = [
     { href: `/${i18n.language}/showcase`, label: t("header.showcase"), isExternal: false },
     { href: `/${i18n.language}/docs`, label: t("header.docs"), isExternal: false },
@@ -28,10 +26,6 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
     { href: `/${i18n.language}/templates`, label: t("header.templates"), isExternal: true },
     { href: `/${i18n.language}/enterprise`, label: t("header.enterprise"), isExternal: true }
   ];
-
-  const handlePush = (pathname: string): void => {
-    router.push(`/${i18n.language}${pathname}`);
-  };
 
   return (
     <>
@@ -65,9 +59,9 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
             CtrlK
           </span>
         </button>
-        <button
+        <Link
+          href={`/${i18n.language}/deploy`}
           className="cursor-pointer flex items-center border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
-          onClick={() => handlePush("/deploy")}
         >
           <Image
             className="invert"
@@ -80,13 +74,13 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
           <span className="ml-[10px]">
             {t("header.deploy")}
           </span>
-        </button>
-        <button
+        </Link>
+        <Link
+          href={`/${i18n.language}/learn`}
           className="cursor-pointer border border-[#171717] bg-[#171717] text-[14px] text-[#ededed] font-medium px-3 py-[5px] rounded-lg hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
-          onClick={() => handlePush("/learn")}
         >
           {t("header.learn")}
-        </button>
+        </Link>
       </div>
     </>
   );
