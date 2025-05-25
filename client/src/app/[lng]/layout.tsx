@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import { cookies } from "next/headers";
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
 import "./globals.css";
 import Header from "./components/Header";
@@ -30,9 +32,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore: ReadonlyRequestCookies = await cookies();
+  const theme: string | undefined = cookieStore.get("zeit-theme")?.value;
+  const htmlClass: string = theme === "dark" ? "dark" : theme === "light" ? "light" : "";
   const { i18n } = await getT("", [null, ""]);
   return (
-    <html lang={i18n.language}>
+    <html lang={i18n.language} className={htmlClass}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

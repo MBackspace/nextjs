@@ -34,12 +34,12 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
           <Link
             key={href}
             href={href}
-            className={`transition duration-200 ease-in-out ${pathname === href ? "text-[#0373F5] font-medium" : "text-[#666666] hover:text-[#171717]"}`}
+            className={`transition duration-200 ease-in-out ${pathname === href ? "text-[var(--theme-primary)] font-medium" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
           >
             {label}
             {isExternal && (
               <svg
-                xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 28 28" fill="none" stroke="#666666" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 28 28" fill="none" stroke="var(--theme-text-muted)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
                 className="inline relative -top-[6px]">
                 <path d="M10 22 L22 10" />
                 <path d="M10 10 H22 V22" />
@@ -51,20 +51,20 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
 
       <div className="flex space-x-3 ml-auto">
         <button
-          className="cursor-pointer border border-[#f2f2f2] bg-[#f2f2f2] text-[14px] text-[#666666] px-[10px] pl-[8px] pr-[5px] rounded-lg hover:bg-[#ebebeb] hover:border-[#ebebeb] transition duration-200 ease-in-out"
+          className="cursor-pointer border border-[var(--theme-bg-muted)] bg-[var(--theme-bg-muted)] text-[14px] text-[var(--theme-text-muted)] px-[10px] pl-[8px] pr-[5px] rounded-lg hover:bg-[var(--theme-bg-muted-hover)] hover:border-[var(--theme-bg-muted-hover)] transition duration-200 ease-in-out"
           onClick={handleSearchOpen}
         >
           {t("header.search.button")}
-          <span className="border border-[#dfdfdf] bg-[#ffffff] text-[12px] text-[#171717] font-medium px-[6px] py-[3px] rounded-lg ml-10">
+          <span className="border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] font-medium px-[6px] py-[3px] rounded-lg ml-10">
             CtrlK
           </span>
         </button>
         <Link
           href={`/${i18n.language}/deploy`}
-          className="cursor-pointer flex items-center border border-[#ededed] text-[14px] text-[#171717] font-medium px-3 py-[5px] rounded-lg hover:bg-[#f2f2f2] transition duration-200 ease-in-out"
+          className="cursor-pointer flex items-center border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
         >
           <Image
-            className="invert"
+            style={{ filter: "var(--theme-image-filter-light)" }}
             src="/assets/vercel.svg"
             alt="Vercel logo"
             width={15}
@@ -77,7 +77,7 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
         </Link>
         <Link
           href={`/${i18n.language}/learn`}
-          className="cursor-pointer border border-[#171717] bg-[#171717] text-[14px] text-[#ededed] font-medium px-3 py-[5px] rounded-lg hover:bg-[#666666] hover:border-[#666666] transition duration-200 ease-in-out"
+          className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[14px] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
         >
           {t("header.learn")}
         </Link>

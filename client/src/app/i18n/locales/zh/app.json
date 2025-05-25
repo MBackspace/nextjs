@@ -3,15 +3,6 @@
     "title": "创建 Next 应用",
     "description": "由 create next app 生成"
   },
-  "page": {
-    "getStarted": "开始编辑以启动",
-    "saveChanges": "保存后立即查看你的更改。",
-    "deployNow": "立即部署",
-    "readDocs": "阅读文档",
-    "learn": "学习",
-    "examples": "示例",
-    "goToNextjs": "访问 nextjs.org →"
-  },
   "header": {
     "showcase": "案例展示",
     "docs": "文档",

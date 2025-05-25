@@ -34,23 +34,23 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
   return (
     <>
       <div
-        className={`fixed inset-0 ${isClosing ? "" : "bg-[#ffffff]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
+        className={`fixed inset-0 ${isClosing ? "" : "bg-[var(--theme-bg-dark)]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
         onClick={() => handleSearchClose()}
       >
         <div
-          className={`bg-[#ffffff] w-full max-w-[640px] min-h-[380px] border border-[#ededed] shadow rounded-[12px] ${isClosing ? "animate-fade-out" : "animate-fade-in"}`}
+          className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isClosing ? "animate-fade-out" : "animate-fade-in"}`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-3 border-b border-[#ededed]">
+          <div className="p-3 border-b border-[var(--theme-border-base)]">
             <div className="flex items-center gap-2 mb-3">
               <button
-                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[#cce6ff] text-[#0070f1] bg-[#ebf5ff]" : "border-[#ededed] text-[#666666] bg-[#ffffff]"}`}
+                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[var(--theme-accent-blue-border)] text-[var(--theme-accent-blue)] bg-[var(--theme-accent-blue-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
                 onClick={() => setSearchActiveTab("app")}
               >
                 {t("header.search.activeTabs.app")}
               </button>
               <button
-                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "pages" ? "border-[#eddcf9] text-[#995fcc] bg-[#f9f1fe]" : "border-[#ededed] text-[#666666] bg-[#ffffff]"}`}
+                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "pages" ? "border-[var(--theme-accent-purple-border)] text-[var(--theme-accent-purple)] bg-[var(--theme-accent-purple-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
                 onClick={() => setSearchActiveTab("pages")}
               >
                 {t("header.search.activeTabs.pages")}
@@ -60,22 +60,22 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
               <input
                 type="text"
                 placeholder={t("header.search.input")}
-                className="w-full text-[18px] outline-none placeholder-[#666666] pl-1"
+                className="w-full text-[18px] outline-none placeholder-[var(--theme-text-muted)] pl-1"
               />
               <span
-                className="cursor-pointer transition duration-200 ease-in-out border border-[#dfdfdf] bg-[#ffffff] text-[12px] text-[#171717] px-[4px] py-[1px] rounded hover:bg-[#f2f2f2]"
+                className="cursor-pointer transition duration-200 ease-in-out border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] px-[4px] py-[1px] rounded hover:bg-[var(--theme-bg-muted)]"
                 onClick={() => handleSearchClose()}
               >
                 Esc
               </span>
             </div>
           </div>
-          <div className="p-2">
+          <div className="p-2 text-[var(--theme-fg-base)]">
             {SearchResults.map(({ href, label }, index) => (
               <Link
                 key={href}
                 href={href}
-                className={`transition duration-200 ease-in-out flex items-center p-[9px] pb-[11px] text-sm rounded ${index === selectedResultIndex ? "bg-[#f2f2f2]" : "hover:bg-[#f2f2f2]"}`}
+                className={`transition duration-200 ease-in-out flex items-center p-[9px] pb-[11px] text-sm rounded ${index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
                 onMouseEnter={() => setSelectedResultIndex(index)}
               >
                 <Image

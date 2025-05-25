@@ -34,7 +34,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
     <>
       <div className="flex space-x-3 ml-auto">
         <button
-          className="cursor-pointer flex items-center text-[14px] text-[#171717] font-medium px-1 py-[5px]"
+          className="cursor-pointer flex items-center text-[14px] text-[var(--theme-fg-base)] font-medium px-1 py-[5px]"
           onClick={handleSearchOpen}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,7 +43,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
           </svg>
         </button>
         <button
-          className="cursor-pointer flex items-center text-[14px] text-[#171717] font-medium px-1 py-[5px]"
+          className="cursor-pointer flex items-center text-[14px] text-[var(--theme-fg-base)] font-medium px-1 py-[5px]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -68,12 +68,12 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
       </div>
 
       {isMenuOpen && (
-        <div className="fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-[#ffffff] z-40 flex flex-col pl-[25px] pt-[15px] font-[family-name:var(--font-geist-sans)]">
+        <div className="fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-[var(--theme-bg-base)] z-40 flex flex-col pl-[25px] pt-[15px] font-[family-name:var(--font-geist-sans)]">
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className=" transition duration-200 ease-in-out text-left text-[#666666] hover:text-[#171717] text-[16px] font-medium py-[10px]"
+              className=" transition duration-200 ease-in-out text-left text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)] text-[16px] font-medium py-[10px]"
             >
               {label}
             </Link>
