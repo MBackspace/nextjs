@@ -9,9 +9,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=m11615
       - MONGO_INITDB_DATABASE=nextjs
     volumes:
-      - nextjs-mongo-data:/data/db
+      - nextjs-mongo-volume:/data/db
     networks:
-      - nextjs-net
+      - nextjs-network
     restart: no
 
   nextjs-server:
@@ -26,7 +26,7 @@ services:
       - MONGO_URL=mongodb://admin:m11615@nextjs-mongo:27017/nextjs?authSource=admin
       - CORS_ORIGIN_URL=http://nextjs-client:4001
     networks:
-      - nextjs-net
+      - nextjs-network
     depends_on:
       - nextjs-mongo
     restart: no
@@ -41,15 +41,15 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=http://nextjs-server:4000/api
     networks:
-      - nextjs-net
+      - nextjs-network
     depends_on:
       - nextjs-server
     restart: no
 
 volumes:
-  nextjs-mongo-data:
+  nextjs-mongo-volume:
     driver: local
 
 networks:
-  nextjs-net:
+  nextjs-network:
     driver: bridge

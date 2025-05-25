@@ -46,7 +46,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
           className="cursor-pointer flex items-center text-[14px] text-[#171717] font-medium px-1 py-[5px]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height={isMenuOpen ? 26 : 24} viewBox={isMenuOpen ? "0 0 26 26" : "0 0 26 24"} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <line
               x1="1"
               y1="8"
