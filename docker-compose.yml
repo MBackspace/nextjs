@@ -12,7 +12,7 @@ services:
       - nextjs-mongo-data:/data/db
     networks:
       - nextjs-net
-    restart: always
+    restart: no
 
   nextjs-server:
     build:
@@ -29,7 +29,7 @@ services:
       - nextjs-net
     depends_on:
       - nextjs-mongo
-    restart: always
+    restart: no
 
   nextjs-client:
     build:
@@ -44,7 +44,7 @@ services:
       - nextjs-net
     depends_on:
       - nextjs-server
-    restart: always
+    restart: no
 
 volumes:
   nextjs-mongo-data:
