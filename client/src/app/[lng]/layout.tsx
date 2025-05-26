@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
+import { Metadata } from "next";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
 import { COOKIE_KEYS } from "@/app/lib/cookies";
-import "./globals.css";
+import { ThemeMode } from "./components/ThemeSwitcher";
 import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
+import "./globals.css";
 
 
 const geistSans: NextFontWithVariable = Geist({
@@ -35,10 +36,9 @@ export default async function RootLayout({
 }>) {
   const { i18n } = await getT("", [null, ""]);
   const cookieStore: ReadonlyRequestCookies = await cookies();
-  const theme: string | undefined = cookieStore.get(COOKIE_KEYS.THEME)?.value;
-  const htmlClass: string = theme || "";
+  const theme: ThemeMode = (cookieStore.get(COOKIE_KEYS.THEME)?.value || "") as ThemeMode;
   return (
-    <html lang={i18n.language} className={htmlClass}>
+    <html lang={i18n.language} className={theme}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

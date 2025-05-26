@@ -1,15 +1,19 @@
 "use client"
 
 import { useState } from "react";
-import { COOKIE_KEYS, getCookie, setCookie } from "@/app/lib/cookies";
+import { COOKIE_KEYS, setCookie } from "@/app/lib/cookies";
 
-type ThemeMode = "light" | "dark" | "";
+export type ThemeMode = "light" | "dark" | "";
 
-export default function ThemeSwitcher(): React.ReactNode {
-  const [theme, setTheme] = useState<ThemeMode>((getCookie(COOKIE_KEYS.THEME) as ThemeMode) || "");
+interface ThemeSwitcherProps {
+  theme: ThemeMode;
+}
+
+export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.ReactNode {
+  const [localTheme, setLocalTheme] = useState<ThemeMode>(theme);
 
   const handleChangeTheme = (mode: ThemeMode): void => {
-    setTheme(mode);
+    setLocalTheme(mode);
     setCookie(COOKIE_KEYS.THEME, mode);
     document.documentElement.className = mode;
   };
@@ -56,7 +60,7 @@ export default function ThemeSwitcher(): React.ReactNode {
           <button
             key={value}
             onClick={() => handleChangeTheme(value)}
-            className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${theme === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
+            className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${localTheme === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
           >
             {icon}
           </button>

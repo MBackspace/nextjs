@@ -17,14 +17,11 @@ export default function Header(): React.ReactNode {
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
 
   useEffect(() => {
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
     const handleResize = (): void => {
       setIsShortScreen(window.innerWidth <= 1024);
     };
     handleResize();
+    setHydrated(true);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -39,7 +36,6 @@ export default function Header(): React.ReactNode {
         handleSearchClose();
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);

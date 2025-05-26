@@ -5,7 +5,6 @@ import Link from "next/link";
 import { TFunction } from "i18next";
 import { Preferences } from "./CookieBanner";
 
-
 interface ConsentModalProps {
   t: TFunction<string | string[], undefined>;
   preferences: Preferences;

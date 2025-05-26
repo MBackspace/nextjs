@@ -4,16 +4,19 @@ import { useState, useTransition  } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { languages } from "@/app/i18n/settings";
-import { useT } from "@/app/i18n/client";
+import { i18n } from "i18next";
 
 type LanguageMode = typeof languages[number];
 
-export default function LanguageSwitcher(): React.ReactNode {
+interface LanguageSwitcherProps {
+  i18n: i18n;
+}
+
+export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React.ReactNode {
   const [isPending, startTransition] = useTransition();
   const router: AppRouterInstance = useRouter();
   const pathname: string = usePathname();
-  const { i18n } = useT("", {});
-  const [language, setLanguage] = useState<LanguageMode>(i18n.language);
+  const [localLanguage, setLocalLanguage] = useState<LanguageMode>(i18n.language);
 
   const redirectToLanguagePath = (lang: LanguageMode): void => {
     const segments: string[] = pathname.split("/");
@@ -31,7 +34,7 @@ export default function LanguageSwitcher(): React.ReactNode {
   };
 
   const handleChangeLanguage = (mode: LanguageMode): void => {
-    setLanguage(mode);
+    setLocalLanguage(mode);
     i18n.changeLanguage(mode, () => redirectToLanguagePath(mode));
   };
 
@@ -62,7 +65,7 @@ export default function LanguageSwitcher(): React.ReactNode {
             key={value}
             disabled={isPending}
             onClick={() => handleChangeLanguage(value)}
-            className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${language === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
+            className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${localLanguage === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
           >
             {icon}
           </button>
