@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { COOKIE_KEYS, setCookie } from "@/app/lib/cookies";
 
 export type ThemeMode = "light" | "dark" | "";
@@ -11,10 +11,6 @@ interface ThemeSwitcherProps {
 
 export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.ReactNode {
   const [localTheme, setLocalTheme] = useState<ThemeMode>(theme);
-
-  useEffect(() => {
-    document.documentElement.className = localTheme;
-  }, [localTheme]);
 
   const handleChangeTheme = (mode: ThemeMode): void => {
     setLocalTheme(mode);
