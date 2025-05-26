@@ -3,7 +3,7 @@ import { getT } from "@/app/i18n/index";
 
 export const HEADER_KEYS: Record<string, string> = {
   LANGUAGE: headerName,
-  THEME: "theme"
+  THEME: "x-theme"
 };
 
 const BASE_URL: string = process.env.NEXT_PUBLIC_API_URL || "";

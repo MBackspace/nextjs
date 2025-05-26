@@ -28,16 +28,23 @@ export function middleware(req: NextRequest) {
   const headers = new Headers(req.headers);
   headers.set(headerName, lngInPath || lng);
 
-  // Check if the theme is already in the cookie
-  const theme = req.cookies.get(COOKIE_KEYS.THEME)?.value || "";
-  headers.set(HEADER_KEYS.THEME, theme);
-
   // If the language is not in the path, redirect to include it
   if (
     !lngInPath &&
     !req.nextUrl.pathname.startsWith("/_next")
   ) {
     return NextResponse.redirect(new URL(`/${lng}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url));
+  }
+
+  // Retrieve theme preference from cookie and add it to a custom header
+  const theme = req.cookies.get(COOKIE_KEYS.THEME)?.value || "";
+  headers.set(HEADER_KEYS.THEME, theme);
+  const currentParam = req.nextUrl.searchParams.get("__theme");
+
+  // Add a pseudo query parameter to differentiate cached versions of pages by theme
+  if (currentParam !== theme) {
+    req.nextUrl.searchParams.set("__theme", theme);
+    return NextResponse.rewrite(req.nextUrl, { headers });
   }
 
   // If a referer exists, try to detect the language from there and set the cookie accordingly
