@@ -80,7 +80,7 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
             {categories.map((category, index) => (
               <div key={category.id}>
                 <div
-                  className={`flex items-center justify-between px-4 py-[10px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
+                  className={`flex items-center justify-between px-4 py-[10px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index === 0 ? "rounded-t-lg" : ""} ${index === categories.length - 1 ? "rounded-b-lg" : ""} ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
                   onClick={() => onCategoryClick(category)}
                 >
                   <span className="text-[14px] text-[var(--theme-fg-base)] font-medium">{category.name}</span>

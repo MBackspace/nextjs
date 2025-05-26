@@ -3,16 +3,16 @@
 :root {
   --theme-image-filter-dark: none;
   --theme-image-filter-light: invert(1);
+  --theme-border-base: #ededed;
   --theme-bg-base: #ffffff;
   --theme-bg-dark: #ffffff;
-  --theme-fg-base: #171717;
-  --theme-border-base: #ededed;
-  --theme-text-muted: #666666;
-  --theme-text-subtle: #dfdfdf;
   --theme-bg-muted: #f2f2f2;
   --theme-bg-muted-hover: #ebebeb;
   --theme-bg-muted-dark: #ffffff;
   --theme-bg-muted-dark-hover: #ffffff;
+  --theme-fg-base: #171717;
+  --theme-text-muted: #666666;
+  --theme-text-subtle: #dfdfdf;
   --theme-primary: #0373F5;
   --theme-accent-blue: #0070f1;
   --theme-accent-blue-bg: #ebf5ff;
@@ -26,16 +26,16 @@
   :root {
     --theme-image-filter-dark: invert(1);
     --theme-image-filter-light: none;
+    --theme-border-base: #333333;
     --theme-bg-base: #000000;
     --theme-bg-dark: #0a0a0a;
     --theme-fg-base: #ffffff;
-    --theme-border-base: #333333;
-    --theme-text-muted: #666666;
-    --theme-text-subtle: #404040;
     --theme-bg-muted: #1a1a1a;
     --theme-bg-muted-hover: #1f1f1f;
     --theme-bg-muted-dark: #1f1f1f;
     --theme-bg-muted-dark-hover: #1a1a1a;
+    --theme-text-muted: #808080;
+    --theme-text-subtle: #404040;
     --theme-primary: #0373F5;
     --theme-accent-blue: #0070f1;
     --theme-accent-blue-bg: #10233d;
@@ -49,16 +49,16 @@
 html.light {
   --theme-image-filter-dark: none;
   --theme-image-filter-light: invert(1);
+  --theme-border-base: #ededed;
   --theme-bg-base: #ffffff;
   --theme-bg-dark: #ffffff;
   --theme-fg-base: #171717;
-  --theme-border-base: #ededed;
-  --theme-text-muted: #666666;
-  --theme-text-subtle: #dfdfdf;
   --theme-bg-muted: #f2f2f2;
   --theme-bg-muted-hover: #ebebeb;
   --theme-bg-muted-dark: #ffffff;
   --theme-bg-muted-dark-hover: #ffffff;
+  --theme-text-muted: #666666;
+  --theme-text-subtle: #dfdfdf;
   --theme-primary: #0373F5;
   --theme-accent-blue: #0070f1;
   --theme-accent-blue-bg: #ebf5ff;
@@ -71,16 +71,16 @@ html.light {
 html.dark {
   --theme-image-filter-dark: invert(1);
   --theme-image-filter-light: none;
+  --theme-border-base: #333333;
   --theme-bg-base: #000000;
   --theme-bg-dark: #0a0a0a;
   --theme-fg-base: #ffffff;
-  --theme-border-base: #333333;
-  --theme-text-muted: #666666;
-  --theme-text-subtle: #404040;
   --theme-bg-muted: #1a1a1a;
   --theme-bg-muted-hover: #1f1f1f;
   --theme-bg-muted-dark: #1f1f1f;
   --theme-bg-muted-dark-hover: #1a1a1a;
+  --theme-text-muted: #808080;
+  --theme-text-subtle: #404040;
   --theme-primary: #0373F5;
   --theme-accent-blue: #0070f1;
   --theme-accent-blue-bg: #10233d;
@@ -91,6 +91,5 @@ html.dark {
 }
 
 body {
-  background: var(--theme-bg-base);
   font-family: Arial, Helvetica, sans-serif;
 }

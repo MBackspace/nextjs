@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "@/app/lib/cookies";
 
-type ThemeMode = "light" | "dark" | "";
-
 const COOKIE_KEY: string = "zeit-theme";
+
+type ThemeMode = "light" | "dark" | "";
 
 export default function ThemeSwitcher(): React.ReactNode {
   const [theme, setTheme] = useState<ThemeMode>("");
 
   useEffect(() => {
-    const savedTheme: ThemeMode = getCookie(COOKIE_KEY) as ThemeMode;
+    const savedTheme: ThemeMode = (getCookie(COOKIE_KEY) as ThemeMode) || "";
     setTheme(savedTheme);
     document.documentElement.className = savedTheme;
   }, []);

@@ -34,7 +34,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore: ReadonlyRequestCookies = await cookies();
   const theme: string | undefined = cookieStore.get("zeit-theme")?.value;
-  const htmlClass: string = theme === "dark" ? "dark" : theme === "light" ? "light" : "";
+  const htmlClass: string = theme || "";
   const { i18n } = await getT("", [null, ""]);
   return (
     <html lang={i18n.language} className={htmlClass}>
