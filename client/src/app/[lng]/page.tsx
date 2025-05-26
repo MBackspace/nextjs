@@ -1,3 +1,4 @@
+import LanguageSwitcher from "./components/LanguageSwitcher";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
 export default async function Home(): Promise<React.ReactNode> {
@@ -6,6 +7,7 @@ export default async function Home(): Promise<React.ReactNode> {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        <LanguageSwitcher />
         <ThemeSwitcher />
       </footer>
     </div>

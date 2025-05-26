@@ -1,24 +1,16 @@
 "use client"
 
-import { useEffect, useState } from "react";
-import { getCookie, setCookie } from "@/app/lib/cookies";
-
-const COOKIE_KEY: string = "zeit-theme";
+import { useState } from "react";
+import { COOKIE_KEYS, getCookie, setCookie } from "@/app/lib/cookies";
 
 type ThemeMode = "light" | "dark" | "";
 
 export default function ThemeSwitcher(): React.ReactNode {
-  const [theme, setTheme] = useState<ThemeMode>("");
-
-  useEffect(() => {
-    const savedTheme: ThemeMode = (getCookie(COOKIE_KEY) as ThemeMode) || "";
-    setTheme(savedTheme);
-    document.documentElement.className = savedTheme;
-  }, []);
+  const [theme, setTheme] = useState<ThemeMode>((getCookie(COOKIE_KEYS.THEME) as ThemeMode) || "");
 
   const handleChangeTheme = (mode: ThemeMode): void => {
     setTheme(mode);
-    setCookie(COOKIE_KEY, mode);
+    setCookie(COOKIE_KEYS.THEME, mode);
     document.documentElement.className = mode;
   };
 
@@ -28,7 +20,10 @@ export default function ThemeSwitcher(): React.ReactNode {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="4.5" />
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          <path d="M12 2.2v2.4M12 19.4v2.4" />
+          <path d="M2.2 12h2.4M19.4 12h2.4" />
+          <path d="M5.7 5.7l0.8 0.8M17.5 17.5l0.8 0.8" />
+          <path d="M17.5 6.5l0.8-0.8M5.7 18.3l0.8-0.8" />
         </svg>
       )
     },

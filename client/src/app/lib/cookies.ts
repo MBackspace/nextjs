@@ -1,4 +1,12 @@
-export const COOKIE_EXPIRATION_DAYS = 365;
+import { cookieName } from "@/app/i18n/settings";
+
+export const COOKIE_KEYS: Record<string, string> = {
+  LANGUAGE: cookieName,
+  THEME: "theme",
+  CONSENT: "fides_consent"
+};
+
+export const COOKIE_EXPIRATION_DAYS: number = 365;
 
 export const setCookie = (name: string, value: string, days: number = COOKIE_EXPIRATION_DAYS): void => {
   const date = new Date();

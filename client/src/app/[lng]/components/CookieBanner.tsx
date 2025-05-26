@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useT } from "@/app/i18n/client";
-import { getCookie, setCookie } from "@/app/lib/cookies";
+import { COOKIE_KEYS, getCookie, setCookie } from "@/app/lib/cookies";
 import ConsentModal from "./ConsentModal";
-
-const COOKIE_KEY: string = "fides_consent";
 
 export interface Preferences {
   essential: boolean;
@@ -26,14 +24,14 @@ export default function CookieBanner(): React.ReactNode {
   };
 
   useEffect(() => {
-    const savedPreferences = getCookie(COOKIE_KEY);
+    const savedPreferences = getCookie(COOKIE_KEYS.CONSENT);
     if (!savedPreferences) {
       setVisible(true);
     }
   }, []);
 
   const savePreferences = (newPreferences: Preferences): void => {
-    setCookie(COOKIE_KEY, JSON.stringify(newPreferences));
+    setCookie(COOKIE_KEYS.CONSENT, JSON.stringify(newPreferences));
     setVisible(false);
   };
 
