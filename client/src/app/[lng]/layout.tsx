@@ -1,15 +1,13 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 import { Metadata } from "next";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
-import { HEADER_KEYS } from "@/app/lib/https";
-import { ThemeMode } from "./components/ThemeSwitcher";
+import { COOKIE_KEYS } from "@/app/lib/cookies";
 import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
-
 
 const geistSans: NextFontWithVariable = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +33,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { i18n } = await getT("", [null, ""]);
-  const headerStore: ReadonlyHeaders = await headers();
-  const theme: ThemeMode = (headerStore.get(HEADER_KEYS.THEME) || "") as ThemeMode;
+  const cookieStore: ReadonlyRequestCookies = await cookies();
+  const theme: string = cookieStore.get(COOKIE_KEYS.THEME)?.value || "";
   return (
     <html lang={i18n.language} className={theme}>
       <body
