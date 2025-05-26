@@ -1,6 +1,11 @@
 import { cookieName, headerName } from "@/app/i18n/settings";
 import { getT } from "@/app/i18n/index";
 
+export const HEADER_KEYS: Record<string, string> = {
+  LANGUAGE: headerName,
+  THEME: "theme"
+};
+
 const BASE_URL: string = process.env.NEXT_PUBLIC_API_URL || "";
 
 type Params = string | string[][] | Record<string, string> | URLSearchParams | undefined;
@@ -16,7 +21,7 @@ const buildHeaders = async (headers: HeadersInit = {}): Promise<HeadersInit> => 
   return {
     ...headers,
     [cookieName]: i18n.language,
-    [headerName]: i18n.language
+    [HEADER_KEYS.LANGUAGE]: i18n.language
   };
 };
 

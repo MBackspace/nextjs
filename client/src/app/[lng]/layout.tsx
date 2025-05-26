@@ -1,10 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 import { Metadata } from "next";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { getT } from "@/app/i18n/index";
-import { COOKIE_KEYS } from "@/app/lib/cookies";
+import { HEADER_KEYS } from "@/app/lib/https";
 import { ThemeMode } from "./components/ThemeSwitcher";
 import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
@@ -35,8 +35,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { i18n } = await getT("", [null, ""]);
-  const cookieStore: ReadonlyRequestCookies = await cookies();
-  const theme: ThemeMode = (cookieStore.get(COOKIE_KEYS.THEME)?.value || "") as ThemeMode;
+  const headerStore: ReadonlyHeaders = await headers();
+  const theme: ThemeMode = (headerStore.get(HEADER_KEYS.THEME) || "") as ThemeMode;
   return (
     <html lang={i18n.language} className={theme}>
       <body

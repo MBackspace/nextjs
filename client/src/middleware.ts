@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import acceptLanguage from "accept-language";
 import { fallbackLng, languages, cookieName, headerName } from "@/app/i18n/settings";
+import { COOKIE_KEYS } from "@/app/lib/cookies";
+import { HEADER_KEYS } from "@/app/lib/https";
 
 acceptLanguage.languages(languages);
 
@@ -25,6 +27,10 @@ export function middleware(req: NextRequest) {
   const lngInPath = languages.find(loc => req.nextUrl.pathname.startsWith(`/${loc}`));
   const headers = new Headers(req.headers);
   headers.set(headerName, lngInPath || lng);
+
+  // Check if the theme is already in the cookie
+  const theme = req.cookies.get(COOKIE_KEYS.THEME)?.value || "";
+  headers.set(HEADER_KEYS.THEME, theme);
 
   // If the language is not in the path, redirect to include it
   if (
