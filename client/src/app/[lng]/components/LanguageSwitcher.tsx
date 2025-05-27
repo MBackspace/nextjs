@@ -1,8 +1,7 @@
 "use client"
 
-import { useState, useTransition  } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { useState  } from "react";
+import { usePathname } from "next/navigation";
 import { languages } from "@/app/i18n/settings";
 import { i18n } from "i18next";
 
@@ -13,23 +12,21 @@ interface LanguageSwitcherProps {
 }
 
 export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React.ReactNode {
-  const [isPending, startTransition] = useTransition();
-  const router: AppRouterInstance = useRouter();
   const pathname: string = usePathname();
   const [localLanguage, setLocalLanguage] = useState<LanguageMode>(i18n.language);
 
   const redirectToLanguagePath = (lang: LanguageMode): void => {
     const segments: string[] = pathname.split("/");
-    const currentPrefix: string = segments[1];
+    const currentPrefix: LanguageMode = segments[1];
     if (currentPrefix === lang) return;
-    if (languages.includes(currentPrefix as LanguageMode)) {
+    if (languages.includes(currentPrefix)) {
       segments[1] = lang;
     } else {
       segments.splice(1, 0, lang);
     }
     const newPath: string = segments.join("/");
     if (newPath !== pathname) {
-      startTransition(() => router.replace(newPath));
+      window.location.href = newPath;
     }
   };
 
@@ -63,7 +60,6 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
         return (
           <button
             key={value}
-            disabled={isPending}
             onClick={() => handleChangeLanguage(value)}
             className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${localLanguage === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
           >

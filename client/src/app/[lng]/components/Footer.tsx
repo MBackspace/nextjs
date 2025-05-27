@@ -12,9 +12,7 @@ export default function Footer(): React.ReactNode {
   const [theme, setTheme] = useState<ThemeMode>("");
 
   useEffect(() => {
-    const localTheme = (getCookie(COOKIE_KEYS.THEME) || "") as ThemeMode
-    setTheme(localTheme);
-    document.documentElement.className = localTheme;
+    setTheme((getCookie(COOKIE_KEYS.THEME) || "") as ThemeMode);
     setHydrated(true);
   }, []);
 
