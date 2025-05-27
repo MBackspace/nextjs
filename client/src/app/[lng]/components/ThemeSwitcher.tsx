@@ -11,13 +11,6 @@ interface ThemeSwitcherProps {
 
 export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.ReactNode {
   const [localTheme, setLocalTheme] = useState<ThemeMode>(theme);
-
-  const handleChangeTheme = (mode: ThemeMode): void => {
-    setLocalTheme(mode);
-    setCookie(COOKIE_KEYS.THEME, mode);
-    document.documentElement.className = mode;
-  };
-
   const options: { value: ThemeMode; icon: React.ReactNode }[] = [
     {
       value: "light",
@@ -52,6 +45,12 @@ export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.Reac
       )
     }
   ];
+
+  const handleChangeTheme = (mode: ThemeMode): void => {
+    setLocalTheme(mode);
+    setCookie(COOKIE_KEYS.THEME, mode);
+    document.documentElement.className = mode;
+  };
 
   return (
     <div className="flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] rounded-full px-1 py-1">

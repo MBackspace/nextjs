@@ -14,6 +14,24 @@ interface LanguageSwitcherProps {
 export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React.ReactNode {
   const pathname: string = usePathname();
   const [localLanguage, setLocalLanguage] = useState<LanguageMode>(i18n.language);
+  const options: { value: LanguageMode; icon: React.ReactNode }[] = [
+    {
+      value: "en",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+          <text x="4" y="17" fontSize="14">EN</text>
+        </svg>
+      )
+    },
+    {
+      value: "zh",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+          <text x="5" y="17" fontSize="14">中</text>
+        </svg>
+      )
+    }
+  ];
 
   const redirectToLanguagePath = (lang: LanguageMode): void => {
     const segments: string[] = pathname.split("/");
@@ -34,25 +52,6 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
     setLocalLanguage(mode);
     i18n.changeLanguage(mode, () => redirectToLanguagePath(mode));
   };
-
-  const options: { value: LanguageMode; icon: React.ReactNode }[] = [
-    {
-      value: "en",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">EN</text>
-        </svg>
-      )
-    },
-    {
-      value: "zh",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="5" y="17" fontSize="14">中</text>
-        </svg>
-      )
-    }
-  ];
 
   return (
     <div className="flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] rounded-full px-1 py-1">

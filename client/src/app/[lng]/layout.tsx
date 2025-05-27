@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
-import { COOKIE_KEYS } from "../lib/cookies";
+import { COOKIE_KEYS } from "@/app/lib/cookies";
 import { ThemeMode } from "./components/ThemeSwitcher";
 import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
