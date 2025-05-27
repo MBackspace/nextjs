@@ -66,7 +66,7 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
   return (
     <>
       <div className="fixed inset-0 bg-[#000000]/40 flex items-center justify-center z-60 font-[family-name:var(--font-geist-sans)]">
-        <div className="border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] w-full max-w-[600px] min-h-[500px] rounded-[12px] animate-slide-in">
+        <div className="border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] w-full max-w-[600px] min-h-[500px] rounded-[12px] consent-modal-translate-in">
           <div className="flex justify-between mb-5 pt-6 px-6">
             <h1 className="text-[22px] text-[var(--theme-fg-base)] font-bold">
               {t("consentModal.title")}
@@ -152,11 +152,11 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
 
       <style>
         {`
-          .animate-slide-in {
-            animation: slide-in 0.2s ease-out forwards;
+          .consent-modal-translate-in {
+            animation: consent-modal-translate-in 0.2s ease-out forwards;
           }
 
-          @keyframes slide-in {
+          @keyframes consent-modal-translate-in {
             from {
               transform: translateY(20px);
               opacity: 0;

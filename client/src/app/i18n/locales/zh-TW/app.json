@@ -1,0 +1,63 @@
+{
+  "layout": {
+    "title": "建立 Next 應用程式",
+    "description": "由 create next app 產生"
+  },
+  "header": {
+    "showcase": "案例展示",
+    "docs": "文件",
+    "blog": "部落格",
+    "templates": "模板",
+    "enterprise": "企業版",
+    "deploy": "部署",
+    "learn": "學習",
+    "commerce": "Next.js 商業版",
+    "github": "GitHub",
+    "search": {
+      "button": "搜尋文件...",
+      "input": "您想查找什麼？",
+      "introduction": "介紹",
+      "gettingStarted": "快速開始",
+      "appRouter": "App 路由",
+      "architecture": "架構",
+      "pagesRouter": "Pages 路由",
+      "apiReference": "API 參考",
+      "accessibility": "無障礙支援",
+      "activeTabs": {
+        "app": "應用程式",
+        "pages": "頁面"
+      }
+    }
+  },
+  "cookieBanner": {
+    "message": "本網站使用追蹤技術。您可以選擇同意或拒絕使用這些技術。",
+    "deny": "拒絕",
+    "acceptAll": "全部接受",
+    "settings": "設定偏好"
+  },
+  "consentModal": {
+    "essential": {
+      "name": "必要",
+      "description": "必要的 Cookie 和服務用於啟用網站核心功能，例如確保網站的安全性。"
+    },
+    "marketing": {
+      "name": "行銷",
+      "description": "行銷 Cookie 和服務用於提供個人化廣告、促銷和優惠。這些技術透過收集使用者的興趣、偏好和線上活動資訊來實現定向廣告和行銷活動。"
+    },
+    "analytics": {
+      "name": "分析",
+      "description": "分析 Cookie 和服務用於收集訪客與網站互動的統計資料。這些技術提供關於網站使用情況、訪客行為和網站效能的洞察，以協助優化網站並提升使用者體驗。"
+    },
+    "functional": {
+      "name": "功能性",
+      "description": "功能性 Cookie 和服務用於提供增強和個人化的功能。這些技術提供附加功能和改善的使用者體驗，例如記住語言偏好、字型大小、地區選擇和自訂佈局。選擇停用這些 Cookie 可能會使網站的某些服務或功能無法使用。"
+    },
+    "title": "您的隱私",
+    "description": "本網站使用追蹤技術。您可以選擇同意或拒絕使用這些技術。",
+    "deny": "拒絕",
+    "acceptAll": "全部接受",
+    "save": "儲存",
+    "privacyPolicy": "閱讀我們如何處理您的資料，詳情請見",
+    "privacyPolicyLink": "隱私政策"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "layout": {
+    "title": "Next 앱 만들기",
+    "description": "create next app에 의해 생성됨"
+  },
+  "header": {
+    "showcase": "쇼케이스",
+    "docs": "문서",
+    "blog": "블로그",
+    "templates": "템플릿",
+    "enterprise": "엔터프라이즈",
+    "deploy": "배포",
+    "learn": "학습",
+    "commerce": "Next.js 커머스",
+    "github": "GitHub",
+    "search": {
+      "button": "문서 검색...",
+      "input": "무엇을 찾고 계신가요?",
+      "introduction": "소개",
+      "gettingStarted": "시작하기",
+      "appRouter": "앱 라우터",
+      "architecture": "아키텍처",
+      "pagesRouter": "페이지 라우터",
+      "apiReference": "API 레퍼런스",
+      "accessibility": "접근성",
+      "activeTabs": {
+        "app": "앱",
+        "pages": "페이지"
+      }
+    }
+  },
+  "cookieBanner": {
+    "message": "이 사이트는 추적 기술을 사용합니다. 이러한 기술의 사용에 동의하거나 거부할 수 있습니다.",
+    "deny": "거부",
+    "acceptAll": "모두 허용",
+    "settings": "동의 설정"
+  },
+  "consentModal": {
+    "essential": {
+      "name": "필수",
+      "description": "필수 쿠키와 서비스는 웹사이트의 보안을 보장하는 등의 핵심 기능을 활성화하기 위해 사용됩니다."
+    },
+    "marketing": {
+      "name": "마케팅",
+      "description": "마케팅 쿠키와 서비스는 맞춤형 광고, 프로모션 및 제안을 제공하기 위해 사용됩니다. 이러한 기술은 사용자의 관심사, 선호도 및 온라인 활동 정보를 수집하여 타겟 광고 및 마케팅 캠페인을 가능하게 합니다."
+    },
+    "analytics": {
+      "name": "분석",
+      "description": "분석 쿠키와 서비스는 방문자가 웹사이트와 상호작용하는 방식에 대한 통계 정보를 수집하기 위해 사용됩니다. 이러한 기술은 웹사이트 사용 현황, 방문자 행동 및 사이트 성능에 대한 통찰을 제공하여 사이트를 이해하고 개선하며 사용자 경험을 향상시킵니다."
+    },
+    "functional": {
+      "name": "기능성",
+      "description": "기능성 쿠키와 서비스는 향상된 개인화 기능을 제공하기 위해 사용됩니다. 이러한 기술은 언어 설정, 글꼴 크기, 지역 선택 및 사용자 지정 레이아웃을 기억하여 추가 기능과 향상된 사용자 경험을 제공합니다. 이러한 쿠키를 거부하면 일부 서비스나 기능이 제대로 작동하지 않을 수 있습니다."
+    },
+    "title": "개인정보 보호",
+    "description": "이 사이트는 추적 기술을 사용합니다. 이러한 기술의 사용에 동의하거나 거부할 수 있습니다.",
+    "deny": "거부",
+    "acceptAll": "모두 허용",
+    "save": "저장",
+    "privacyPolicy": "당사의 데이터 처리 방식은",
+    "privacyPolicyLink": "개인정보 처리방침을 참조하십시오"
+  }
+}

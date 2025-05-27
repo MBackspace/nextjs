@@ -38,7 +38,7 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
         onClick={() => handleSearchClose()}
       >
         <div
-          className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isClosing ? "animate-fade-out" : "animate-fade-in"}`}
+          className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isClosing ? "search-modal-scale-out" : "search-modal-scale-in"}`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-3 border-b border-[var(--theme-border-base)]">
@@ -97,15 +97,15 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
 
       <style>
         {`
-          .animate-fade-out {
-            animation: scale-out 0.2s ease forwards;
+          .search-modal-scale-out {
+            animation: search-modal-scale-out 0.2s ease forwards;
           }
 
-          .animate-fade-in {
-            animation: scale-in 0.2s ease forwards;
+          .search-modal-scale-in {
+            animation: search-modal-scale-in 0.2s ease forwards;
           }
 
-          @keyframes scale-out {
+          @keyframes search-modal-scale-out {
             from {
               transform: scale(1);
               opacity: 1;
@@ -116,7 +116,7 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
             }
           }
 
-          @keyframes scale-in {
+          @keyframes search-modal-scale-in {
             from {
               transform: scale(0.8);
               opacity: 0;

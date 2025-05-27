@@ -74,12 +74,12 @@ export default function CookieBanner(): React.ReactNode {
     <>
       {visible && (
         <>
-          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-[420px] p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 animate-slide-in font-[family-name:var(--font-geist-sans)]">
-            <p className="text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2">
+          <div className="fixed bottom-4 left-4 right-4 min-w-[420px] w-fit p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 cookie-banner-translate-in font-[family-name:var(--font-geist-sans)]">
+            <p className="w-[380px] text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2">
               {t("cookieBanner.message")}
             </p>
             <div className="flex justify-between items-center">
-              <div className="flex gap-[12px]">
+              <div className="flex gap-[12px] pr-[24px]">
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
                   onClick={() => handleDeny()}>
@@ -105,11 +105,11 @@ export default function CookieBanner(): React.ReactNode {
 
           <style>
             {`
-              .animate-slide-in {
-                animation: slide-in 0.8s ease-out forwards;
+              .cookie-banner-translate-in {
+                animation: cookie-banner-translate-in 0.6s ease-out forwards;
               }
 
-              @keyframes slide-in {
+              @keyframes cookie-banner-translate-in {
                 from {
                   transform: translateY(100%);
                   opacity: 0;
