@@ -35,7 +35,7 @@ export default async function RootLayout({
 }>) {
   const { i18n } = await getT("", [null, ""]);
   const cookieStore: ReadonlyRequestCookies = await cookies();
-  const theme: ThemeMode = (cookieStore.get(COOKIE_KEYS.THEME)?.value || "") as ThemeMode;
+  const theme: ThemeMode = (cookieStore.get(COOKIE_KEYS.THEME)?.value || "system") as ThemeMode;
   return (
     <html lang={i18n.language} className={theme}>
       <body

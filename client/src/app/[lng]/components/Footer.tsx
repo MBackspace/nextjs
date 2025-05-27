@@ -9,10 +9,10 @@ import ThemeSwitcher, { ThemeMode } from "./ThemeSwitcher";
 export default function Footer(): React.ReactNode {
   const { i18n } = useT("", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
-  const [theme, setTheme] = useState<ThemeMode>("");
+  const [theme, setTheme] = useState<ThemeMode>("system");
 
   useEffect(() => {
-    setTheme((getCookie(COOKIE_KEYS.THEME) || "") as ThemeMode);
+    setTheme((getCookie(COOKIE_KEYS.THEME) || "system") as ThemeMode);
     setHydrated(true);
   }, []);
 
