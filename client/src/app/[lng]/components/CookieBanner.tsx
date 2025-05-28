@@ -37,8 +37,8 @@ export default function CookieBanner(): React.ReactNode {
   };
 
   const buildPreferences = (value: boolean): Preferences => {
-    return Object.keys(preferences).reduce((acc, key) => {
-      acc[key as keyof Preferences] = key === COOKIE_ESSENTIAL_KEY ? true : value;
+    return (Object.keys(preferences) as (keyof Preferences)[]).reduce((acc, key) => {
+      acc[key] = key === COOKIE_ESSENTIAL_KEY ? true : value;
       return acc;
     }, {} as Preferences);
   };

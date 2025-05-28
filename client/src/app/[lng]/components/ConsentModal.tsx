@@ -15,7 +15,7 @@ interface ConsentModalProps {
 }
 
 interface Category {
-  id: string;
+  id: keyof Preferences;
   name: string;
   description: string;
 }
