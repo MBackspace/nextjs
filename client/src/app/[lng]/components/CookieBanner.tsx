@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, getCookie, setCookie } from "@/app/lib/cookies";
+import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY } from "@/app/lib/constants";
+import { getCookie, setCookie } from "@/app/lib/cookies";
 import ConsentModal from "./ConsentModal";
 
 export interface Preferences {
@@ -35,23 +36,20 @@ export default function CookieBanner(): React.ReactNode {
     setVisible(false);
   };
 
+  const buildPreferences = (value: boolean): Preferences => {
+    return Object.keys(preferences).reduce((acc, key) => {
+      acc[key as keyof Preferences] = key === COOKIE_ESSENTIAL_KEY ? true : value;
+      return acc;
+    }, {} as Preferences);
+  };
+
   const handleDeny = (): void => {
-    const deniedPreferences: Preferences = {
-      essential: true,
-      marketing: false,
-      analytics: false,
-      functional: false
-    };
+    const deniedPreferences: Preferences = buildPreferences(false);
     savePreferences(deniedPreferences);
   };
 
   const handleAcceptAll = (): void => {
-    const acceptedPreferences: Preferences = {
-      essential: true,
-      marketing: true,
-      analytics: true,
-      functional: true
-    };
+    const acceptedPreferences: Preferences = buildPreferences(true);
     savePreferences(acceptedPreferences);
   };
 

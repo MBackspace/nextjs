@@ -1,17 +1,21 @@
 "use client"
 
 import { useState } from "react";
-import { COOKIE_KEYS, setCookie } from "@/app/lib/cookies";
-
-export type ThemeMode = "light" | "system" | "dark";
+import { COOKIE_KEYS } from "@/app/lib/constants";
+import { setCookie } from "@/app/lib/cookies";
 
 interface ThemeSwitcherProps {
-  theme: ThemeMode;
+  theme: string;
+}
+
+interface Option {
+  value: string;
+  icon: React.ReactNode;
 }
 
 export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.ReactNode {
-  const [localTheme, setLocalTheme] = useState<ThemeMode>(theme);
-  const options: { value: ThemeMode; icon: React.ReactNode }[] = [
+  const [localTheme, setLocalTheme] = useState<string>(theme);
+  const options: Option[] = [
     {
       value: "light",
       icon: (
@@ -46,7 +50,7 @@ export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.Reac
     }
   ];
 
-  const handleChangeTheme = (mode: ThemeMode): void => {
+  const handleChangeTheme = (mode: string): void => {
     setLocalTheme(mode);
     setCookie(COOKIE_KEYS.THEME, mode);
     document.documentElement.className = mode;

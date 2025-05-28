@@ -1,20 +1,33 @@
-import { cookieName } from "@/app/i18n/settings";
+import { COOKIE_KEYS, COOKIE_CATEGORY_MAP, COOKIE_ESSENTIAL_KEY, COOKIE_EXPIRATION_DAYS } from "./constants";
 
-export const COOKIE_KEYS: Record<string, string> = {
-  LANGUAGE: cookieName,
-  THEME: "theme",
-  CONSENT: "fides_consent"
+type CookieKey = typeof COOKIE_KEYS[keyof typeof COOKIE_KEYS];
+
+const getCookieCategory = (name: CookieKey): string | undefined => {
+  return Object.entries(COOKIE_CATEGORY_MAP).find(([, keys]) =>
+    keys.includes(name)
+  )?.[0];
 };
 
-export const COOKIE_EXPIRATION_DAYS: number = 365;
-
-export const setCookie = (name: string, value: string, days: number = COOKIE_EXPIRATION_DAYS): void => {
-  const date = new Date();
-  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;
+const parseConsent = (): Record<string, boolean> => {
+  const consentRaw = getCookie(COOKIE_KEYS.CONSENT);
+  try {
+    return consentRaw ? JSON.parse(consentRaw) : {};
+  } catch {
+    return {};
+  }
 };
 
-export const getCookie = (name: string): string | null => {
+export const setCookie = (name: CookieKey, value: string, days: number = COOKIE_EXPIRATION_DAYS): void => {
+  const type = getCookieCategory(name);
+  const consent = parseConsent();
+  if (name === COOKIE_KEYS.CONSENT || type === COOKIE_ESSENTIAL_KEY || (type && consent[type])) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;
+  }
+};
+
+export const getCookie = (name: CookieKey): string | undefined => {
   const cookieString = document.cookie;
   const cookies = cookieString.split("; ");
   for (const cookie of cookies) {
@@ -23,9 +36,9 @@ export const getCookie = (name: string): string | null => {
       return decodeURIComponent(value);
     }
   }
-  return null;
+  return undefined;
 };
 
-export const deleteCookie = (name: string): void => {
+export const deleteCookie = (name: CookieKey): void => {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
 };

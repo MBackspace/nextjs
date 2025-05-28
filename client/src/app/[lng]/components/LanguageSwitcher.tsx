@@ -2,21 +2,23 @@
 
 import { useState  } from "react";
 import { usePathname } from "next/navigation";
-import { languages } from "@/app/i18n/settings";
 import { i18n } from "i18next";
-
-type LanguageMode = typeof languages[number];
 
 interface LanguageSwitcherProps {
   i18n: i18n;
 }
 
+interface Option {
+  value: string;
+  icon: React.ReactNode;
+}
+
 export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React.ReactNode {
   const pathname: string = usePathname();
   const [animationClass, setAnimationClass] = useState<string>("");
-  const [localLanguage, setLocalLanguage] = useState<LanguageMode>(i18n.language);
+  const [localLanguage, setLocalLanguage] = useState<string>(i18n.language);
   const [collapsed, setCollapsed] = useState<boolean>(false);
-  const options: { value: LanguageMode; icon: React.ReactNode }[] = [
+  const options: Option[] = [
     {
       value: "en",
       icon: (
@@ -83,22 +85,16 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
     }
   ];
 
-  const redirectToLanguagePath = (lang: LanguageMode): void => {
+  const redirectToLanguagePath = (lang: string): void => {
     const segments: string[] = pathname.split("/");
-    const currentPrefix: LanguageMode = segments[1];
-    if (currentPrefix === lang) return;
-    if (languages.includes(currentPrefix)) {
-      segments[1] = lang;
-    } else {
-      segments.splice(1, 0, lang);
-    }
+    segments[1] = lang;
     const newPath: string = segments.join("/");
     if (newPath !== pathname) {
       window.location.href = newPath;
     }
   };
 
-  const handleChangeLanguage = (mode: LanguageMode): void => {
+  const handleChangeLanguage = (mode: string): void => {
     setLocalLanguage(mode);
     setCollapsed(false);
     i18n.changeLanguage(mode, () => redirectToLanguagePath(mode));

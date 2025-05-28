@@ -4,8 +4,7 @@ import { cookies } from "next/headers";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
-import { COOKIE_KEYS } from "@/app/lib/cookies";
-import { ThemeMode } from "./components/ThemeSwitcher";
+import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
 import Header from "./components/Header";
 import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
@@ -35,7 +34,7 @@ export default async function RootLayout({
 }>) {
   const { i18n } = await getT("", [null, ""]);
   const cookieStore: ReadonlyRequestCookies = await cookies();
-  const theme: ThemeMode = (cookieStore.get(COOKIE_KEYS.THEME)?.value || "system") as ThemeMode;
+  const theme: string = cookieStore.get(COOKIE_KEYS.THEME)?.value || FALLBACK_THEME;
   return (
     <html lang={i18n.language} className={theme}>
       <body
