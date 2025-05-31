@@ -44,7 +44,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
         </button>
         <button
           className="cursor-pointer flex items-center text-[14px] text-[var(--theme-fg-base)] font-medium px-1 py-[5px]"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={(): void => setIsMenuOpen(!isMenuOpen)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <line
@@ -69,7 +69,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
 
       {isMenuOpen && (
         <div className="fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-[var(--theme-bg-base)] z-40 flex flex-col pl-[25px] pt-[15px] font-[family-name:var(--font-geist-sans)]">
-          {navLinks.map(({ href, label }) => (
+          {navLinks.map(({ href, label }): React.ReactNode => (
             <Link
               key={href}
               href={href}

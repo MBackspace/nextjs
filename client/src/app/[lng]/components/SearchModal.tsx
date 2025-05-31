@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
@@ -35,23 +35,23 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
       {isSearchOpen && (
         <div
           className={`fixed inset-0 ${isSearchClosing ? "" : "bg-[var(--theme-bg-dark)]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
-          onClick={() => handleSearchClose()}
+          onClick={(): void => handleSearchClose()}
         >
           <div
             className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isSearchClosing ? "search-modal-scale-out" : "search-modal-scale-in"}`}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: MouseEvent): void => e.stopPropagation()}
           >
             <div className="p-3 border-b border-[var(--theme-border-base)]">
               <div className="flex items-center gap-2 mb-3">
                 <button
                   className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[var(--theme-accent-blue-border)] text-[var(--theme-accent-blue)] bg-[var(--theme-accent-blue-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
-                  onClick={() => setSearchActiveTab("app")}
+                  onClick={(): void => setSearchActiveTab("app")}
                 >
                   {t("header.search.activeTabs.app")}
                 </button>
                 <button
                   className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "pages" ? "border-[var(--theme-accent-purple-border)] text-[var(--theme-accent-purple)] bg-[var(--theme-accent-purple-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
-                  onClick={() => setSearchActiveTab("pages")}
+                  onClick={(): void => setSearchActiveTab("pages")}
                 >
                   {t("header.search.activeTabs.pages")}
                 </button>
@@ -64,19 +64,19 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
                 />
                 <span
                   className="cursor-pointer transition duration-200 ease-in-out border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] px-[4px] py-[1px] rounded hover:bg-[var(--theme-bg-muted)]"
-                  onClick={() => handleSearchClose()}
+                  onClick={handleSearchClose}
                 >
                   Esc
                 </span>
               </div>
             </div>
             <div className="p-2 text-[var(--theme-fg-base)]">
-              {SearchResults.map(({ href, label }, index) => (
+              {SearchResults.map(({ href, label }, index): React.ReactNode => (
                 <Link
                   key={href}
                   href={href}
                   className={`transition duration-200 ease-in-out flex items-center p-[9px] pb-[11px] text-sm rounded ${index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
-                  onMouseEnter={() => setSelectedResultIndex(index)}
+                  onMouseEnter={(): void => setSelectedResultIndex(index)}
                 >
                   <Image
                     className="dark:invert"

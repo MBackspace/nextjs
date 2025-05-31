@@ -30,7 +30,7 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
   return (
     <>
       <nav className="flex space-x-6 text-[14px]">
-        {navLinks.map(({ href, label, isExternal }) => (
+        {navLinks.map(({ href, label, isExternal }): React.ReactNode => (
           <Link
             key={href}
             href={href}

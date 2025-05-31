@@ -8,10 +8,10 @@ import ConsentModal, { handleDeny, handleAcceptAll } from "./ConsentModal";
 
 export default function CookieBanner(): React.ReactNode {
   const { t } = useT("app", {});
-  const [visible, setVisible] = useState(false);
-  const [isConsentOpen, setIsConsentOpen] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
+  const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
 
-  useEffect(() => {
+  useEffect((): void => {
     setVisible(!getCookie(COOKIE_KEYS.CONSENT));
   }, []);
 
@@ -44,7 +44,7 @@ export default function CookieBanner(): React.ReactNode {
               <div className="flex gap-[12px] pr-[24px]">
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                  onClick={() => {
+                  onClick={(): void => {
                     handleDeny();
                     handleConsentClose();
                   }}>
@@ -52,7 +52,7 @@ export default function CookieBanner(): React.ReactNode {
                 </button>
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                  onClick={() => {
+                  onClick={(): void => {
                     handleAcceptAll();
                     handleConsentClose();
                   }}>

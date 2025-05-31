@@ -15,17 +15,17 @@ export default function Header(): React.ReactNode {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isSearchClosing, setIsSearchClosing] = useState<boolean>(false);
 
-  useEffect(() => {
+  useEffect(():() => void => {
     const handleResize = (): void => {
       setIsShortScreen(window.innerWidth <= 1024);
     };
     handleResize();
     setHydrated(true);
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
+  useEffect(():() => void => {
     const handleKeyDown = (e: KeyboardEvent): void => {
       if (e.ctrlKey && e.key === "k") {
         e.preventDefault();
@@ -36,7 +36,7 @@ export default function Header(): React.ReactNode {
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return (): void => window.removeEventListener("keydown", handleKeyDown);
   }, [isSearchOpen]);
 
   const handleSearchOpen = (): void => {
@@ -45,7 +45,7 @@ export default function Header(): React.ReactNode {
 
   const handleSearchClose = (): void => {
     setIsSearchClosing(true);
-    setTimeout(() => {
+    setTimeout((): void => {
       setIsSearchOpen(false);
       setIsSearchClosing(false);
     }, 200);

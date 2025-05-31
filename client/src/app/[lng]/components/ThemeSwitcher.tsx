@@ -58,11 +58,11 @@ export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.Reac
 
   return (
     <div className="flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] rounded-full px-1 py-1">
-      {options.map(({ value, icon }) => {
+      {options.map(({ value, icon }): React.ReactNode => {
         return (
           <button
             key={value}
-            onClick={() => handleChangeTheme(value)}
+            onClick={(): void => handleChangeTheme(value)}
             className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${localTheme === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
           >
             {icon}

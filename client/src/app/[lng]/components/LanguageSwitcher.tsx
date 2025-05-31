@@ -97,13 +97,13 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
   const handleChangeLanguage = (mode: string): void => {
     setLocalLanguage(mode);
     setCollapsed(false);
-    i18n.changeLanguage(mode, () => redirectToLanguagePath(mode));
+    i18n.changeLanguage(mode, (): void => redirectToLanguagePath(mode));
   };
 
   const toggle = (): void => {
     if (collapsed) {
       setAnimationClass("language-switcher-translate-out");
-      setTimeout(() => {
+      setTimeout((): void => {
         setCollapsed(!collapsed);
       }, 200);
     } else {
@@ -117,11 +117,11 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
       <div className="relative h-10 w-[305px]">
         <div className="absolute right-0 flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] rounded-full px-1 py-1">
           <div className={`flex items-center transition duration-200 ease-in-out ${animationClass}`}>
-            {collapsed && options.map(({ value, icon }) => {
+            {collapsed && options.map(({ value, icon }): React.ReactNode => {
               return (
                 <button
                   key={value}
-                  onClick={() => handleChangeLanguage(value)}
+                  onClick={(): void => handleChangeLanguage(value)}
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition duration-200 ease-in-out ${localLanguage === value ? "bg-[var(--theme-border-base)] text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
                 >
                   {icon}

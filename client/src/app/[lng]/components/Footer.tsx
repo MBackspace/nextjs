@@ -51,7 +51,7 @@ export default function Footer(): React.ReactNode {
     { href: `/${i18n.language}/privacy-policy`, label: t("footer.privacyPolicy") }
   ];
 
-  useEffect(() => {
+  useEffect(():() => void => {
     const handleResize = (): void => {
       setIsShortScreen(window.innerWidth <= 1024);
     };
@@ -59,7 +59,7 @@ export default function Footer(): React.ReactNode {
     setTheme(getCookie(COOKIE_KEYS.THEME) || FALLBACK_THEME);
     setHydrated(true);
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleConsentOpen = (): void => {
@@ -89,7 +89,7 @@ export default function Footer(): React.ReactNode {
               <div>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.resources")}</p>
                 <nav className="flex flex-col space-y-3">
-                  {resourcesLinks.map(({ href, label }) => (
+                  {resourcesLinks.map(({ href, label }): React.ReactNode => (
                     <Link
                       key={href}
                       href={href}
@@ -103,7 +103,7 @@ export default function Footer(): React.ReactNode {
               <div>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.more")}</p>
                 <nav className="flex flex-col space-y-3">
-                  {moreLinks.map(({ href, label }) => (
+                  {moreLinks.map(({ href, label }): React.ReactNode => (
                     <Link
                       key={href}
                       href={href}
@@ -117,7 +117,7 @@ export default function Footer(): React.ReactNode {
               <div>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.aboutVercel")}</p>
                 <nav className="flex flex-col space-y-3">
-                  {aboutLinks.map(({ href, label }) => (
+                  {aboutLinks.map(({ href, label }): React.ReactNode => (
                     <Link
                       key={href}
                       href={href}
@@ -131,7 +131,7 @@ export default function Footer(): React.ReactNode {
               <div>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.legal")}</p>
                 <nav className="flex flex-col space-y-3">
-                  {legalLinks.map(({ href, label }) => (
+                  {legalLinks.map(({ href, label }): React.ReactNode => (
                     <Link
                       key={href}
                       href={href}

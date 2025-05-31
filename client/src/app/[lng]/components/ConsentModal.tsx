@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
 import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY, FALLBACK_COOKIE_CONSENT } from "@/app/lib/constants";
-import { setCookie, getCookie } from "@/app/lib/cookies";
+import { parseConsent, setCookie } from "@/app/lib/cookies";
 
 interface ConsentModalProps {
   isConsentOpen: boolean;
@@ -18,7 +18,7 @@ interface Category {
 }
 
 const buildCookieConsent = (value: boolean): Record<string, boolean> => {
-  return Object.keys(FALLBACK_COOKIE_CONSENT).reduce((acc, key) => {
+  return Object.keys(FALLBACK_COOKIE_CONSENT).reduce((acc, key): Record<string, boolean> => {
     acc[key] = key === COOKIE_ESSENTIAL_KEY ? true : value;
     return acc;
   }, {} as Record<string, boolean>);
@@ -66,16 +66,16 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
     }
   ];
 
-  useEffect(() => {
+  useEffect((): void => {
     if (isConsentOpen) {
-      const savedCookieConsent = getCookie(COOKIE_KEYS.CONSENT);
-      setCookieConsent(savedCookieConsent ? JSON.parse(savedCookieConsent) : FALLBACK_COOKIE_CONSENT);
+      const saveCookieConsent: Record<string, boolean> | undefined = parseConsent();
+      setCookieConsent(saveCookieConsent || FALLBACK_COOKIE_CONSENT);
     }
   }, [isConsentOpen]);
 
-  const onCategoryClick = (category: Category) => {
+  const onCategoryClick = (category: Category): void => {
     if (expandedIds.includes(category.id)) {
-      setExpandedIds(expandedIds.filter(id => id !== category.id));
+      setExpandedIds(expandedIds.filter((id): boolean => id !== category.id));
     } else {
       setExpandedIds([...expandedIds, category.id]);
     }
@@ -83,7 +83,7 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
   };
 
   const toggle = (category: Category): void => {
-    setCookieConsent((consent) => ({
+    setCookieConsent((consent: Record<string, boolean>): Record<string, boolean> => ({
       ...consent,
       [category.id]: !consent[category.id]
     }));
@@ -107,19 +107,19 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
               {t("consentModal.description")}
             </p>
             <div key={renderKey} className="rounded-lg border border-[var(--theme-border-base)] mb-[45px] m-6">
-              {categories.map((category, index) => (
+              {categories.map((category, index): React.ReactNode => (
                 <div key={category.id}>
                   <div
                     className={`flex items-center justify-between px-4 py-[10px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index === 0 ? "rounded-t-lg" : ""} ${index === categories.length - 1 ? "rounded-b-lg" : ""} ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
-                    onClick={() => onCategoryClick(category)}
+                    onClick={(): void => onCategoryClick(category)}
                   >
                     <span className="text-[14px] text-[var(--theme-fg-base)] font-medium">{category.name}</span>
-                    <label onClick={(e) => e.stopPropagation()}>
+                    <label onClick={(e: MouseEvent): void => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         className="sr-only peer"
                         checked={cookieConsent[category.id]}
-                        onChange={() => toggle(category)}
+                        onChange={(): void => toggle(category)}
                         disabled={category.id === "essential"}
                       />
                       <div
@@ -145,7 +145,7 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
               <div className="flex gap-3">
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                  onClick={() => {
+                  onClick={(): void => {
                     handleDeny();
                     handleConsentClose();
                   }}
@@ -154,7 +154,7 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
                 </button>
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                  onClick={() => {
+                  onClick={(): void => {
                     handleAcceptAll();
                     handleConsentClose();
                   }}
@@ -164,10 +164,10 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
               </div>
               <button
                 className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[14px] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
-                onClick={() => {
-                    handleSave(cookieConsent);
-                    handleConsentClose();
-                  }}
+                onClick={(): void => {
+                  handleSave(cookieConsent);
+                  handleConsentClose();
+                }}
               >
                 {t("consentModal.save")}
               </button>

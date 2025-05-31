@@ -6,14 +6,14 @@ export default function Main(): React.ReactNode {
   const [hydrated, setHydrated] = useState<boolean>(false);
   const [isShortScreen, setIsShortScreen] = useState<boolean>(false);
 
-  useEffect(() => {
+  useEffect(():() => void => {
     const handleResize = (): void => {
       setIsShortScreen(window.innerWidth <= 1024);
     };
     handleResize();
     setHydrated(true);
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
   if (!hydrated) return null;

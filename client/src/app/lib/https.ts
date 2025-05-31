@@ -23,7 +23,6 @@ const buildHeaders = async (headers: HeadersInit = {}): Promise<HeadersInit> => 
 export const get = async (url: string, params?: Params, headers: HeadersInit = {}): Promise<Response> => {
   const fullUrl: string = buildUrl(url, params);
   const finalHeaders: HeadersInit = await buildHeaders(headers);
-
   const response: Response = await fetch(fullUrl, {
     method: "GET",
     headers: finalHeaders,
@@ -35,7 +34,6 @@ export const get = async (url: string, params?: Params, headers: HeadersInit = {
 export const post = async (url: string, body: Body, headers: HeadersInit = {}): Promise<Response> => {
   const fullUrl: string = buildUrl(url);
   const finalHeaders: HeadersInit = await buildHeaders(headers);
-
   const response: Response = await fetch(fullUrl, {
     method: "POST",
     headers: finalHeaders,
@@ -47,7 +45,6 @@ export const post = async (url: string, body: Body, headers: HeadersInit = {}): 
 export const put = async (url: string, body: Body, headers: HeadersInit = {}): Promise<Response> => {
   const fullUrl: string = buildUrl(url);
   const finalHeaders: HeadersInit = await buildHeaders(headers);
-
   const response: Response = await fetch(fullUrl, {
     method: "PUT",
     headers: finalHeaders,
@@ -59,7 +56,6 @@ export const put = async (url: string, body: Body, headers: HeadersInit = {}): P
 export const del = async (url: string, headers: HeadersInit = {}): Promise<Response> => {
   const fullUrl: string = buildUrl(url);
   const finalHeaders: HeadersInit = await buildHeaders(headers);
-
   const response: Response = await fetch(fullUrl, {
     method: "DELETE",
     headers: finalHeaders
