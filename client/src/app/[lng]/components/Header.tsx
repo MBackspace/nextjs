@@ -15,7 +15,7 @@ export default function Header(): React.ReactNode {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isSearchClosing, setIsSearchClosing] = useState<boolean>(false);
 
-  useEffect(():() => void => {
+  useEffect((): () => void => {
     const handleResize = (): void => {
       setIsShortScreen(window.innerWidth <= 1024);
     };
@@ -25,7 +25,7 @@ export default function Header(): React.ReactNode {
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(():() => void => {
+  useEffect((): () => void => {
     const handleKeyDown = (e: KeyboardEvent): void => {
       if (e.ctrlKey && e.key === "k") {
         e.preventDefault();

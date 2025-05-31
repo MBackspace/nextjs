@@ -17,6 +17,7 @@ interface NavLink {
 }
 
 export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderProps): React.ReactNode {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navLinks: NavLink[] = [
     { href: `/${i18n.language}/learn`, label: t("header.learn"), isExternal: false },
     { href: `/${i18n.language}/deploy`, label: t("header.deploy"), isExternal: false },
@@ -28,7 +29,6 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
     { href: `/${i18n.language}/enterprise`, label: t("header.enterprise"), isExternal: false },
     { href: `/${i18n.language}/github`, label: t("header.github"), isExternal: false }
   ];
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
     <>

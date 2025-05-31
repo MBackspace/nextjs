@@ -51,7 +51,7 @@ export default function Footer(): React.ReactNode {
     { href: `/${i18n.language}/privacy-policy`, label: t("footer.privacyPolicy") }
   ];
 
-  useEffect(():() => void => {
+  useEffect((): () => void => {
     const handleResize = (): void => {
       setIsShortScreen(window.innerWidth <= 1024);
     };
