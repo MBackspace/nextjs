@@ -56,9 +56,9 @@
     "legal": "法律",
     "privacyPolicy": "隐私政策",
     "cookiePreferences": "Cookie 偏好",
+    "subscribeSuccess": "感谢您的订阅！",
     "subscribeTitle": "订阅我们的新闻通讯",
     "subscribeDescription": "获取最新发布、功能、指南和案例研究的更新。",
-    "subscribePlaceholder": "you@domain.com",
     "subscribeButton": "订阅"
   },
   "cookieBanner": {

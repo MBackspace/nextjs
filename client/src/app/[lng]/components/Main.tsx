@@ -19,7 +19,9 @@ export default function Main(): React.ReactNode {
   if (!hydrated) return null;
 
   return (
-    <main className={`flex flex-col gap-[32px] row-start-2 items-center sm:items-start ${isShortScreen ? "px-[25px]" : "px-[40px]"}`}>
+    <main className="flex flex-col gap-[32px] row-start-2 w-full items-center bg-[var(--theme-bg-base)]">
+      <div className={`${isShortScreen ? "px-[25px]" : "px-[40px]"}`}>
+      </div>
     </main>
   );
 }

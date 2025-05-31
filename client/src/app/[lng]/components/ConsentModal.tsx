@@ -68,8 +68,8 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
 
   useEffect((): void => {
     if (isConsentOpen) {
-      const saveCookieConsent: Record<string, boolean> | undefined = parseConsent();
-      setCookieConsent(saveCookieConsent || FALLBACK_COOKIE_CONSENT);
+      const savedCookieConsent: Record<string, boolean> | undefined = parseConsent();
+      setCookieConsent(savedCookieConsent || FALLBACK_COOKIE_CONSENT);
     }
   }, [isConsentOpen]);
 
@@ -106,11 +106,11 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
             <p className="text-[16px] text-[var(--theme-fg-base)] mb-5 px-6">
               {t("consentModal.description")}
             </p>
-            <div key={renderKey} className="rounded-lg border border-[var(--theme-border-base)] mb-[45px] m-6">
+            <div key={renderKey} className="rounded-lg border border-[var(--theme-border-base)] mb-[50px] m-6">
               {categories.map((category, index): React.ReactNode => (
                 <div key={category.id}>
                   <div
-                    className={`flex items-center justify-between px-4 py-[10px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index === 0 ? "rounded-t-lg" : ""} ${index === categories.length - 1 ? "rounded-b-lg" : ""} ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
+                    className={`flex items-center justify-between px-4 py-[9px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index === 0 ? "rounded-t-lg" : ""} ${index === categories.length - 1 ? "rounded-b-lg" : ""} ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
                     onClick={(): void => onCategoryClick(category)}
                   >
                     <span className="text-[14px] text-[var(--theme-fg-base)] font-medium">{category.name}</span>

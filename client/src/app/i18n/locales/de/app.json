@@ -56,9 +56,9 @@
     "legal": "Rechtliches",
     "privacyPolicy": "Datenschutzrichtlinie",
     "cookiePreferences": "Cookie-Einstellungen",
+    "subscribeSuccess": "Vielen Dank für Ihr Abonnement!",
     "subscribeTitle": "Abonnieren Sie unseren Newsletter",
     "subscribeDescription": "Bleiben Sie über neue Veröffentlichungen, Funktionen, Anleitungen und Fallstudien auf dem Laufenden.",
-    "subscribePlaceholder": "you@domain.com",
     "subscribeButton": "Abonnieren"
   },
   "cookieBanner": {

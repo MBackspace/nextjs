@@ -56,9 +56,9 @@
     "legal": "법적 정보",
     "privacyPolicy": "개인정보 처리방침",
     "cookiePreferences": "쿠키 설정",
+    "subscribeSuccess": "구독해 주셔서 감사합니다!",
     "subscribeTitle": "뉴스레터 구독하기",
     "subscribeDescription": "새로운 릴리스, 기능, 가이드 및 사례 연구에 대한 최신 정보를 받아보세요.",
-    "subscribePlaceholder": "you@domain.com",
     "subscribeButton": "구독하기"
   },
   "cookieBanner": {

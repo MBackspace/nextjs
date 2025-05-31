@@ -56,9 +56,9 @@
     "legal": "法的情報",
     "privacyPolicy": "プライバシーポリシー",
     "cookiePreferences": "Cookieの設定",
+    "subscribeSuccess": "ご購読ありがとうございます！",
     "subscribeTitle": "ニュースレターを購読する",
     "subscribeDescription": "新しいリリースや機能、ガイド、ケーススタディの最新情報をお届けします。",
-    "subscribePlaceholder": "you@domain.com",
     "subscribeButton": "購読する"
   },
   "cookieBanner": {
