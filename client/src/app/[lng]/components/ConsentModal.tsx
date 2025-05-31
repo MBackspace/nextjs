@@ -1,32 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { TFunction } from "i18next";
-import { Preferences } from "./CookieBanner";
+import { useT } from "@/app/i18n/client";
+import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY, FALLBACK_COOKIE_CONSENT } from "@/app/lib/constants";
+import { setCookie, getCookie } from "@/app/lib/cookies";
 
 interface ConsentModalProps {
-  t: TFunction<string | string[], undefined>;
-  preferences: Preferences;
-  handleDeny: () => void;
-  handleAcceptAll: () => void;
-  handleSave: (newPreferences: Preferences) => void;
-  handleModalClose: () => void;
+  isConsentOpen: boolean;
+  handleConsentClose: () => void;
 }
 
 interface Category {
-  id: keyof Preferences;
+  id: string;
   name: string;
   description: string;
 }
 
-export default function ConsentModal({ t, preferences, handleDeny, handleAcceptAll, handleSave, handleModalClose }: ConsentModalProps): React.ReactNode {
-  const [localPreferences, setLocalPreferences] = useState<Preferences>({ ...preferences });
+const buildCookieConsent = (value: boolean): Record<string, boolean> => {
+  return Object.keys(FALLBACK_COOKIE_CONSENT).reduce((acc, key) => {
+    acc[key] = key === COOKIE_ESSENTIAL_KEY ? true : value;
+    return acc;
+  }, {} as Record<string, boolean>);
+};
+
+const saveCookieConsent = (newCookieConsent: Record<string, boolean>): void => {
+  setCookie(COOKIE_KEYS.CONSENT, JSON.stringify(newCookieConsent));
+};
+
+export const handleDeny = (): void => {
+  const deniedCookieConsent: Record<string, boolean> = buildCookieConsent(false);
+  saveCookieConsent(deniedCookieConsent);
+};
+
+export const handleAcceptAll = (): void => {
+  const acceptedCookieConsent: Record<string, boolean> = buildCookieConsent(true);
+  saveCookieConsent(acceptedCookieConsent);
+};
+
+export default function ConsentModal({ isConsentOpen, handleConsentClose }: ConsentModalProps): React.ReactNode {
+  const { t } = useT("app", {});
+  const [cookieConsent, setCookieConsent] = useState<Record<string, boolean>>(FALLBACK_COOKIE_CONSENT);
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
-  const [renderKey, setRenderKey] = useState(0);
+  const [renderKey, setRenderKey] = useState<number>(0);
   const categories: Category[] = [
     {
-      id: "essential",
+      id: COOKIE_ESSENTIAL_KEY,
       name: t("consentModal.essential.name"),
       description: t("consentModal.essential.description")
     },
@@ -47,6 +66,13 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
     }
   ];
 
+  useEffect(() => {
+    if (isConsentOpen) {
+      const savedCookieConsent = getCookie(COOKIE_KEYS.CONSENT);
+      setCookieConsent(savedCookieConsent ? JSON.parse(savedCookieConsent) : FALLBACK_COOKIE_CONSENT);
+    }
+  }, [isConsentOpen]);
+
   const onCategoryClick = (category: Category) => {
     if (expandedIds.includes(category.id)) {
       setExpandedIds(expandedIds.filter(id => id !== category.id));
@@ -57,98 +83,104 @@ export default function ConsentModal({ t, preferences, handleDeny, handleAcceptA
   };
 
   const toggle = (category: Category): void => {
-    setLocalPreferences((prev) => ({
-      ...prev,
-      [category.id]: !prev[category.id]
+    setCookieConsent((consent) => ({
+      ...consent,
+      [category.id]: !consent[category.id]
     }));
+  };
+
+  const handleSave = (newCookieConsent: Record<string, boolean>): void => {
+    saveCookieConsent(newCookieConsent);
   };
 
   return (
     <>
-      <div className="fixed inset-0 bg-[#000000]/40 flex items-center justify-center z-60 font-[family-name:var(--font-geist-sans)]">
-        <div className="border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] w-full max-w-[600px] min-h-[500px] rounded-[12px] consent-modal-translate-in">
-          <div className="flex justify-between mb-5 pt-6 px-6">
-            <h1 className="text-[22px] text-[var(--theme-fg-base)] font-bold">
-              {t("consentModal.title")}
-            </h1>
-          </div>
-          <p className="text-[16px] text-[var(--theme-fg-base)] mb-5 px-6">
-            {t("consentModal.description")}
-          </p>
-          <div key={renderKey} className="rounded-lg border border-[var(--theme-border-base)] mb-[45px] m-6">
-            {categories.map((category, index) => (
-              <div key={category.id}>
-                <div
-                  className={`flex items-center justify-between px-4 py-[10px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index === 0 ? "rounded-t-lg" : ""} ${index === categories.length - 1 ? "rounded-b-lg" : ""} ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
-                  onClick={() => onCategoryClick(category)}
-                >
-                  <span className="text-[14px] text-[var(--theme-fg-base)] font-medium">{category.name}</span>
-                  <label onClick={(e) => e.stopPropagation()}>
-                    <input
-                      type="checkbox"
-                      className="sr-only peer"
-                      checked={localPreferences[category.id]}
-                      onChange={() => toggle(category)}
-                      disabled={category.id === "essential"}
-                    />
-                    <div
-                      className={`border w-[42px] h-[26.4px] rounded-full transition-all
-                      ${category.id === "essential" ? "bg-[var(--theme-bg-base)] border-[var(--theme-text-subtle)] cursor-not-allowed" : "bg-[var(--theme-bg-muted)] border-[var(--theme-text-subtle)] peer-checked:bg-[var(--theme-accent-blue)] peer-checked:border-[var(--theme-accent-blue)] cursor-pointer"}`}
-                    >
-                      <div
-                        className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform
-                        ${category.id === "essential" ? "bg-[var(--theme-bg-muted-hover)]" : "bg-[#ffffff]"} ${localPreferences[category.id] ? "translate-x-4" : "translate-x-0"}`}
+      {isConsentOpen && (
+        <div className="fixed inset-0 bg-[#000000]/40 flex items-center justify-center z-70 font-[family-name:var(--font-geist-sans)]">
+          <div className="border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] w-full max-w-[600px] min-h-[500px] rounded-[12px] consent-modal-translate-in">
+            <div className="flex justify-between mb-5 pt-6 px-6">
+              <h1 className="text-[22px] text-[var(--theme-fg-base)] font-bold">
+                {t("consentModal.title")}
+              </h1>
+            </div>
+            <p className="text-[16px] text-[var(--theme-fg-base)] mb-5 px-6">
+              {t("consentModal.description")}
+            </p>
+            <div key={renderKey} className="rounded-lg border border-[var(--theme-border-base)] mb-[45px] m-6">
+              {categories.map((category, index) => (
+                <div key={category.id}>
+                  <div
+                    className={`flex items-center justify-between px-4 py-[10px] cursor-pointer bg-[var(--theme-bg-dark)] hover:bg-[var(--theme-bg-base)] ${index === 0 ? "rounded-t-lg" : ""} ${index === categories.length - 1 ? "rounded-b-lg" : ""} ${index !== categories.length - 1 ? "border-b border-[var(--theme-border-base)]" : ""}`}
+                    onClick={() => onCategoryClick(category)}
+                  >
+                    <span className="text-[14px] text-[var(--theme-fg-base)] font-medium">{category.name}</span>
+                    <label onClick={(e) => e.stopPropagation()}>
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={cookieConsent[category.id]}
+                        onChange={() => toggle(category)}
+                        disabled={category.id === "essential"}
                       />
-                    </div>
-                  </label>
-                </div>
-                {expandedIds.includes(category.id) && (
-                  <div className={`px-4 py-3 text-[14px] text-[var(--theme-text-muted)] border-[var(--theme-border-base)] ${index !== categories.length - 1 ? "border-b" : "border-t"}`}>
-                    {category.description}
+                      <div
+                        className={`border w-[42px] h-[26.4px] rounded-full transition-all
+                        ${category.id === "essential" ? "bg-[var(--theme-bg-base)] border-[var(--theme-text-subtle)] cursor-not-allowed" : "bg-[var(--theme-bg-muted)] border-[var(--theme-text-subtle)] peer-checked:bg-[var(--theme-accent-blue)] peer-checked:border-[var(--theme-accent-blue)] cursor-pointer"}`}
+                      >
+                        <div
+                          className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform
+                          ${category.id === "essential" ? "bg-[var(--theme-bg-muted-hover)]" : "bg-[#ffffff]"} ${cookieConsent[category.id] ? "translate-x-4" : "translate-x-0"}`}
+                        />
+                      </div>
+                    </label>
                   </div>
-                )}
+                  {expandedIds.includes(category.id) && (
+                    <div className={`px-4 py-3 text-[14px] text-[var(--theme-text-muted)] border-[var(--theme-border-base)] ${index !== categories.length - 1 ? "border-b" : "border-t"}`}>
+                      {category.description}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between items-center border-t border-[var(--theme-border-base)] bg-[var(--theme-bg-dark)] p-6 pb-0">
+              <div className="flex gap-3">
+                <button
+                  className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                  onClick={() => {
+                    handleDeny();
+                    handleConsentClose();
+                  }}
+                >
+                  {t("consentModal.deny")}
+                </button>
+                <button
+                  className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                  onClick={() => {
+                    handleAcceptAll();
+                    handleConsentClose();
+                  }}
+                >
+                  {t("consentModal.acceptAll")}
+                </button>
               </div>
-            ))}
-          </div>
-          <div className="flex justify-between items-center border-t border-[var(--theme-border-base)] bg-[var(--theme-bg-dark)] p-6 pb-0">
-            <div className="flex gap-3">
               <button
-                className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[14px] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
                 onClick={() => {
-                  handleDeny();
-                  handleModalClose();
-                }}
+                    handleSave(cookieConsent);
+                    handleConsentClose();
+                  }}
               >
-                {t("consentModal.deny")}
-              </button>
-              <button
-                className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                onClick={() => {
-                  handleAcceptAll();
-                  handleModalClose();
-                }}
-              >
-                {t("consentModal.acceptAll")}
+                {t("consentModal.save")}
               </button>
             </div>
-            <button
-              className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[14px] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
-              onClick={() => {
-                handleSave(localPreferences);
-                handleModalClose();
-              }}
-            >
-              {t("consentModal.save")}
-            </button>
-          </div>
-          <div className="text-[12px] pt-4 text-[var(--theme-text-muted)] bg-[var(--theme-bg-dark)] p-6 pt-0 rounded-[12px]">
-            {t("consentModal.privacyPolicy")}{" "}
-            <Link href="#" className="text-[var(--theme-fg-base)] hover:text-[var(--theme-text-muted)]">
-              {t("consentModal.privacyPolicyLink")}
-            </Link>
+            <div className="text-[12px] pt-4 text-[var(--theme-text-muted)] bg-[var(--theme-bg-dark)] p-6 pt-0 rounded-[12px]">
+              {t("consentModal.privacyPolicy")}{" "}
+              <Link href="#" className="text-[var(--theme-fg-base)] hover:text-[var(--theme-text-muted)]">
+                {t("consentModal.privacyPolicyLink")}
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <style>
         {`

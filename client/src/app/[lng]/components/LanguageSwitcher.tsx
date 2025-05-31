@@ -1,6 +1,6 @@
 "use client"
 
-import { useState  } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { i18n } from "i18next";
 

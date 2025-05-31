@@ -40,7 +40,8 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
             {isExternal && (
               <svg
                 xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 28 28" fill="none" stroke="var(--theme-text-muted)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
-                className="inline relative -top-[6px]">
+                className="inline relative -top-[6px]"
+              >
                 <path d="M10 22 L22 10" />
                 <path d="M10 10 H22 V22" />
               </svg>
@@ -51,7 +52,7 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
 
       <div className="flex space-x-3 ml-auto">
         <button
-          className="cursor-pointer border border-[var(--theme-bg-muted)] bg-[var(--theme-bg-muted)] text-[14px] text-[var(--theme-text-muted)] px-[10px] pl-[8px] pr-[5px] rounded-lg hover:bg-[var(--theme-bg-muted-hover)] hover:border-[var(--theme-bg-muted-hover)] transition duration-200 ease-in-out"
+          className="cursor-pointer border border-[var(--theme-bg-muted)] bg-[var(--theme-bg-muted)] text-[14px] text-[var(--theme-text-muted)] px-[10px] pl-[8px] pr-[5px] rounded-lg hover:bg-[var(--theme-bg-muted-hover)] hover:border-[var(--theme-bg-muted-hover)] focus:outline-none transition duration-200 ease-in-out"
           onClick={handleSearchOpen}
         >
           {t("header.search.button")}

@@ -11,7 +11,7 @@
     "enterprise": "Enterprise",
     "deploy": "Deploy",
     "learn": "Learn",
-    "commerce": "Next.js Commerce",
+    "nextjsCommerce": "Next.js Commerce",
     "github": "Github",
     "search": {
       "button": "Search documentation...",
@@ -28,6 +28,38 @@
         "pages": "Pages"
       }
     }
+  },
+  "footer": {
+    "resources": "Resources",
+    "docs": "Docs",
+    "supportPolicy": "Support Policy",
+    "learn": "Learn",
+    "showcase": "Showcase",
+    "blog": "Blog",
+    "team": "Team",
+    "analytics": "Analytics",
+    "nextjsConf": "Next.js Conf",
+    "previews": "Previews",
+    "more": "More",
+    "nextjsCommerce": "Next.js Commerce",
+    "contactSales": "Contact Sales",
+    "community": "Community",
+    "github": "Github",
+    "releases": "Releases",
+    "telemetry": "Telemetry",
+    "governance": "Governance",
+    "aboutVercel": "About Vercel",
+    "nextjsVercel": "Next.js + Vercel",
+    "openSourceSoftware": "Open Source Software",
+    "bluesky": "Bluesky",
+    "x": "X",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePreferences": "Cookie Preferences",
+    "subscribeTitle": "Subscribe to our newsletter",
+    "subscribeDescription": "Stay updated on new releases and features, guides, and case studies.",
+    "subscribePlaceholder": "you@domain.com",
+    "subscribeButton": "Subscribe"
   },
   "cookieBanner": {
     "message": "This site uses tracking technologies. You may opt in or opt out of the use of these technologies.",

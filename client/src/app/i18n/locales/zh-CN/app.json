@@ -11,7 +11,7 @@
     "enterprise": "企业版",
     "deploy": "部署",
     "learn": "学习",
-    "commerce": "Next.js 商业版",
+    "nextjsCommerce": "Next.js 商业版",
     "github": "GitHub",
     "search": {
       "button": "搜索文档...",
@@ -28,6 +28,38 @@
         "pages": "页面"
       }
     }
+  },
+  "footer": {
+    "resources": "资源",
+    "docs": "文档",
+    "supportPolicy": "支持政策",
+    "learn": "学习",
+    "showcase": "展示",
+    "blog": "博客",
+    "team": "团队",
+    "analytics": "分析",
+    "nextjsConf": "Next.js 大会",
+    "previews": "预览",
+    "more": "更多",
+    "nextjsCommerce": "Next.js 商务",
+    "contactSales": "联系销售",
+    "community": "社区",
+    "github": "GitHub",
+    "releases": "发布",
+    "telemetry": "遥测",
+    "governance": "治理",
+    "aboutVercel": "关于 Vercel",
+    "nextjsVercel": "Next.js + Vercel",
+    "openSourceSoftware": "开源软件",
+    "bluesky": "Bluesky",
+    "x": "X",
+    "legal": "法律",
+    "privacyPolicy": "隐私政策",
+    "cookiePreferences": "Cookie 偏好",
+    "subscribeTitle": "订阅我们的新闻通讯",
+    "subscribeDescription": "获取最新发布、功能、指南和案例研究的更新。",
+    "subscribePlaceholder": "you@domain.com",
+    "subscribeButton": "订阅"
   },
   "cookieBanner": {
     "message": "本网站使用跟踪技术。您可以选择同意或拒绝使用这些技术。",

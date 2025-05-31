@@ -11,7 +11,7 @@
     "enterprise": "Empresa",
     "deploy": "Desplegar",
     "learn": "Aprender",
-    "commerce": "Next.js Comercio",
+    "nextjsCommerce": "Next.js Comercio",
     "github": "Github",
     "search": {
       "button": "Buscar documentación...",
@@ -28,6 +28,38 @@
         "pages": "Páginas"
       }
     }
+  },
+  "footer": {
+    "resources": "Recursos",
+    "docs": "Documentación",
+    "supportPolicy": "Política de soporte",
+    "learn": "Aprender",
+    "showcase": "Demostración",
+    "blog": "Blog",
+    "team": "Equipo",
+    "analytics": "Analítica",
+    "nextjsConf": "Conferencia Next.js",
+    "previews": "Vistas previas",
+    "more": "Más",
+    "nextjsCommerce": "Next.js Comercio",
+    "contactSales": "Contactar Ventas",
+    "community": "Comunidad",
+    "github": "GitHub",
+    "releases": "Lanzamientos",
+    "telemetry": "Telemetría",
+    "governance": "Gobernanza",
+    "aboutVercel": "Acerca de Vercel",
+    "nextjsVercel": "Next.js + Vercel",
+    "openSourceSoftware": "Software de código abierto",
+    "bluesky": "Bluesky",
+    "x": "X",
+    "legal": "Legal",
+    "privacyPolicy": "Política de privacidad",
+    "cookiePreferences": "Preferencias de cookies",
+    "subscribeTitle": "Suscríbete a nuestro boletín",
+    "subscribeDescription": "Mantente al día con nuevos lanzamientos, funciones, guías y estudios de caso.",
+    "subscribePlaceholder": "tú@dominio.com",
+    "subscribeButton": "Suscribirse"
   },
   "cookieBanner": {
     "message": "Este sitio utiliza tecnologías de seguimiento. Puedes aceptar o rechazar el uso de estas tecnologías.",

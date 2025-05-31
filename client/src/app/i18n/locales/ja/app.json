@@ -11,7 +11,7 @@
     "enterprise": "エンタープライズ",
     "deploy": "デプロイ",
     "learn": "学習",
-    "commerce": "Next.js コマース",
+    "nextjsCommerce": "Next.js コマース",
     "github": "GitHub",
     "search": {
       "button": "ドキュメントを検索...",
@@ -28,6 +28,38 @@
         "pages": "ページ"
       }
     }
+  },
+  "footer": {
+    "resources": "リソース",
+    "docs": "ドキュメント",
+    "supportPolicy": "サポートポリシー",
+    "learn": "学ぶ",
+    "showcase": "ショーケース",
+    "blog": "ブログ",
+    "team": "チーム",
+    "analytics": "アナリティクス",
+    "nextjsConf": "Next.js カンファレンス",
+    "previews": "プレビュー",
+    "more": "その他",
+    "nextjsCommerce": "Next.js コマース",
+    "contactSales": "営業に連絡",
+    "community": "コミュニティ",
+    "github": "GitHub",
+    "releases": "リリース",
+    "telemetry": "テレメトリー",
+    "governance": "ガバナンス",
+    "aboutVercel": "Vercelについて",
+    "nextjsVercel": "Next.js + Vercel",
+    "openSourceSoftware": "オープンソースソフトウェア",
+    "bluesky": "Bluesky",
+    "x": "X",
+    "legal": "法的情報",
+    "privacyPolicy": "プライバシーポリシー",
+    "cookiePreferences": "Cookieの設定",
+    "subscribeTitle": "ニュースレターを購読する",
+    "subscribeDescription": "新しいリリースや機能、ガイド、ケーススタディの最新情報をお届けします。",
+    "subscribePlaceholder": "you@domain.com",
+    "subscribeButton": "購読する"
   },
   "cookieBanner": {
     "message": "このサイトではトラッキング技術を使用しています。これらの技術の使用に同意または拒否できます。",

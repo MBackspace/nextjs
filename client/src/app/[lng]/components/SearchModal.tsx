@@ -3,15 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { i18n, TFunction } from "i18next";
+import { useT } from "@/app/i18n/client";
 
 interface SearchModalProps {
-  t: TFunction<string | string[], undefined>;
-  i18n: i18n;
-  isClosing: boolean;
+  isSearchOpen: boolean;
+  isSearchClosing: boolean;
   handleSearchClose: () => void;
-  selectedResultIndex: number;
-  setSelectedResultIndex: (selectedResultIndex: number) => void;
 }
 
 interface SearchResult {
@@ -19,8 +16,10 @@ interface SearchResult {
   label: string;
 }
 
-export default function SearchModal({ t, i18n, isClosing, handleSearchClose, selectedResultIndex, setSelectedResultIndex }: SearchModalProps): React.ReactNode {
+export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearchClose }: SearchModalProps): React.ReactNode {
+  const { t, i18n } = useT("app", {});
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
+  const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
   const SearchResults: SearchResult[] = [
     { href: `/${i18n.language}/docs`, label: t("header.search.introduction") },
     { href: `/${i18n.language}/docs/getting-started`, label: t("header.search.gettingStarted") },
@@ -33,67 +32,69 @@ export default function SearchModal({ t, i18n, isClosing, handleSearchClose, sel
 
   return (
     <>
-      <div
-        className={`fixed inset-0 ${isClosing ? "" : "bg-[var(--theme-bg-dark)]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
-        onClick={() => handleSearchClose()}
-      >
+      {isSearchOpen && (
         <div
-          className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isClosing ? "search-modal-scale-out" : "search-modal-scale-in"}`}
-          onClick={(e) => e.stopPropagation()}
+          className={`fixed inset-0 ${isSearchClosing ? "" : "bg-[var(--theme-bg-dark)]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
+          onClick={() => handleSearchClose()}
         >
-          <div className="p-3 border-b border-[var(--theme-border-base)]">
-            <div className="flex items-center gap-2 mb-3">
-              <button
-                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[var(--theme-accent-blue-border)] text-[var(--theme-accent-blue)] bg-[var(--theme-accent-blue-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
-                onClick={() => setSearchActiveTab("app")}
-              >
-                {t("header.search.activeTabs.app")}
-              </button>
-              <button
-                className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "pages" ? "border-[var(--theme-accent-purple-border)] text-[var(--theme-accent-purple)] bg-[var(--theme-accent-purple-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
-                onClick={() => setSearchActiveTab("pages")}
-              >
-                {t("header.search.activeTabs.pages")}
-              </button>
-            </div>
-            <div className="flex justify-between items-center">
-              <input
-                type="text"
-                placeholder={t("header.search.input")}
-                className="w-full text-[18px] outline-none placeholder-[var(--theme-text-muted)] pl-1"
-              />
-              <span
-                className="cursor-pointer transition duration-200 ease-in-out border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] px-[4px] py-[1px] rounded hover:bg-[var(--theme-bg-muted)]"
-                onClick={() => handleSearchClose()}
-              >
-                Esc
-              </span>
-            </div>
-          </div>
-          <div className="p-2 text-[var(--theme-fg-base)]">
-            {SearchResults.map(({ href, label }, index) => (
-              <Link
-                key={href}
-                href={href}
-                className={`transition duration-200 ease-in-out flex items-center p-[9px] pb-[11px] text-sm rounded ${index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
-                onMouseEnter={() => setSelectedResultIndex(index)}
-              >
-                <Image
-                  className="dark:invert"
-                  src="/assets/file.svg"
-                  alt="File logo"
-                  width={16}
-                  height={16}
-                  priority
+          <div
+            className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isSearchClosing ? "search-modal-scale-out" : "search-modal-scale-in"}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-3 border-b border-[var(--theme-border-base)]">
+              <div className="flex items-center gap-2 mb-3">
+                <button
+                  className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "app" ? "border-[var(--theme-accent-blue-border)] text-[var(--theme-accent-blue)] bg-[var(--theme-accent-blue-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
+                  onClick={() => setSearchActiveTab("app")}
+                >
+                  {t("header.search.activeTabs.app")}
+                </button>
+                <button
+                  className={`cursor-pointer transition duration-200 ease-in-out text-xs font-medium border px-1 py-[1.2px] rounded ${searchActiveTab === "pages" ? "border-[var(--theme-accent-purple-border)] text-[var(--theme-accent-purple)] bg-[var(--theme-accent-purple-bg)]" : "border-[var(--theme-border-base)] text-[var(--theme-text-muted)] hover:bg-[var(--theme-bg-muted-dark-hover)] bg-[var(--theme-bg-muted-dark)]"}`}
+                  onClick={() => setSearchActiveTab("pages")}
+                >
+                  {t("header.search.activeTabs.pages")}
+                </button>
+              </div>
+              <div className="flex justify-between items-center">
+                <input
+                  type="text"
+                  placeholder={t("header.search.input")}
+                  className="w-full text-[18px] outline-none placeholder-[var(--theme-text-muted)] pl-1"
                 />
-                <span className="pl-[13px]">
-                  {label}
+                <span
+                  className="cursor-pointer transition duration-200 ease-in-out border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] px-[4px] py-[1px] rounded hover:bg-[var(--theme-bg-muted)]"
+                  onClick={() => handleSearchClose()}
+                >
+                  Esc
                 </span>
-              </Link>
-            ))}
+              </div>
+            </div>
+            <div className="p-2 text-[var(--theme-fg-base)]">
+              {SearchResults.map(({ href, label }, index) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`transition duration-200 ease-in-out flex items-center p-[9px] pb-[11px] text-sm rounded ${index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
+                  onMouseEnter={() => setSelectedResultIndex(index)}
+                >
+                  <Image
+                    className="dark:invert"
+                    src="/assets/file.svg"
+                    alt="File logo"
+                    width={16}
+                    height={16}
+                    priority
+                  />
+                  <span className="pl-[13px]">
+                    {label}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <style>
         {`

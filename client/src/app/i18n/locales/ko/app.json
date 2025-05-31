@@ -11,7 +11,7 @@
     "enterprise": "엔터프라이즈",
     "deploy": "배포",
     "learn": "학습",
-    "commerce": "Next.js 커머스",
+    "nextjsCommerce": "Next.js 커머스",
     "github": "GitHub",
     "search": {
       "button": "문서 검색...",
@@ -28,6 +28,38 @@
         "pages": "페이지"
       }
     }
+  },
+  "footer": {
+    "resources": "리소스",
+    "docs": "문서",
+    "supportPolicy": "지원 정책",
+    "learn": "학습",
+    "showcase": "쇼케이스",
+    "blog": "블로그",
+    "team": "팀",
+    "analytics": "분석",
+    "nextjsConf": "Next.js 컨퍼런스",
+    "previews": "미리보기",
+    "more": "더보기",
+    "nextjsCommerce": "Next.js 커머스",
+    "contactSales": "영업 문의",
+    "community": "커뮤니티",
+    "github": "GitHub",
+    "releases": "릴리스",
+    "telemetry": "텔레메트리",
+    "governance": "거버넌스",
+    "aboutVercel": "Vercel 소개",
+    "nextjsVercel": "Next.js + Vercel",
+    "openSourceSoftware": "오픈 소스 소프트웨어",
+    "bluesky": "Bluesky",
+    "x": "X",
+    "legal": "법적 정보",
+    "privacyPolicy": "개인정보 처리방침",
+    "cookiePreferences": "쿠키 설정",
+    "subscribeTitle": "뉴스레터 구독하기",
+    "subscribeDescription": "새로운 릴리스, 기능, 가이드 및 사례 연구에 대한 최신 정보를 받아보세요.",
+    "subscribePlaceholder": "you@domain.com",
+    "subscribeButton": "구독하기"
   },
   "cookieBanner": {
     "message": "이 사이트는 추적 기술을 사용합니다. 이러한 기술의 사용에 동의하거나 거부할 수 있습니다.",

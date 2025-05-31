@@ -23,7 +23,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
     { href: `/${i18n.language}/showcase`, label: t("header.showcase"), isExternal: false },
     { href: `/${i18n.language}/docs`, label: t("header.docs"), isExternal: false },
     { href: `/${i18n.language}/blog`, label: t("header.blog"), isExternal: false },
-    { href: `/${i18n.language}/commerce`, label: t("header.commerce"), isExternal: false },
+    { href: `/${i18n.language}/nextjs-commerce`, label: t("header.nextjsCommerce"), isExternal: false },
     { href: `/${i18n.language}/templates`, label: t("header.templates"), isExternal: false },
     { href: `/${i18n.language}/enterprise`, label: t("header.enterprise"), isExternal: false },
     { href: `/${i18n.language}/github`, label: t("header.github"), isExternal: false }

@@ -2,74 +2,38 @@
 
 import { useEffect, useState } from "react";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY } from "@/app/lib/constants";
-import { getCookie, setCookie } from "@/app/lib/cookies";
-import ConsentModal from "./ConsentModal";
-
-export interface Preferences {
-  essential: boolean;
-  marketing: boolean;
-  analytics: boolean;
-  functional: boolean;
-}
+import { COOKIE_KEYS } from "@/app/lib/constants";
+import { getCookie } from "@/app/lib/cookies";
+import ConsentModal, { handleDeny, handleAcceptAll } from "./ConsentModal";
 
 export default function CookieBanner(): React.ReactNode {
   const { t } = useT("app", {});
   const [visible, setVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const preferences: Preferences = {
-    essential: true,
-    marketing: false,
-    analytics: false,
-    functional: false
-  };
+  const [isConsentOpen, setIsConsentOpen] = useState(false);
 
   useEffect(() => {
-    const savedPreferences = getCookie(COOKIE_KEYS.CONSENT);
-    if (!savedPreferences) {
-      setVisible(true);
-    }
+    setVisible(!getCookie(COOKIE_KEYS.CONSENT));
   }, []);
 
-  const savePreferences = (newPreferences: Preferences): void => {
-    setCookie(COOKIE_KEYS.CONSENT, JSON.stringify(newPreferences));
+  const handleConsentOpen = (): void => {
     setVisible(false);
+    setIsConsentOpen(true);
   };
 
-  const buildPreferences = (value: boolean): Preferences => {
-    return (Object.keys(preferences) as (keyof Preferences)[]).reduce((acc, key) => {
-      acc[key] = key === COOKIE_ESSENTIAL_KEY ? true : value;
-      return acc;
-    }, {} as Preferences);
+  const handleConsentClose = (): void => {
+    setVisible(false);
+    setIsConsentOpen(false);
   };
 
-  const handleDeny = (): void => {
-    const deniedPreferences: Preferences = buildPreferences(false);
-    savePreferences(deniedPreferences);
-  };
-
-  const handleAcceptAll = (): void => {
-    const acceptedPreferences: Preferences = buildPreferences(true);
-    savePreferences(acceptedPreferences);
-  };
-
-  const handleOpenModal = (): void => {
-    setShowModal(true);
-  };
-
-  const handleModalClose = (): void => {
-    setShowModal(false);
-  };
-
-  const handleSave = (newPreferences: Preferences): void => {
-    savePreferences(newPreferences);
-    handleModalClose();
-  };
-
-  if (!visible && !showModal) return null;
+  if (!visible && !isConsentOpen) return null;
 
   return (
     <>
+      <ConsentModal
+        isConsentOpen={isConsentOpen}
+        handleConsentClose={handleConsentClose}
+      />
+
       {visible && (
         <>
           <div className="fixed bottom-4 left-4 right-4 min-w-[420px] w-fit p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 cookie-banner-translate-in font-[family-name:var(--font-geist-sans)]">
@@ -80,21 +44,24 @@ export default function CookieBanner(): React.ReactNode {
               <div className="flex gap-[12px] pr-[24px]">
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                  onClick={() => handleDeny()}>
+                  onClick={() => {
+                    handleDeny();
+                    handleConsentClose();
+                  }}>
                   {t("cookieBanner.deny")}
                 </button>
                 <button
                   className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
-                  onClick={() => handleAcceptAll()}>
+                  onClick={() => {
+                    handleAcceptAll();
+                    handleConsentClose();
+                  }}>
                   {t("cookieBanner.acceptAll")}
                 </button>
               </div>
               <button
                 className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
-                onClick={() => {
-                  setVisible(false);
-                  handleOpenModal();
-                }}
+                onClick={handleConsentOpen}
               >
                 {t("cookieBanner.settings")}
               </button>
@@ -120,17 +87,6 @@ export default function CookieBanner(): React.ReactNode {
             `}
           </style>
         </>
-      )}
-
-      {showModal && (
-        <ConsentModal
-          t={t}
-          preferences={preferences}
-          handleDeny={handleDeny}
-          handleAcceptAll={handleAcceptAll}
-          handleSave={handleSave}
-          handleModalClose={handleModalClose}
-        />
       )}
     </>
   );

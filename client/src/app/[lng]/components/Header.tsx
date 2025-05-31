@@ -12,9 +12,8 @@ export default function Header(): React.ReactNode {
   const { t, i18n } = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
   const [isShortScreen, setIsShortScreen] = useState<boolean>(false);
-  const [isClosing, setIsClosing] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-  const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
+  const [isSearchClosing, setIsSearchClosing] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = (): void => {
@@ -37,21 +36,18 @@ export default function Header(): React.ReactNode {
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isSearchOpen]);
 
   const handleSearchOpen = (): void => {
-    setSelectedResultIndex(0);
     setIsSearchOpen(true);
   };
 
   const handleSearchClose = (): void => {
-    setIsClosing(true);
+    setIsSearchClosing(true);
     setTimeout(() => {
       setIsSearchOpen(false);
-      setIsClosing(false);
+      setIsSearchClosing(false);
     }, 200);
   };
 
@@ -104,12 +100,9 @@ export default function Header(): React.ReactNode {
 
       {isSearchOpen && (
         <SearchModal
-          t={t}
-          i18n={i18n}
-          isClosing={isClosing}
+          isSearchOpen={isSearchOpen}
+          isSearchClosing={isSearchClosing}
           handleSearchClose={handleSearchClose}
-          selectedResultIndex={selectedResultIndex}
-          setSelectedResultIndex={setSelectedResultIndex}
         />
       )}
     </>
