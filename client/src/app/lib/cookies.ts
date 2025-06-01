@@ -11,7 +11,7 @@ const getCookieCategory = (name: CookieKey): string | undefined => {
 export const parseConsent = (): Record<string, boolean> | undefined => {
   const consentRaw: string | undefined = getCookie(COOKIE_KEYS.CONSENT);
   try {
-    return consentRaw ? JSON.parse(consentRaw) : {};
+    return consentRaw ? JSON.parse(consentRaw) : undefined;
   } catch {
     return undefined;
   }
