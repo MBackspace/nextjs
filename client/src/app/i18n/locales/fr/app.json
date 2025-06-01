@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "Le framework React pour le Web",
+    "descriptionStart": "Utilisé par certaines des plus grandes entreprises mondiales, Next.js permet de créer",
+    "descriptionHighlight": "des applications web de haute qualité",
+    "descriptionEnd": "grâce à la puissance des composants React.",
+    "started": "Commencer",
+    "learn": "Apprendre Next.js"
+  },
   "footer": {
     "resources": "Ressources",
     "docs": "Documentation",

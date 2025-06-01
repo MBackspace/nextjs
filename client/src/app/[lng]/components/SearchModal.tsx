@@ -1,6 +1,6 @@
 "use client"
 
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
@@ -39,7 +39,7 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
         >
           <div
             className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isSearchClosing ? "search-modal-scale-out" : "search-modal-scale-in"}`}
-            onClick={(e: MouseEvent): void => e.stopPropagation()}
+            onClick={(e: React.MouseEvent): void => e.stopPropagation()}
           >
             <div className="p-3 border-b border-[var(--theme-border-base)]">
               <div className="flex items-center gap-2 mb-3">

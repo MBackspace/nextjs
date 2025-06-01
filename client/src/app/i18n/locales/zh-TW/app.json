@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "為 Web 而生的 React 框架",
+    "descriptionStart": "Next.js 被全球眾多大型企業採用，協助您建立",
+    "descriptionHighlight": "高品質的 Web 應用程式",
+    "descriptionEnd": "，基於強大的 React 元件。",
+    "started": "立即開始",
+    "learn": "學習 Next.js"
+  },
   "footer": {
     "resources": "資源",
     "docs": "文件",

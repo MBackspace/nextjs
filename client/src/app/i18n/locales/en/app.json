@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "The React Framework for the Web",
+    "descriptionStart": "Used by some of the world's largest companies, Next.js enables you to create",
+    "descriptionHighlight": "high-quality web applications",
+    "descriptionEnd": "with the power of React components.",
+    "started": "Get Started",
+    "learn": "Learn Next.js"
+  },
   "footer": {
     "resources": "Resources",
     "docs": "Docs",

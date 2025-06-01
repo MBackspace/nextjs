@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "Das React-Framework für das Web",
+    "descriptionStart": "Next.js wird von einigen der größten Unternehmen der Welt verwendet und ermöglicht die Erstellung von",
+    "descriptionHighlight": "hochwertigen Webanwendungen",
+    "descriptionEnd": "mit der Power von React-Komponenten.",
+    "started": "Erste Schritte",
+    "learn": "Next.js lernen"
+  },
   "footer": {
     "resources": "Ressourcen",
     "docs": "Dokumentation",

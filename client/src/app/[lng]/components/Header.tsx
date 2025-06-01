@@ -4,26 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
+import { ScreenContext, useScreen } from "./ScreenProvider";
 import LongHeader from "./LongHeader";
 import ShortHeader from "./ShortHeader";
 import SearchModal from "./SearchModal";
 
 export default function Header(): React.ReactNode {
   const { t, i18n } = useT("app", {});
-  const [hydrated, setHydrated] = useState<boolean>(false);
-  const [isShortScreen, setIsShortScreen] = useState<boolean>(false);
+  const { isShortScreen }: ScreenContext = useScreen();
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isSearchClosing, setIsSearchClosing] = useState<boolean>(false);
-
-  useEffect((): () => void => {
-    const handleResize = (): void => {
-      setIsShortScreen(window.innerWidth <= 1024);
-    };
-    handleResize();
-    setHydrated(true);
-    window.addEventListener("resize", handleResize);
-    return (): void => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect((): () => void => {
     const handleKeyDown = (e: KeyboardEvent): void => {
@@ -50,8 +40,6 @@ export default function Header(): React.ReactNode {
       setIsSearchClosing(false);
     }, 200);
   };
-
-  if (!hydrated) return null;
 
   return (
     <>

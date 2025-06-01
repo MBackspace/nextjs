@@ -5,6 +5,7 @@ import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
 import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
+import ScreenProvider from "./components/ScreenProvider";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -36,11 +37,16 @@ export default async function RootLayout({
   const theme: string = cookieStore.get(COOKIE_KEYS.THEME)?.value || FALLBACK_THEME;
   return (
     <html lang={i18n.language} className={theme}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <ScreenProvider>
+          <Header />
+          {children}
+        </ScreenProvider>
       </body>
     </html>
   );

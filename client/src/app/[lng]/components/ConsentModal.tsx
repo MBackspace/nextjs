@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
 import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY, FALLBACK_COOKIE_CONSENT } from "@/app/lib/constants";
@@ -114,7 +114,7 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
                     onClick={(): void => onCategoryClick(category)}
                   >
                     <span className="text-[14px] text-[var(--theme-fg-base)] font-medium">{category.name}</span>
-                    <label onClick={(e: MouseEvent): void => e.stopPropagation()}>
+                    <label onClick={(e: React.MouseEvent): void => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         className="sr-only peer"

@@ -22,3 +22,5 @@ export const FALLBACK_COOKIE_CONSENT = {
 } as const;
 
 export const FALLBACK_THEME = "system" as const;
+
+export const FALLBACK_SHORT_SCREEN_WIDTH = 1152 as const;;

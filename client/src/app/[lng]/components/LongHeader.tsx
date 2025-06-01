@@ -56,7 +56,7 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
           onClick={handleSearchOpen}
         >
           {t("header.search.button")}
-          <span className="border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] font-medium px-[6px] py-[3px] rounded-lg ml-10">
+          <span className="border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] font-medium px-[5px] py-[3px] rounded-lg ml-10">
             CtrlK
           </span>
         </button>

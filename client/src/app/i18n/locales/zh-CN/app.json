@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "构建 Web 的 React 框架",
+    "descriptionStart": "Next.js 被全球众多大型企业采用，助您构建",
+    "descriptionHighlight": "高质量的 Web 应用程序",
+    "descriptionEnd": "，基于强大的 React 组件。",
+    "started": "快速开始",
+    "learn": "学习 Next.js"
+  },
   "footer": {
     "resources": "资源",
     "docs": "文档",

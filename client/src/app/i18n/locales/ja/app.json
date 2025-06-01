@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "Web のための React フレームワーク",
+    "descriptionStart": "Next.js は世界中の大手企業に採用され、",
+    "descriptionHighlight": "高品質な Web アプリケーション",
+    "descriptionEnd": "を React コンポーネントの力で構築できます。",
+    "started": "始める",
+    "learn": "Next.js を学ぶ"
+  },
   "footer": {
     "resources": "リソース",
     "docs": "ドキュメント",

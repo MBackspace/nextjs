@@ -29,6 +29,14 @@
       }
     }
   },
+  "main": {
+    "title": "웹을 위한 React 프레임워크",
+    "descriptionStart": "Next.js는 세계 유수의 기업들이 사용하며,",
+    "descriptionHighlight": "고품질 웹 애플리케이션",
+    "descriptionEnd": "을 React 컴포넌트의 힘으로 만들 수 있습니다.",
+    "started": "시작하기",
+    "learn": "Next.js 배우기"
+  },
   "footer": {
     "resources": "리소스",
     "docs": "문서",
