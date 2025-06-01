@@ -120,16 +120,10 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
                         className="sr-only peer"
                         checked={cookieConsent[category.id]}
                         onChange={(): void => toggle(category)}
-                        disabled={category.id === "essential"}
+                        disabled={category.id === COOKIE_ESSENTIAL_KEY}
                       />
-                      <div
-                        className={`border w-[42px] h-[26.4px] rounded-full transition-all
-                        ${category.id === "essential" ? "bg-[var(--theme-bg-base)] border-[var(--theme-text-subtle)] cursor-not-allowed" : "bg-[var(--theme-bg-muted)] border-[var(--theme-text-subtle)] peer-checked:bg-[var(--theme-accent-blue)] peer-checked:border-[var(--theme-accent-blue)] cursor-pointer"}`}
-                      >
-                        <div
-                          className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform
-                          ${category.id === "essential" ? "bg-[var(--theme-bg-muted-hover)]" : "bg-[#ffffff]"} ${cookieConsent[category.id] ? "translate-x-4" : "translate-x-0"}`}
-                        />
+                      <div className={`border w-[42px] h-[26.4px] rounded-full transition-all ${category.id === COOKIE_ESSENTIAL_KEY ? "bg-[var(--theme-bg-base)] border-[var(--theme-text-subtle)] cursor-not-allowed" : "bg-[var(--theme-bg-muted)] border-[var(--theme-text-subtle)] peer-checked:bg-[var(--theme-accent-blue)] peer-checked:border-[var(--theme-accent-blue)] cursor-pointer"}`}>
+                        <div className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform ${category.id === COOKIE_ESSENTIAL_KEY ? "bg-[var(--theme-bg-muted-hover)]" : "bg-[#ffffff]"} ${cookieConsent[category.id] ? "translate-x-4" : "translate-x-0"}`} />
                       </div>
                     </label>
                   </div>
