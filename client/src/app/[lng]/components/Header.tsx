@@ -31,13 +31,13 @@ export default function Header(): React.ReactNode {
         e.preventDefault();
         handleSearchOpen();
       }
-      if (e.key === "Escape" && isSearchOpen) {
+      if (e.key === "Escape") {
         handleSearchClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return (): void => window.removeEventListener("keydown", handleKeyDown);
-  }, [isSearchOpen]);
+  }, []);
 
   const handleSearchOpen = (): void => {
     setIsSearchOpen(true);

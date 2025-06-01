@@ -6,7 +6,6 @@ import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adap
 import { getT } from "@/app/i18n/index";
 import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
 import Header from "./components/Header";
-import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
 
 const geistSans: NextFontWithVariable = Geist({
@@ -42,7 +41,6 @@ export default async function RootLayout({
       >
         <Header />
         {children}
-        <CookieBanner />
       </body>
     </html>
   );

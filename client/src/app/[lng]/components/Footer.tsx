@@ -6,6 +6,7 @@ import { useT } from "@/app/i18n/client";
 import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import ConsentModal from "./ConsentModal";
+import CookieBanner from "./CookieBanner";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -89,6 +90,10 @@ export default function Footer(): React.ReactNode {
         isConsentOpen={isConsentOpen}
         handleConsentClose={handleConsentClose}
       />
+
+      {!isConsentOpen && (
+        <CookieBanner />
+      )}
 
       <footer className="row-start-3 flex gap-[24px] flex-wrap w-full py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]">
         <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isShortScreen ? "px-[25px]" : "px-[40px]"}`}>
