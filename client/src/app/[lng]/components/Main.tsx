@@ -41,63 +41,63 @@ export default function Main(): React.ReactNode {
       <main className="relative flex flex-col row-start-2 w-full items-center pt-[60px] pb-[130px] bg-[var(--theme-bg-base)]">
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-full max-w-screen-xl z-0">
           <div
-            className={`absolute top-[14%] ${isShortScreen ? "left-[2%] w-[96%] main-width-96" : "left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? "top-[15%] left-[2%] w-[96%] main-width-96" : "top-[14%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute top-[34%] ${isShortScreen ? "left-[2%] w-[96%] main-width-96" : "left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? "top-[31.5%] left-[2%] w-[96%] main-width-96" : "top-[34%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute bottom-[41%] ${isShortScreen ? "left-[2%] w-[96%] main-width-96" : "left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? "bottom-[43%] left-[2%] w-[96%] main-width-96" : "bottom-[41%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute bottom-[13.4%] ${isShortScreen ? "left-[2%] w-[96%] main-width-96" : "left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? "bottom-[14.4%] left-[2%] w-[96%] main-width-96" : "bottom-[13.4%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
-          <div className={`absolute top-[5%] ${isShortScreen ? "left-[7.5%]" : "left-[2.5%]"} h-[94%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-94`} />
+          <div className={`absolute top-[3%] ${isShortScreen ? "left-[7.5%]" : "left-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
           <div
-            className={`absolute top-[5%] ${isShortScreen ? "left-[32.2%]" : "left-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
+            className={`absolute ${isShortScreen ? "top-[6%] left-[32.2%]" : "top-[5%] left-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
             style={{
               WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute bottom-[1%] ${isShortScreen ? "left-[31%]" : "left-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
+            className={`absolute ${isShortScreen ? "bottom-[3%] left-[31%]" : "bottom-[1%] left-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
             style={{
               WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute top-[5%] ${isShortScreen ? "right-[32.2%]" : "right-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
+            className={`absolute ${isShortScreen ? "top-[6%] right-[32.2%]" : "top-[5%] right-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
             style={{
               WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute bottom-[1%] ${isShortScreen ? "right-[31%]" : "right-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
+            className={`absolute ${isShortScreen ? "bottom-[3%] right-[31%]" : "bottom-[1%] right-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
             style={{
               WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
-          <div className={`absolute top-[5%] ${isShortScreen ? "right-[7.5%]" : "right-[2.5%]"} h-[94%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-94`} />
+          <div className={`absolute top-[3%] ${isShortScreen ? "right-[7.5%]" : "right-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="75"
@@ -106,7 +106,7 @@ export default function Main(): React.ReactNode {
             fill="none"
             stroke="var(--theme-text-subtle-dark)"
             strokeDasharray="2 2"
-            className={`absolute top-[calc(14%-37.5px)] ${isShortScreen ? "left-[calc(7.5%-37.5px)]" : "left-[calc(2.5%-37.5px)]"} main-stroke-dashoffset-in`}
+            className={`absolute ${isShortScreen ? "top-[calc(15%-37.5px)] left-[calc(7.5%-37.5px)]" : "top-[calc(14%-37.5px)] left-[calc(2.5%-37.5px)]"} main-stroke-dashoffset-in`}
             transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
           >
             <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
@@ -126,7 +126,7 @@ export default function Main(): React.ReactNode {
             fill="none"
             stroke="var(--theme-text-subtle-dark)"
             strokeDasharray="2 2"
-            className={`absolute bottom-[calc(13.4%-37.5px)] ${isShortScreen ? "right-[calc(31%-37.5px)]" : "right-[calc(36%-37.5px)]"} rotate-180 main-stroke-dashoffset-in`}
+            className={`absolute ${isShortScreen ? "bottom-[calc(14.4%-37.5px)] right-[calc(31%-37.5px)]" : "bottom-[calc(13.4%-37.5px)] right-[calc(36%-37.5px)]"} rotate-180 main-stroke-dashoffset-in`}
             transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
           >
             <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
@@ -199,8 +199,8 @@ export default function Main(): React.ReactNode {
             animation: main-width-104 1.04s ease forwards;
           }
 
-          .main-height-94 {
-            animation: main-height-94 0.94s ease forwards;
+          .main-height-96 {
+            animation: main-height-96 0.96s ease forwards;
           }
 
           .main-height-9 {
@@ -216,88 +216,71 @@ export default function Main(): React.ReactNode {
           }
 
           @keyframes main-width-96 {
-            0% {
+            from {
               width: 0;
-              opacity: 0;
+              -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              border-width: 2px;
             }
-            95% {
-              -webkit-mask-image: linear-gradient(to right, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-              mask-image: linear-gradient(to right, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-            }
-            100% {
+            to {
               width: 96%;
-              opacity: 1;
             }
           }
 
           @keyframes main-width-104 {
-            0% {
+            from {
               width: 0;
-              opacity: 0;
+              -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              border-width: 2px;
             }
-            95% {
-              -webkit-mask-image: linear-gradient(to right, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-              mask-image: linear-gradient(to right, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-            }
-            100% {
+            to {
               width: 104%;
-              opacity: 1;
             }
           }
 
-          @keyframes main-height-94 {
-            0% {
+          @keyframes main-height-96 {
+            from {
               height: 0;
-              opacity: 0;
+              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              border-width: 2px;
             }
-            95% {
-              -webkit-mask-image: linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-              mask-image: linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-            }
-            100% {
-              height: 94%;
-              opacity: 1;
+            to {
+              height: 96%;
             }
           }
 
           @keyframes main-height-9 {
-            0% {
+            from {
               height: 0;
-              opacity: 0;
+              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              border-width: 2px;
             }
-            95% {
-              -webkit-mask-image: linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-              mask-image: linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-            }
-            100% {
+            to {
               height: 9%;
-              opacity: 1;
             }
           }
 
           @keyframes main-height-40 {
-            0% {
+            from {
               height: 0;
-              opacity: 0;
+              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
+              border-width: 2px;
             }
-            95% {
-              -webkit-mask-image: linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-              mask-image: linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-fg-dark) 5%, var(--theme-fg-dark) 95%, transparent 100%);
-            }
-            100% {
+            to {
               height: 40%;
-              opacity: 1;
             }
           }
 
           @keyframes main-stroke-dashoffset-in {
             from {
               stroke-dashoffset: 500;
-              opacity: 0;
             }
             to {
               stroke-dashoffset: 0;
-              opacity: 1;
             }
           }
         `}
