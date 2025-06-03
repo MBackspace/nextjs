@@ -1,16 +1,21 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
-import { ScreenContext, useScreen } from "./ScreenProvider";
+import { AppContext, useAppContext } from "./ContextProvider";
 
 export default function Main(): React.ReactNode {
   const { t, i18n } = useT("app", {});
-  const { isShortScreen }: ScreenContext = useScreen();
+  const [hydrated, setHydrated] = useState<boolean>(false);
+  const { isShortScreen, isMobileScreen }: AppContext = useAppContext();
   const [hovered, setHovered] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
   const command: string = "npx create-next-app@latest";
+
+  useEffect((): void => {
+    setHydrated(true);
+  }, []);
 
   const handleMouseEnter = (): void => {
     setHovered(true);
@@ -28,6 +33,8 @@ export default function Main(): React.ReactNode {
       setCopied(true);
     });
   };
+
+  if (!hydrated) return null;
 
   return (
     <>
@@ -99,7 +106,8 @@ export default function Main(): React.ReactNode {
             fill="none"
             stroke="var(--theme-text-subtle-dark)"
             strokeDasharray="2 2"
-            className={`absolute top-[7.5%] ${isShortScreen ? "left-[3.8%]" : "left-[-0.3%]"} main-stroke-dashoffset-in`}
+            className={`absolute top-[calc(14%-37.5px)] ${isShortScreen ? "left-[calc(7.5%-37.5px)]" : "left-[calc(2.5%-37.5px)]"} main-stroke-dashoffset-in`}
+            transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
           >
             <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
             <defs>
@@ -118,7 +126,8 @@ export default function Main(): React.ReactNode {
             fill="none"
             stroke="var(--theme-text-subtle-dark)"
             strokeDasharray="2 2"
-            className={`absolute bottom-[7.3%] ${isShortScreen ? "right-[27.3%]" : "right-[33.2%]"} rotate-180 main-stroke-dashoffset-in`}
+            className={`absolute bottom-[calc(13.4%-37.5px)] ${isShortScreen ? "right-[calc(31%-37.5px)]" : "right-[calc(36%-37.5px)]"} rotate-180 main-stroke-dashoffset-in`}
+            transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
           >
             <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
             <defs>
@@ -183,33 +192,32 @@ export default function Main(): React.ReactNode {
       <style>
         {`
           .main-width-96 {
-            animation: main-width-96 0.96s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: main-width-96 0.96s ease forwards;
           }
 
           .main-width-104 {
-            animation: main-width-104 1.04s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: main-width-104 1.04s ease forwards;
           }
 
           .main-height-94 {
-            animation: main-height-94 0.94s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: main-height-94 0.94s ease forwards;
           }
 
           .main-height-9 {
-            animation: main-height-9 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: main-height-9 0.9s ease forwards;
           }
 
           .main-height-40 {
-            animation: main-height-40 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: main-height-40 0.4s ease forwards;
           }
 
           .main-stroke-dashoffset-in {
-            animation: main-stroke-dashoffset-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: main-stroke-dashoffset-in 0.5s ease forwards;
           }
 
           @keyframes main-width-96 {
             0% {
               width: 0;
-              transform: scaleX(0);
               opacity: 0;
             }
             95% {
@@ -218,7 +226,6 @@ export default function Main(): React.ReactNode {
             }
             100% {
               width: 96%;
-              transform: scaleX(1);
               opacity: 1;
             }
           }
@@ -226,7 +233,6 @@ export default function Main(): React.ReactNode {
           @keyframes main-width-104 {
             0% {
               width: 0;
-              transform: scaleX(0);
               opacity: 0;
             }
             95% {
@@ -235,7 +241,6 @@ export default function Main(): React.ReactNode {
             }
             100% {
               width: 104%;
-              transform: scaleX(1);
               opacity: 1;
             }
           }
@@ -243,7 +248,6 @@ export default function Main(): React.ReactNode {
           @keyframes main-height-94 {
             0% {
               height: 0;
-              transform: scaleY(0);
               opacity: 0;
             }
             95% {
@@ -252,7 +256,6 @@ export default function Main(): React.ReactNode {
             }
             100% {
               height: 94%;
-              transform: scaleY(1);
               opacity: 1;
             }
           }
@@ -260,7 +263,6 @@ export default function Main(): React.ReactNode {
           @keyframes main-height-9 {
             0% {
               height: 0;
-              transform: scaleY(0);
               opacity: 0;
             }
             95% {
@@ -269,7 +271,6 @@ export default function Main(): React.ReactNode {
             }
             100% {
               height: 9%;
-              transform: scaleY(1);
               opacity: 1;
             }
           }
@@ -277,7 +278,6 @@ export default function Main(): React.ReactNode {
           @keyframes main-height-40 {
             0% {
               height: 0;
-              transform: scaleY(0);
               opacity: 0;
             }
             95% {
@@ -286,7 +286,6 @@ export default function Main(): React.ReactNode {
             }
             100% {
               height: 40%;
-              transform: scaleY(1);
               opacity: 1;
             }
           }

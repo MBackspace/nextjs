@@ -6,14 +6,14 @@
     "client"
   ],
   "scripts": {
-    "upg": "yarn upgrade-interactive",
+    "upgrade": "yarn upgrade-interactive",
     "build": "turbo run build --concurrency=3",
     "dev": "turbo run dev --concurrency=3",
-    "dc:build": "docker compose build",
-    "dc:up": "docker compose up -d",
-    "dc:start": "docker compose start",
-    "dc:stop": "docker compose stop",
-    "dc:rm": "docker compose rm"
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "docker:start": "docker compose start",
+    "docker:stop": "docker compose stop",
+    "docker:rm": "docker compose rm"
   },
   "devDependencies": {
     "turbo": "^2.5.3"

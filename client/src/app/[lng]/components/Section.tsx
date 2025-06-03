@@ -1,9 +1,17 @@
 "use client"
 
-import { ScreenContext, useScreen } from "./ScreenProvider";
+import { useEffect, useState } from "react";
+import { AppContext, useAppContext } from "./ContextProvider";
 
 export default function Section(): React.ReactNode {
-  const { isShortScreen }: ScreenContext = useScreen();
+  const [hydrated, setHydrated] = useState<boolean>(false);
+  const { isShortScreen }: AppContext = useAppContext();
+
+  useEffect((): void => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) return null;
 
   return (
     <section className="flex flex-col row-start-3 w-full items-center bg-[var(--theme-bg-base)]">

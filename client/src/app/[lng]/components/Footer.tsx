@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useT } from "@/app/i18n/client";
 import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
-import { ScreenContext, useScreen } from "./ScreenProvider";
+import { AppContext, useAppContext } from "./ContextProvider";
 import ConsentModal from "./ConsentModal";
 import CookieBanner from "./CookieBanner";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -18,7 +18,8 @@ interface NavLink {
 
 export default function Footer(): React.ReactNode {
   const { t, i18n } = useT("app", {});
-  const { isShortScreen }: ScreenContext = useScreen();
+  const [hydrated, setHydrated] = useState<boolean>(false);
+  const { isShortScreen }: AppContext = useAppContext();
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>(FALLBACK_THEME);
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -55,6 +56,7 @@ export default function Footer(): React.ReactNode {
 
   useEffect((): void => {
     setTheme(getCookie(COOKIE_KEYS.THEME) || FALLBACK_THEME);
+    setHydrated(true);
   }, []);
 
   const handleConsentOpen = (): void => {
@@ -74,6 +76,8 @@ export default function Footer(): React.ReactNode {
     }
     setSubmitted(true);
   };
+
+  if (!hydrated) return null;
 
   return (
     <>

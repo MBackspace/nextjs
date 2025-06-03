@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
-import { ScreenContext, useScreen } from "./ScreenProvider";
+import { AppContext, useAppContext } from "./ContextProvider";
 import LongHeader from "./LongHeader";
 import ShortHeader from "./ShortHeader";
 import SearchModal from "./SearchModal";
 
 export default function Header(): React.ReactNode {
   const { t, i18n } = useT("app", {});
-  const { isShortScreen }: ScreenContext = useScreen();
+  const [hydrated, setHydrated] = useState<boolean>(false);
+  const { isShortScreen }: AppContext = useAppContext();
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isSearchClosing, setIsSearchClosing] = useState<boolean>(false);
 
@@ -29,6 +30,10 @@ export default function Header(): React.ReactNode {
     return (): void => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  useEffect((): void => {
+    setHydrated(true);
+  }, []);
+
   const handleSearchOpen = (): void => {
     setIsSearchOpen(true);
   };
@@ -40,6 +45,8 @@ export default function Header(): React.ReactNode {
       setIsSearchClosing(false);
     }, 200);
   };
+
+  if (!hydrated) return null;
 
   return (
     <>

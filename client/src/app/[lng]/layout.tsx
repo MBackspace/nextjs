@@ -5,7 +5,7 @@ import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { getT } from "@/app/i18n/index";
 import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
-import ScreenProvider from "./components/ScreenProvider";
+import ContextProvider from "./components/ContextProvider";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -43,10 +43,10 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ScreenProvider>
+        <ContextProvider>
           <Header />
           {children}
-        </ScreenProvider>
+        </ContextProvider>
       </body>
     </html>
   );
