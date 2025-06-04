@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useT } from "@/app/i18n/client";
+import { AppContext, useAppContext } from "./ContextProvider";
 import { COOKIE_KEYS } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import ConsentModal, { handleDeny, handleAcceptAll } from "./ConsentModal";
 
 export default function CookieBanner(): React.ReactNode {
   const { t } = useT("app", {});
+  const { isMobileScreen }: AppContext = useAppContext();
   const [visible, setVisible] = useState<boolean>(false);
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
 
@@ -36,8 +38,8 @@ export default function CookieBanner(): React.ReactNode {
 
       {visible && (
         <>
-          <div className="fixed bottom-4 left-4 right-4 min-w-[420px] w-fit p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 cookie-banner-translate-in font-[family-name:var(--font-geist-sans)]">
-            <p className="w-[380px] text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2">
+          <div className="fixed bottom-4 left-4 right-4 w-fit p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 cookie-banner-translate-in font-[family-name:var(--font-geist-sans)]">
+            <p className={`${isMobileScreen ? "w-82" : "w-[380px]"} text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2`}>
               {t("cookieBanner.message")}
             </p>
             <div className="flex justify-between items-center">

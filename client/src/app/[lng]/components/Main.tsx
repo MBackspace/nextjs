@@ -38,66 +38,70 @@ export default function Main(): React.ReactNode {
 
   return (
     <>
-      <main className="relative flex flex-col row-start-2 w-full items-center pt-[60px] pb-[130px] bg-[var(--theme-bg-base)]">
+      <main className={`relative flex flex-col row-start-2 ${isMobileScreen ? "w-100" : "w-full"} items-center ${isMobileScreen ? "pt-0 pb-[160px]" : "pt-[60px] pb-[130px]"} bg-[var(--theme-bg-base)]`}>
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-full max-w-screen-xl z-0">
           <div
-            className={`absolute ${isShortScreen ? "top-[15%] left-[2%] w-[96%] main-width-96" : "top-[14%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[-10%] left-[-2%] w-[104%] main-width-104" : "top-[15%] left-[2%] w-[96%] main-width-96"}` : "top-[14%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute ${isShortScreen ? "top-[31.5%] left-[2%] w-[96%] main-width-96" : "top-[34%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[22.5%] left-[-2%] w-[104%] main-width-104" : "top-[31.5%] left-[2%] w-[96%] main-width-96"}` : "top-[34%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute ${isShortScreen ? "bottom-[43%] left-[2%] w-[96%] main-width-96" : "bottom-[41%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "bottom-[52%] left-[-2%] w-[104%] main-width-104" : "bottom-[43%] left-[2%] w-[96%] main-width-96"}` : "bottom-[41%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute ${isShortScreen ? "bottom-[14.4%] left-[2%] w-[96%] main-width-96" : "bottom-[13.4%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "bottom-[32%] left-[-2%] w-[104%] main-width-104" : "bottom-[14.4%] left-[2%] w-[96%] main-width-96"}` : "bottom-[13.4%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
             style={{
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
               maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
             }}
           />
-          <div className={`absolute top-[3%] ${isShortScreen ? "left-[7.5%]" : "left-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
-          <div
-            className={`absolute ${isShortScreen ? "top-[6%] left-[32.2%]" : "top-[5%] left-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
-            style={{
-              WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
-            }}
-          />
-          <div
-            className={`absolute ${isShortScreen ? "bottom-[3%] left-[31%]" : "bottom-[1%] left-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
-            style={{
-              WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
-            }}
-          />
-          <div
-            className={`absolute ${isShortScreen ? "top-[6%] right-[32.2%]" : "top-[5%] right-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
-            style={{
-              WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
-            }}
-          />
-          <div
-            className={`absolute ${isShortScreen ? "bottom-[3%] right-[31%]" : "bottom-[1%] right-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
-            style={{
-              WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
-            }}
-          />
-          <div className={`absolute top-[3%] ${isShortScreen ? "right-[7.5%]" : "right-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
+          <div className={`absolute ${isMobileScreen ? "top-[-18%]" : "top-[3%]"} ${isShortScreen ? "left-[7.5%]" : "left-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
+          {!isMobileScreen && (
+            <>
+              <div
+                className={`absolute ${isShortScreen ? "top-[6%] left-[32.2%]" : "top-[5%] left-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
+                style={{
+                  WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                }}
+              />
+              <div
+                className={`absolute ${isShortScreen ? "bottom-[3%] left-[31%]" : "bottom-[1%] left-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
+                style={{
+                  WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                }}
+              />
+              <div
+                className={`absolute ${isShortScreen ? "top-[6%] right-[32.2%]" : "top-[5%] right-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
+                style={{
+                  WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                }}
+              />
+              <div
+                className={`absolute ${isShortScreen ? "bottom-[3%] right-[31%]" : "bottom-[1%] right-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
+                style={{
+                  WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                }}
+              />
+            </>
+          )}
+          <div className={`absolute ${isMobileScreen ? "top-[-18%]" : "top-[3%]"} ${isShortScreen ? "right-[7.5%]" : "right-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="75"
@@ -106,7 +110,7 @@ export default function Main(): React.ReactNode {
             fill="none"
             stroke="var(--theme-text-subtle-dark)"
             strokeDasharray="2 2"
-            className={`absolute ${isShortScreen ? "top-[calc(15%-37.5px)] left-[calc(7.5%-37.5px)]" : "top-[calc(14%-37.5px)] left-[calc(2.5%-37.5px)]"} main-stroke-dashoffset-in`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[calc(-10%-37.5px)] left-[calc(7.5%-37.5px)]" : "top-[calc(15%-37.5px)] left-[calc(7.5%-37.5px)]"}` : "top-[calc(14%-37.5px)] left-[calc(2.5%-37.5px)]"} main-stroke-dashoffset-in`}
             transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
           >
             <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
@@ -118,46 +122,48 @@ export default function Main(): React.ReactNode {
               </radialGradient>
             </defs>
           </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="75"
-            height="75"
-            viewBox="0 0 75 75"
-            fill="none"
-            stroke="var(--theme-text-subtle-dark)"
-            strokeDasharray="2 2"
-            className={`absolute ${isShortScreen ? "bottom-[calc(14.4%-37.5px)] right-[calc(31%-37.5px)]" : "bottom-[calc(13.4%-37.5px)] right-[calc(36%-37.5px)]"} rotate-180 main-stroke-dashoffset-in`}
-            transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
-          >
-            <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
-            <defs>
-              <radialGradient cx="0" cy="0" gradientTransform="translate(37.5 37.5) rotate(90) scale(36.5)" gradientUnits="userSpaceOnUse" id="paint0_angular_25_2122" r="1">
-                <stop />
-                <stop offset="0.5" stopOpacity="0.34" />
-                <stop offset="1" />
-              </radialGradient>
-            </defs>
-          </svg>
+          {!isMobileScreen && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="75"
+              height="75"
+              viewBox="0 0 75 75"
+              fill="none"
+              stroke="var(--theme-text-subtle-dark)"
+              strokeDasharray="2 2"
+              className={`absolute ${isShortScreen ? "bottom-[calc(14.4%-37.5px)] right-[calc(31%-37.5px)]" : "bottom-[calc(13.4%-37.5px)] right-[calc(36%-37.5px)]"} rotate-180 main-stroke-dashoffset-in`}
+              transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
+            >
+              <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
+              <defs>
+                <radialGradient cx="0" cy="0" gradientTransform="translate(37.5 37.5) rotate(90) scale(36.5)" gradientUnits="userSpaceOnUse" id="paint0_angular_25_2122" r="1">
+                  <stop />
+                  <stop offset="0.5" stopOpacity="0.34" />
+                  <stop offset="1" />
+                </radialGradient>
+              </defs>
+            </svg>
+          )}
         </div>
-        <div className={`w-full max-w-screen-xl relative z-10 text-center ${isShortScreen ? "space-y-7 pt-5" : "space-y-3"}`}>
-          <h1 className={`font-extrabold bg-gradient-to-b from-[var(--theme-fg-light)]/95 to-[var(--theme-fg-dark)] bg-clip-text text-transparent leading-[2.4] ${isShortScreen ? "text-[50px] tracking-[-0.06em]" : "text-7xl tracking-tight"}`}>
+        <div className={`w-full max-w-screen-xl relative ${isMobileScreen ? "bottom-[60px]" : ""} z-10 text-center ${isShortScreen ? "space-y-7 pt-5" : "space-y-3"}`}>
+          <h1 className={`font-extrabold bg-gradient-to-b from-[var(--theme-fg-light)]/95 to-[var(--theme-fg-dark)] bg-clip-text text-transparent ${isShortScreen ? `${isMobileScreen ? "text-[46px] tracking-[-0.04em] leading-[1.1] mx-[50px] pb-[20px]" : "text-[50px] tracking-[-0.06em] leading-[2.4]"}` : "text-7xl tracking-tight leading-[2.4]"}`}>
             {t("main.title")}
           </h1>
-          <p className={`text-[var(--theme-text-muted)] leading-[1.8] tracking-tight max-w-3xl mx-auto ${isShortScreen ? "text-[20px]" : "text-xl"}`}>
+          <p className={`text-[var(--theme-text-muted)] leading-[1.8] tracking-tight max-w-3xl ${isShortScreen ? `${isMobileScreen ? "text-[15px] mx-[70px]" : "text-[20px] mx-auto"}` : "text-xl mx-auto"}`}>
             {t("main.descriptionStart")}{" "}
             <span className="text-[var(--theme-fg-base)] font-medium">{t("main.descriptionHighlight")}</span>{" "}
             {t("main.descriptionEnd")}
           </p>
-          <div className="flex justify-center gap-4 mt-20 mb-4">
+          <div className={`flex justify-center gap-4 ${isMobileScreen ? "mt-10" : "mt-20"} mb-4`}>
             <Link
               href={`/${i18n.language}/started`}
-              className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-base text-[var(--theme-border-base)] font-medium px-5 py-3 rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
+              className={`cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-base text-[var(--theme-border-base)] font-medium ${isMobileScreen ? "px-4 py-2" : "px-5 py-3"} rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out`}
             >
               {t("main.started")}
             </Link>
             <Link
               href={`/${i18n.language}/learn`}
-              className="cursor-pointer flex items-center border border-[var(--theme-border-base)] text-base text-[var(--theme-fg-base)] font-medium px-5 py-3 rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+              className={`cursor-pointer border border-[var(--theme-border-base)] text-base text-[var(--theme-fg-base)] font-medium ${isMobileScreen ? "px-4 py-2" : "px-5 py-3"} rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out`}
             >
               {t("main.learn")}
             </Link>

@@ -68,7 +68,7 @@ export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderPr
       </div>
 
       {isMenuOpen && (
-        <div className="fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-[var(--theme-bg-base)] z-40 flex flex-col pl-[25px] pt-[15px] font-[family-name:var(--font-geist-sans)]">
+        <div className="fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-[var(--theme-bg-base)] z-40 flex flex-col pl-[25px] pt-[15px] shadow font-[family-name:var(--font-geist-sans)]">
           {navLinks.map(({ href, label }): React.ReactNode => (
             <Link
               key={href}

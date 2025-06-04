@@ -12,7 +12,7 @@ import SearchModal from "./SearchModal";
 export default function Header(): React.ReactNode {
   const { t, i18n } = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
-  const { isShortScreen }: AppContext = useAppContext();
+  const { isShortScreen, isMobileScreen }: AppContext = useAppContext();
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isSearchClosing, setIsSearchClosing] = useState<boolean>(false);
 
@@ -50,7 +50,7 @@ export default function Header(): React.ReactNode {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full h-[65px] z-60 flex items-center bg-[var(--theme-bg-base)]/80 backdrop-blur-[5px] border-b border-[var(--theme-border-base)] ${isShortScreen ? "px-6" : "px-14"} py-[15px] bg-[var(--theme-bg-base)] font-[family-name:var(--font-geist-sans)]`}>
+      <header className={`fixed top-0 left-0 ${isMobileScreen ? "w-100" : "w-full"} h-[65px] z-60 flex items-center bg-[var(--theme-bg-base)]/80 backdrop-blur-[5px] border-b border-[var(--theme-border-base)] ${isShortScreen ? "px-6" : "px-14"} py-[15px] bg-[var(--theme-bg-base)] font-[family-name:var(--font-geist-sans)]`}>
         <div className="flex items-center space-x-3 mr-10">
           <Link href="/">
             <Image

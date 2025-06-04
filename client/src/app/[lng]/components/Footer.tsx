@@ -19,7 +19,7 @@ interface NavLink {
 export default function Footer(): React.ReactNode {
   const { t, i18n } = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
-  const { isShortScreen }: AppContext = useAppContext();
+  const { isShortScreen, isMobileScreen }: AppContext = useAppContext();
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>(FALLBACK_THEME);
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -90,10 +90,10 @@ export default function Footer(): React.ReactNode {
         <CookieBanner />
       )}
 
-      <footer className="row-start-4 flex flex-wrap w-full py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]">
+      <footer className={`row-start-4 flex flex-wrap ${isMobileScreen ? "w-100" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
         <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isShortScreen ? "px-[25px]" : "px-[40px]"}`}>
-          <div className={`grid ${isShortScreen ? "grid-cols-[1fr_6.5fr]" : "grid-cols-[1fr_6fr]"}`}>
-            <div className="text-[var(--theme-fg-base)]">
+          <div className={`grid ${isShortScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
+            <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-5" : ""}`}>
               <Link
                 href="/"
                 className="inline-flex"
@@ -103,8 +103,8 @@ export default function Footer(): React.ReactNode {
                 </svg>
               </Link>
             </div>
-            <div className={`grid ${isShortScreen ? "grid-cols-[5.5fr_7fr_8.5fr_7.5fr_12fr]" : "grid-cols-[6.5fr_7fr_8.5fr_7.5fr_9fr]"} text-[14px]`}>
-              <div>
+            <div className={`grid ${isShortScreen ? `${isMobileScreen ? "grid-cols-[1.2fr_1fr]" : "grid-cols-[5.5fr_7fr_8.5fr_7.5fr_12fr]"}` : "grid-cols-[6.5fr_7fr_8.5fr_7.5fr_9fr]"} text-[14px]`}>
+              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.resources")}
                 </p>
@@ -120,7 +120,7 @@ export default function Footer(): React.ReactNode {
                   ))}
                 </nav>
               </div>
-              <div>
+              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.more")}
                 </p>
@@ -136,7 +136,7 @@ export default function Footer(): React.ReactNode {
                   ))}
                 </nav>
               </div>
-              <div>
+              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.aboutVercel")}
                 </p>
@@ -152,7 +152,7 @@ export default function Footer(): React.ReactNode {
                   ))}
                 </nav>
               </div>
-              <div>
+              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.legal")}
                 </p>
@@ -174,7 +174,7 @@ export default function Footer(): React.ReactNode {
                   </button>
                 </nav>
               </div>
-              <div>
+              <div className={`${isMobileScreen ? "col-span-full max-w-[95%]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.subscribeTitle")}</p>
                 <p className="mb-3 text-[14px] text-[var(--theme-text-muted)]">
                   {t("footer.subscribeDescription")}
@@ -212,7 +212,7 @@ export default function Footer(): React.ReactNode {
           </div>
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-col items-start text-[14px] text-[var(--theme-text-muted)]">
-              <span className="pb-[15px]">© 2025 Vercel, Inc.</span>
+              <span className="pb-[15px] w-[150px]">© 2025 Vercel, Inc.</span>
               <div className="flex flex-row items-center gap-x-3">
                 <Link
                   href={`/${i18n.language}/github`}
@@ -250,7 +250,9 @@ export default function Footer(): React.ReactNode {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <LanguageSwitcher i18n={i18n} />
+              {!isMobileScreen && (
+                <LanguageSwitcher i18n={i18n} />
+              )}
               <ThemeSwitcher theme={theme} />
             </div>
           </div>
