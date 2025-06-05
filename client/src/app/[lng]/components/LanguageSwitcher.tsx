@@ -114,7 +114,7 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
 
   return (
     <>
-      <div className="relative h-10 w-[305px]">
+      <div className="relative h-10">
         <div className="absolute right-0 flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] rounded-full px-1 py-1">
           <div className={`flex items-center transition duration-200 ease-in-out ${animationClass}`}>
             {collapsed && options.map(({ value, icon }): React.ReactNode => {

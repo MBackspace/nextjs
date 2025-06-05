@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
+import { AppContext, useAppContext } from "./ContextProvider";
 
 interface SearchModalProps {
   isSearchOpen: boolean;
@@ -18,6 +19,7 @@ interface SearchResult {
 
 export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearchClose }: SearchModalProps): React.ReactNode {
   const { t, i18n } = useT("app", {});
+  const { isMobileScreen }: AppContext = useAppContext();
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
   const SearchResults: SearchResult[] = [
@@ -34,11 +36,11 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
     <>
       {isSearchOpen && (
         <div
-          className={`fixed inset-0 ${isSearchClosing ? "" : "bg-[var(--theme-bg-dark)]/80"} flex items-start pt-[110px] justify-center z-50 font-[family-name:var(--font-geist-sans)]`}
+          className={`fixed inset-0 ${isSearchClosing ? "" : `${isMobileScreen ? "bg-[#000000]/40" : "bg-[var(--theme-bg-dark)]/80"}`} flex items-start pt-[110px] justify-center ${isMobileScreen ? "z-60" : "z-50"} font-[family-name:var(--font-geist-sans)]`}
           onClick={(): void => handleSearchClose()}
         >
           <div
-            className={`bg-[var(--theme-bg-dark)] w-full max-w-[640px] min-h-[380px] border border-[var(--theme-border-base)] shadow rounded-[12px] ${isSearchClosing ? "search-modal-scale-out" : "search-modal-scale-in"}`}
+            className={`${isMobileScreen ? "absolute bottom-0 h-[555px] rounded-tl-[12px] rounded-tr-[12px]" : "rounded-[12px]"} bg-[var(--theme-bg-dark)] w-full max-w-[640px] border border-[var(--theme-border-base)] shadow ${isSearchClosing ? `${isMobileScreen ? "search-modal-translate-out" : "search-modal-scale-out"}` : `${isMobileScreen ? "search-modal-translate-in" : "search-modal-scale-in"}`}`}
             onClick={(e: React.MouseEvent): void => e.stopPropagation()}
           >
             <div className="p-3 border-b border-[var(--theme-border-base)]">
@@ -60,14 +62,16 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
                 <input
                   type="text"
                   placeholder={t("header.search.input")}
-                  className="w-full text-[18px] outline-none placeholder-[var(--theme-text-muted)] pl-1"
+                  className={`w-full ${isMobileScreen ? "text-[16px]" : "text-[18px]"} outline-none placeholder-[var(--theme-text-muted)] pl-1`}
                 />
-                <span
-                  className="cursor-pointer transition duration-200 ease-in-out border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] px-[4px] py-[1px] rounded hover:bg-[var(--theme-bg-muted)]"
-                  onClick={handleSearchClose}
-                >
-                  Esc
-                </span>
+                {!isMobileScreen && (
+                  <span
+                    className="cursor-pointer transition duration-200 ease-in-out border border-[var(--theme-text-subtle)] bg-[var(--theme-bg-base)] text-[12px] text-[var(--theme-fg-base)] px-[4px] py-[1px] rounded hover:bg-[var(--theme-bg-muted)]"
+                    onClick={handleSearchClose}
+                  >
+                    Esc
+                  </span>
+                )}
               </div>
             </div>
             <div className="p-2 text-[var(--theme-fg-base)]">
@@ -75,7 +79,7 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
                 <Link
                   key={href}
                   href={href}
-                  className={`transition duration-200 ease-in-out flex items-center p-[9px] pb-[11px] text-sm rounded ${index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
+                  className={`transition duration-200 ease-in-out flex items-center p-[9px] ${isMobileScreen ? "pb-[19px]" : "pb-[11px]"} text-sm rounded ${index === selectedResultIndex && !isMobileScreen ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
                   onMouseEnter={(): void => setSelectedResultIndex(index)}
                 >
                   <Image
@@ -106,6 +110,14 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
             animation: search-modal-scale-in 0.2s ease forwards;
           }
 
+          .search-modal-translate-out {
+            animation: search-modal-translate-out 0.2s ease-out forwards;
+          }
+
+          .search-modal-translate-in {
+            animation: search-modal-translate-in 0.2s ease-out forwards;
+          }
+
           @keyframes search-modal-scale-out {
             from {
               transform: scale(1);
@@ -124,6 +136,28 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
             }
             to {
               transform: scale(1);
+              opacity: 1;
+            }
+          }
+
+          @keyframes search-modal-translate-out {
+            from {
+              transform: translateY(0);
+              opacity: 1;
+            }
+            to {
+              transform: translateY(100%);
+              opacity: 0;
+            }
+          }
+
+          @keyframes search-modal-translate-in {
+            from {
+              transform: translateY(100%);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
               opacity: 1;
             }
           }

@@ -39,7 +39,7 @@ export default function CookieBanner(): React.ReactNode {
       {visible && (
         <>
           <div className="fixed bottom-4 left-4 right-4 w-fit p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 cookie-banner-translate-in font-[family-name:var(--font-geist-sans)]">
-            <p className={`${isMobileScreen ? "w-82" : "w-[380px]"} text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2`}>
+            <p className={`${isMobileScreen ? "w-80" : "w-[380px]"} text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2`}>
               {t("cookieBanner.message")}
             </p>
             <div className="flex justify-between items-center">
