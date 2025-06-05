@@ -79,7 +79,7 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
                 <Link
                   key={href}
                   href={href}
-                  className={`transition duration-200 ease-in-out flex items-center p-[9px] ${isMobileScreen ? "pb-[19px]" : "pb-[11px]"} text-sm rounded ${index === selectedResultIndex && !isMobileScreen ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]"}`}
+                  className={`transition duration-200 ease-in-out flex items-center p-[9px] ${isMobileScreen ? "py-[13px]" : "py-[11px]"} text-sm rounded ${!isMobileScreen ? index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]" : ""}`}
                   onMouseEnter={(): void => setSelectedResultIndex(index)}
                 >
                   <Image
