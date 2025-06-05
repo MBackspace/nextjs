@@ -41,76 +41,76 @@ export default function Main(): React.ReactNode {
       <main className={`relative flex flex-col row-start-2 ${isMobileScreen ? "w-100" : "w-full"} items-center ${isMobileScreen ? "pt-0 pb-[160px]" : "pt-[60px] pb-[130px]"} bg-[var(--theme-bg-base)]`}>
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-full max-w-screen-xl z-0">
           <div
-            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[-10%] left-[-2%] w-[104%] main-width-104" : "top-[15%] left-[2%] w-[96%] main-width-96"}` : "top-[14%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[-10%] left-[-2%] w-[104%] main-width-104-top" : "top-[15%] left-[2%] w-[96%] main-width-96"}` : "top-[14%] left-[-2%] w-[104%] main-width-104-top"} h-px border-t border-dashed border-[#666666] opacity-0`}
             style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)",
+              maskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[22.5%] left-[-2%] w-[104%] main-width-104" : "top-[31.5%] left-[2%] w-[96%] main-width-96"}` : "top-[34%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[22.5%] left-[-2%] w-[104%] main-width-104-top" : "top-[31.5%] left-[2%] w-[96%] main-width-96"}` : "top-[34%] left-[-2%] w-[104%] main-width-104-top"} h-px border-t border-dashed border-[#666666] opacity-0`}
             style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)",
+              maskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute ${isShortScreen ? `${isMobileScreen ? "bottom-[52%] left-[-2%] w-[104%] main-width-104" : "bottom-[43%] left-[2%] w-[96%] main-width-96"}` : "bottom-[41%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "bottom-[52%] left-[-2%] w-[104%] main-width-104-bottom" : "bottom-[43%] left-[2%] w-[96%] main-width-96"}` : "bottom-[41%] left-[-2%] w-[104%] main-width-104-bottom"} h-px border-t border-dashed border-[#666666] opacity-0`}
             style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)",
+              maskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)"
             }}
           />
           <div
-            className={`absolute ${isShortScreen ? `${isMobileScreen ? "bottom-[32%] left-[-2%] w-[104%] main-width-104" : "bottom-[14.4%] left-[2%] w-[96%] main-width-96"}` : "bottom-[13.4%] left-[-2%] w-[104%] main-width-104"} h-px border-t border-dashed border-[var(--theme-text-subtle-dark)]`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "bottom-[32%] left-[-2%] w-[104%] main-width-104-bottom" : "bottom-[14.4%] left-[2%] w-[96%] main-width-96"}` : "bottom-[13.4%] left-[-2%] w-[104%] main-width-104-bottom"} h-px border-t border-dashed border-[#666666] opacity-0`}
             style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)",
+              maskImage: "linear-gradient(to right, transparent 0%, #666666 5%, #666666 95%, transparent 100%)"
             }}
           />
-          <div className={`absolute ${isMobileScreen ? "top-[-18%]" : "top-[3%]"} ${isShortScreen ? "left-[7.5%]" : "left-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
+          <div className={`absolute ${isMobileScreen ? "top-[-18%]" : "top-[3%]"} ${isShortScreen ? "left-[7.5%]" : "left-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[#666666] main-height-96 opacity-0`} />
           {!isMobileScreen && (
             <>
               <div
-                className={`absolute ${isShortScreen ? "top-[6%] left-[32.2%]" : "top-[5%] left-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
+                className={`absolute ${isShortScreen ? "top-[6%] left-[32.2%]" : "top-[5%] left-[36.8%]"} h-[9%] w-px border-l border-dashed border-[#666666] main-height-9 opacity-0`}
                 style={{
-                  WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-                  maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                  WebkitMaskImage: "linear-gradient(to top, #666666 0%, #666666 5%, #666666 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to top, #666666 0%, #666666 5%, #666666 95%, transparent 100%)"
                 }}
               />
               <div
-                className={`absolute ${isShortScreen ? "bottom-[3%] left-[31%]" : "bottom-[1%] left-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
+                className={`absolute ${isShortScreen ? "top-[57%] left-[31%]" : "top-[59%] left-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[#666666] main-height-40 opacity-0`}
                 style={{
-                  WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-                  maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                  WebkitMaskImage: "linear-gradient(to bottom, #666666 0%, #666666 5%, #666666 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to bottom, #666666 0%, #666666 5%, #666666 95%, transparent 100%)"
                 }}
               />
               <div
-                className={`absolute ${isShortScreen ? "top-[6%] right-[32.2%]" : "top-[5%] right-[36.8%]"} h-[9%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-9`}
+                className={`absolute ${isShortScreen ? "top-[6%] right-[32.2%]" : "top-[5%] right-[36.8%]"} h-[9%] w-px border-l border-dashed border-[#666666] main-height-9 opacity-0`}
                 style={{
-                  WebkitMaskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-                  maskImage: "linear-gradient(to top, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                  WebkitMaskImage: "linear-gradient(to top, #666666 0%, #666666 5%, #666666 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to top, #666666 0%, #666666 5%, #666666 95%, transparent 100%)"
                 }}
               />
               <div
-                className={`absolute ${isShortScreen ? "bottom-[3%] right-[31%]" : "bottom-[1%] right-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[var(--theme-text-subtle-dark)] main-height-40`}
+                className={`absolute ${isShortScreen ? "top-[57%] right-[31%]" : "top-[59%] right-[36%]"} h-[40%] w-px border-l border-[1.5px] border-dashed border-[#666666] main-height-40 opacity-0`}
                 style={{
-                  WebkitMaskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)",
-                  maskImage: "linear-gradient(to bottom, var(--theme-text-subtle-dark) 0%, var(--theme-text-subtle-dark) 5%, var(--theme-text-subtle-dark) 95%, transparent 100%)"
+                  WebkitMaskImage: "linear-gradient(to bottom, #666666 0%, #666666 5%, #666666 95%, transparent 100%)",
+                  maskImage: "linear-gradient(to bottom, #666666 0%, #666666 5%, #666666 95%, transparent 100%)"
                 }}
               />
             </>
           )}
-          <div className={`absolute ${isMobileScreen ? "top-[-18%]" : "top-[3%]"} ${isShortScreen ? "right-[7.5%]" : "right-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[var(--theme-text-subtle-dark)] main-height-96`} />
+          <div className={`absolute ${isMobileScreen ? "top-[-18%]" : "top-[3%]"} ${isShortScreen ? "right-[7.5%]" : "right-[2.5%] border-[1.5px]"} h-[96%] w-px border-l border-dashed border-[#666666] main-height-96 opacity-0`} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="75"
             height="75"
             viewBox="0 0 75 75"
             fill="none"
-            stroke="var(--theme-text-subtle-dark)"
+            stroke="#666666"
             strokeDasharray="2 2"
-            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[calc(-10%-37.5px)] left-[calc(7.5%-37.5px)]" : "top-[calc(15%-37.5px)] left-[calc(7.5%-37.5px)]"}` : "top-[calc(14%-37.5px)] left-[calc(2.5%-37.5px)]"} main-stroke-dashoffset-in`}
+            className={`absolute ${isShortScreen ? `${isMobileScreen ? "top-[calc(-10%-37.5px)] left-[calc(7.5%-37.5px)]" : "top-[calc(15%-37.5px)] left-[calc(7.5%-37.5px)]"}` : "top-[calc(14%-37.5px)] left-[calc(2.5%-37.5px)]"} main-opacity-in opacity-0`}
             transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
           >
             <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
@@ -129,9 +129,9 @@ export default function Main(): React.ReactNode {
               height="75"
               viewBox="0 0 75 75"
               fill="none"
-              stroke="var(--theme-text-subtle-dark)"
+              stroke="#666666"
               strokeDasharray="2 2"
-              className={`absolute ${isShortScreen ? "bottom-[calc(14.4%-37.5px)] right-[calc(31%-37.5px)]" : "bottom-[calc(13.4%-37.5px)] right-[calc(36%-37.5px)]"} rotate-180 main-stroke-dashoffset-in`}
+              className={`absolute ${isShortScreen ? "bottom-[calc(14.4%-37.5px)] right-[calc(31%-37.5px)]" : "bottom-[calc(13.4%-37.5px)] right-[calc(36%-37.5px)]"} rotate-180 main-opacity-in opacity-0`}
               transform={`${isMobileScreen ? "scale(0.33)" : "scale(1)"}`}
             >
               <path d="M74 37.5C74 30.281 71.8593 23.2241 67.8486 17.2217C63.838 11.2193 58.1375 6.541 51.4679 3.7784C44.7984 1.0158 37.4595 0.292977 30.3792 1.70134C23.2989 3.1097 16.7952 6.58599 11.6906 11.6906C6.58599 16.7952 3.1097 23.2989 1.70134 30.3792C0.292977 37.4595 1.0158 44.7984 3.7784 51.4679C6.541 58.1375 11.2193 63.838 17.2217 67.8486C23.2241 71.8593 30.281 74 37.5 74" />
@@ -163,7 +163,7 @@ export default function Main(): React.ReactNode {
             </Link>
             <Link
               href={`/${i18n.language}/learn`}
-              className={`cursor-pointer border border-[var(--theme-border-base)] text-base text-[var(--theme-fg-base)] font-medium ${isMobileScreen ? "px-4 py-2" : "px-5 py-3"} rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out`}
+              className={`cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-base text-[var(--theme-fg-base)] font-medium ${isMobileScreen ? "px-4 py-2" : "px-5 py-3"} rounded-lg hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out`}
             >
               {t("main.learn")}
             </Link>
@@ -198,95 +198,122 @@ export default function Main(): React.ReactNode {
       <style>
         {`
           .main-width-96 {
-            animation: main-width-96 0.96s ease forwards;
+            animation-name: main-width-96;
+            animation-duration: 1.08s;
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: 0.15s;
           }
 
-          .main-width-104 {
-            animation: main-width-104 1.04s ease forwards;
+          .main-width-104-top {
+            animation-name:  main-width-104;
+            animation-duration: 1.08s;
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: 0.15s;
+          }
+
+          .main-width-104-bottom {
+            animation-name:  main-width-104;
+            animation-duration: 1.08s;
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.15s + 0.3s);
           }
 
           .main-height-96 {
-            animation: main-height-96 0.96s ease forwards;
+            animation-name: main-height-96;
+            animation-duration: 1.08s;
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.15s + 0.1s);
           }
 
           .main-height-9 {
-            animation: main-height-9 0.9s ease forwards;
+            animation-name: main-height-9;
+            animation-duration: calc(1.08s / 2);
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.15s + 0.1s);
           }
 
           .main-height-40 {
-            animation: main-height-40 0.4s ease forwards;
+            animation-name: main-height-40;
+            animation-duration: 1.08s;
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.15s + 0.1s);
           }
 
-          .main-stroke-dashoffset-in {
-            animation: main-stroke-dashoffset-in 0.5s ease forwards;
+          .main-opacity-in {
+            animation-name: main-opacity-in;
+            animation-duration: calc(1.08s / 2);
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-fill-mode: forwards;
+            animation-delay: calc(0.15s + 0.4s);
           }
 
           @keyframes main-width-96 {
             from {
               width: 0;
-              -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              border-width: 2px;
+              opacity: 1;
             }
             to {
               width: 96%;
+              opacity: 0.3;
             }
           }
 
           @keyframes main-width-104 {
             from {
               width: 0;
-              -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              border-width: 2px;
+              opacity: 1;
             }
             to {
               width: 104%;
+              opacity: 0.3;
             }
           }
 
           @keyframes main-height-96 {
             from {
               height: 0;
-              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              border-width: 2px;
+              opacity: 1;
             }
             to {
               height: 96%;
+              opacity: 0.3;
             }
           }
 
           @keyframes main-height-9 {
             from {
               height: 0;
-              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              border-width: 2px;
+              opacity: 1;
             }
             to {
               height: 9%;
+              opacity: 0.3;
             }
           }
 
           @keyframes main-height-40 {
             from {
               height: 0;
-              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              mask-image: linear-gradient(to right, transparent 0%, transparent 5%, transparent 95%, var(--theme-fg-dark) 100%);
-              border-width: 2px;
+              opacity: 1;
             }
             to {
               height: 40%;
+              opacity: 0.3;
             }
           }
 
-          @keyframes main-stroke-dashoffset-in {
+          @keyframes main-opacity-in {
             from {
-              stroke-dashoffset: 500;
+              opacity: 0;
             }
             to {
-              stroke-dashoffset: 0;
+              opacity: 0.3;
             }
           }
         `}

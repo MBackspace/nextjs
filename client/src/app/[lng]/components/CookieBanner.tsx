@@ -45,7 +45,7 @@ export default function CookieBanner(): React.ReactNode {
             <div className="flex justify-between items-center">
               <div className="flex gap-[12px] pr-[24px]">
                 <button
-                  className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                  className="cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
                   onClick={(): void => {
                     handleDeny();
                     handleConsentClose();
@@ -53,7 +53,7 @@ export default function CookieBanner(): React.ReactNode {
                   {t("cookieBanner.deny")}
                 </button>
                 <button
-                  className="cursor-pointer border border-[var(--theme-border-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                  className="cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
                   onClick={(): void => {
                     handleAcceptAll();
                     handleConsentClose();

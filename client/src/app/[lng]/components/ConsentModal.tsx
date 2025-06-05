@@ -138,7 +138,7 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
             <div className="flex justify-between items-center border-t border-[var(--theme-border-base)] bg-[var(--theme-bg-dark)] p-6 pb-0">
               <div className="flex gap-3">
                 <button
-                  className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                  className="cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
                   onClick={(): void => {
                     handleDeny();
                     handleConsentClose();
@@ -147,7 +147,7 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
                   {t("consentModal.deny")}
                 </button>
                 <button
-                  className="cursor-pointer border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+                  className="cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
                   onClick={(): void => {
                     handleAcceptAll();
                     handleConsentClose();

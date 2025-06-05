@@ -62,7 +62,7 @@ export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProp
         </button>
         <Link
           href={`/${i18n.language}/deploy`}
-          className="cursor-pointer flex items-center border border-[var(--theme-border-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] transition duration-200 ease-in-out"
+          className="cursor-pointer flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
         >
           <Image
             style={{ filter: "var(--theme-image-filter-light)" }}
