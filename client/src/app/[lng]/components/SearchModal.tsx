@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useT } from "@/app/i18n/client";
-import { AppContext, useAppContext } from "./ContextProvider";
+import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 
 interface SearchModalProps {
   isSearchOpen: boolean;
@@ -19,7 +19,7 @@ interface SearchResult {
 
 export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearchClose }: SearchModalProps): React.ReactNode {
   const { t, i18n } = useT("app", {});
-  const { isMobileScreen }: AppContext = useAppContext();
+  const { isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
   const SearchResults: SearchResult[] = [
@@ -40,7 +40,7 @@ export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearc
           onClick={(): void => handleSearchClose()}
         >
           <div
-            className={`${isMobileScreen ? "absolute bottom-0 h-[555px] rounded-tl-[12px] rounded-tr-[12px]" : "rounded-[12px]"} bg-[var(--theme-bg-dark)] w-full max-w-[640px] border border-[var(--theme-border-base)] shadow ${isSearchClosing ? `${isMobileScreen ? "search-modal-translate-out" : "search-modal-scale-out"}` : `${isMobileScreen ? "search-modal-translate-in" : "search-modal-scale-in"}`}`}
+            className={`${isMobileScreen ? "absolute bottom-0 h-[550px] rounded-tl-[12px] rounded-tr-[12px]" : "rounded-[12px]"} bg-[var(--theme-bg-dark)] w-full max-w-[640px] border border-[var(--theme-border-base)] shadow ${isSearchClosing ? `${isMobileScreen ? "search-modal-translate-out" : "search-modal-scale-out"}` : `${isMobileScreen ? "search-modal-translate-in" : "search-modal-scale-in"}`}`}
             onClick={(e: React.MouseEvent): void => e.stopPropagation()}
           >
             <div className="p-3 border-b border-[var(--theme-border-base)]">

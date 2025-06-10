@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, FALLBACK_THEME } from "@/app/lib/constants";
+import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_SCREEN_WIDTH } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
-import { AppContext, useAppContext } from "./ContextProvider";
+import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import ConsentModal from "./ConsentModal";
 import CookieBanner from "./CookieBanner";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -19,7 +19,7 @@ interface NavLink {
 export default function Footer(): React.ReactNode {
   const { t, i18n } = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
-  const { isShortScreen, isMobileScreen }: AppContext = useAppContext();
+  const { width, isTabletScreen, isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>(FALLBACK_THEME);
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -127,11 +127,11 @@ export default function Footer(): React.ReactNode {
         <CookieBanner />
       )}
 
-      <footer className={`row-start-4 flex flex-wrap ${isMobileScreen ? "w-100" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
-        <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isShortScreen ? "px-[25px]" : "px-[40px]"}`}>
-          <div className={`grid ${isShortScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
+      <footer className={`row-start-4 flex flex-wrap ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
+        <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isTabletScreen ? "px-[25px]" : "px-[40px]"}`}>
+          <div className={`grid ${isTabletScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
             <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-5" : ""}`}>
-              <div className={`flex items-center ${isMobileScreen ? "flex-row gap-x-35" : ""}`}>
+              <div className={`flex items-center ${isMobileScreen ? "flex-row justify-between items-center" : "flex-row items-center"} w-full`}>
                 <Link
                   href="/"
                   className="inline-flex"
@@ -143,8 +143,8 @@ export default function Footer(): React.ReactNode {
                 {isMobileScreen && SocialLinks}
               </div>
             </div>
-            <div className={`grid ${isShortScreen ? `${isMobileScreen ? "grid-cols-[1.2fr_1fr]" : "grid-cols-[5.5fr_7fr_8.5fr_7.5fr_12fr]"}` : "grid-cols-[6.5fr_7fr_8.5fr_7.5fr_9fr]"} text-[14px]`}>
-              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
+            <div className={`grid ${isTabletScreen ? `${isMobileScreen ? `${width < FALLBACK_MOBILE_SCREEN_WIDTH ? "grid-cols-[1fr]" : "grid-cols-[1.2fr_1fr]"}` : "grid-cols-[5.5fr_7fr_8.5fr_7.5fr_12fr]"}` : "grid-cols-[6.5fr_7fr_8.5fr_7.5fr_9fr]"} text-[14px]`}>
+              <div className={`${isMobileScreen ? "pb-10 max-w-[85vw]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.resources")}
                 </p>
@@ -160,7 +160,7 @@ export default function Footer(): React.ReactNode {
                   ))}
                 </nav>
               </div>
-              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
+              <div className={`${isMobileScreen ? "pb-10 max-w-[85vw]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.more")}
                 </p>
@@ -176,7 +176,7 @@ export default function Footer(): React.ReactNode {
                   ))}
                 </nav>
               </div>
-              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
+              <div className={`${isMobileScreen ? "pb-10 max-w-[85vw]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.aboutVercel")}
                 </p>
@@ -192,7 +192,7 @@ export default function Footer(): React.ReactNode {
                   ))}
                 </nav>
               </div>
-              <div className={`${isMobileScreen ? "pb-10" : ""}`}>
+              <div className={`${isMobileScreen ? "pb-10 max-w-[85vw]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.legal")}
                 </p>
@@ -214,7 +214,7 @@ export default function Footer(): React.ReactNode {
                   </button>
                 </nav>
               </div>
-              <div className={`${isMobileScreen ? "col-span-full max-w-[95%]" : ""}`}>
+              <div className={`${isMobileScreen ? "col-span-full max-w-[85vw]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.subscribeTitle")}</p>
                 <p className="mb-3 text-[14px] text-[var(--theme-text-muted)]">
                   {t("footer.subscribeDescription")}

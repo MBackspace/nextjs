@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { i18n, TFunction } from "i18next";
 
-interface LongHeaderProps {
+interface LaptopHeaderProps {
   t: TFunction<string | string[], undefined>;
   i18n: i18n;
   handleSearchOpen: () => void;
@@ -17,7 +17,7 @@ interface NavLink {
   isExternal: boolean;
 }
 
-export default function LongHeader({ t, i18n, handleSearchOpen }: LongHeaderProps): React.ReactNode {
+export default function LaptopHeader({ t, i18n, handleSearchOpen }: LaptopHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
   const navLinks: NavLink[] = [
     { href: `/${i18n.language}/showcase`, label: t("header.showcase"), isExternal: false },

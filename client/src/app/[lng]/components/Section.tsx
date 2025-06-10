@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { AppContext, useAppContext } from "./ContextProvider";
+import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 
 export default function Section(): React.ReactNode {
   const [hydrated, setHydrated] = useState<boolean>(false);
-  const { isMobileScreen }: AppContext = useAppContext();
+  const { isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
 
   useEffect((): void => {
     setHydrated(true);
@@ -14,7 +14,7 @@ export default function Section(): React.ReactNode {
   if (!hydrated) return null;
 
   return (
-    <section className={`flex flex-col row-start-3 ${isMobileScreen ? "w-100" : "w-full"} items-center bg-[var(--theme-bg-base)]`}>
+    <section className={`flex flex-col row-start-3 ${isMobileScreen ? "w-[100vw]" : "w-full"} items-center bg-[var(--theme-bg-base)]`}>
     </section>
   );
 }

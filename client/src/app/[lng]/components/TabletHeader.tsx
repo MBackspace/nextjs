@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { i18n, TFunction } from "i18next";
 
-interface ShortHeaderProps {
+interface TabletHeaderProps {
   t: TFunction<string | string[], undefined>;
   i18n: i18n;
   handleSearchOpen: () => void;
@@ -16,7 +16,7 @@ interface NavLink {
   isExternal: boolean;
 }
 
-export default function ShortHeader({ t, i18n, handleSearchOpen }: ShortHeaderProps): React.ReactNode {
+export default function TabletHeader({ t, i18n, handleSearchOpen }: TabletHeaderProps): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navLinks: NavLink[] = [
     { href: `/${i18n.language}/learn`, label: t("header.learn"), isExternal: false },

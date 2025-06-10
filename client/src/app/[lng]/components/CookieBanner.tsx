@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useT } from "@/app/i18n/client";
-import { AppContext, useAppContext } from "./ContextProvider";
+import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import { COOKIE_KEYS } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import ConsentModal, { handleDeny, handleAcceptAll } from "./ConsentModal";
 
 export default function CookieBanner(): React.ReactNode {
   const { t } = useT("app", {});
-  const { isMobileScreen }: AppContext = useAppContext();
+  const { isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [visible, setVisible] = useState<boolean>(false);
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
 
@@ -39,13 +39,13 @@ export default function CookieBanner(): React.ReactNode {
       {visible && (
         <>
           <div className="fixed bottom-4 left-4 right-4 w-fit p-4 bg-[var(--theme-bg-dark)] shadow border border-[var(--theme-border-base)] rounded-2xl z-60 cookie-banner-translate-in font-[family-name:var(--font-geist-sans)]">
-            <p className={`${isMobileScreen ? "w-80" : "w-[380px]"} text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2`}>
+            <p className={`${isMobileScreen ? "w-[290px]" : "w-[380px]"} text-[var(--theme-fg-base)] text-[14px] mb-3 mr-2`}>
               {t("cookieBanner.message")}
             </p>
             <div className="flex justify-between items-center">
-              <div className="flex gap-[12px] pr-[24px]">
+              <div className={`flex gap-[12px] ${isMobileScreen ? "pr-[12px]" : "pr-[24px]"}`}>
                 <button
-                  className="cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
+                  className={`${isMobileScreen ? "max-w-[60px]" : ""} whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out`}
                   onClick={(): void => {
                     handleDeny();
                     handleConsentClose();
@@ -53,7 +53,7 @@ export default function CookieBanner(): React.ReactNode {
                   {t("cookieBanner.deny")}
                 </button>
                 <button
-                  className="cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
+                  className={`${isMobileScreen ? "max-w-[90px]" : ""} whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out`}
                   onClick={(): void => {
                     handleAcceptAll();
                     handleConsentClose();
@@ -62,7 +62,7 @@ export default function CookieBanner(): React.ReactNode {
                 </button>
               </div>
               <button
-                className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
+                className={`${isMobileScreen ? "max-w-[140px]" : ""} whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-full text-[14px] hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out`}
                 onClick={handleConsentOpen}
               >
                 {t("cookieBanner.settings")}
