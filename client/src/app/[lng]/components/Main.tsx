@@ -146,23 +146,23 @@ export default function Main(): React.ReactNode {
             </svg>
           )}
         </div>
-        <div className={`w-full max-w-screen-xl relative ${isMobileScreen ? "bottom-[65px]" : ""} z-10 text-center ${isTabletScreen ? "space-y-7 pt-5" : "space-y-3"}`}>
+        <div className={`w-full max-w-screen-xl relative ${isMobileScreen ? "bottom-[65px]" : ""} z-10 text-center ${isTabletScreen ? `space-y-7 ${isMobileScreen ? "pt-5" : "pt-4"}` : "space-y-3"}`}>
           <div
             style={isMobileScreen ? {
               paddingLeft: `${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? width * 0.06 : width * 0.14}px`,
               paddingRight: `${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? width * 0.06 : width * 0.14}px`
             } : undefined}
           >
-            <h1 className={`font-extrabold bg-gradient-to-b from-[var(--theme-fg-light)]/95 to-[var(--theme-fg-dark)] bg-clip-text text-transparent ${isTabletScreen ? `${isMobileScreen ? "text-[48px] tracking-[-0.04em] leading-[1.1] pb-6" : "text-[50px] tracking-[-0.06em] leading-[2.4] pb-4"}` : "text-7xl tracking-tight leading-[2.4] pt-2"}`}>
+            <h1 className={`font-extrabold bg-gradient-to-b from-[var(--theme-fg-light)]/95 to-[var(--theme-fg-dark)] bg-clip-text text-transparent ${isTabletScreen ? `${isMobileScreen ? "text-[48px] tracking-[-0.04em] leading-[1.1] pb-6" : "text-[50px] tracking-[-0.06em] leading-[2.4] pb-2"}` : "text-[76px] tracking-[-0.05em] leading-[2.4]"}`}>
               {t("main.title")}
             </h1>
-            <p className={`text-[var(--theme-text-muted)] leading-[1.8] tracking-tight max-w-3xl mx-auto ${isTabletScreen ? `${isMobileScreen ? "text-[16px] pt-6" : "text-[20px] pt-4"}` : "text-xl pt-2"}`}>
+            <p className={`text-[var(--theme-text-muted)] max-w-3xl mx-auto ${isTabletScreen ? `${isMobileScreen ? "text-[16px] tracking-[-0.02em] leading-[1.6] pt-6" : "text-[20px] tracking-[-0.02em] leading-[1.8] pt-5"}` : "text-xl tracking-[-0.01em] leading-[1.8] pt-2"}`}>
               {t("main.descriptionStart")}{" "}
               <span className="text-[var(--theme-fg-base)] font-medium">{t("main.descriptionHighlight")}</span>{" "}
               {t("main.descriptionEnd")}
             </p>
           </div>
-          <div className={`flex justify-center gap-4 ${isMobileScreen ? "mt-10" : "mt-20"} mb-4`}>
+          <div className={`flex justify-center gap-4 ${isMobileScreen ? "mt-14" : "mt-20"} mb-4`}>
             <Link
               href={`/${i18n.language}/started`}
               className={`cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-base text-[var(--theme-border-base)] font-medium px-5 py-3 rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out`}

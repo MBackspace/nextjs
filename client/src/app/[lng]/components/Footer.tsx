@@ -127,7 +127,7 @@ export default function Footer(): React.ReactNode {
         <CookieBanner />
       )}
 
-      <footer className={`row-start-4 flex flex-wrap ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
+      <footer className={`row-start-4 flex flex-wrap ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
         <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isTabletScreen ? "px-[25px]" : "px-[40px]"}`}>
           <div className={`grid ${isTabletScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
             <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-5" : ""}`}>
@@ -214,7 +214,7 @@ export default function Footer(): React.ReactNode {
                   </button>
                 </nav>
               </div>
-              <div className={`${isMobileScreen ? "col-span-full max-w-[85vw]" : ""}`}>
+              <div className={`${isMobileScreen ? "col-span-full w-[330px]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">{t("footer.subscribeTitle")}</p>
                 <p className="mb-3 text-[14px] text-[var(--theme-text-muted)]">
                   {t("footer.subscribeDescription")}
