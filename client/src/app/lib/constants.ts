@@ -27,4 +27,6 @@ export const FALLBACK_LAPTOP_SCREEN_WIDTH: number = 1152 as const;
 
 export const FALLBACK_TABLET_SCREEN_WIDTH: number = 896 as const;
 
-export const FALLBACK_MOBILE_SCREEN_WIDTH: number = 375 as const;
+export const FALLBACK_MOBILE_L_SCREEN_WIDTH: number = 425 as const;
+
+export const FALLBACK_MOBILE_M_SCREEN_WIDTH: number = 375 as const;

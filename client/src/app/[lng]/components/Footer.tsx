@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_SCREEN_WIDTH } from "@/app/lib/constants";
+import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_L_SCREEN_WIDTH, FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import ConsentModal from "./ConsentModal";
@@ -143,7 +143,7 @@ export default function Footer(): React.ReactNode {
                 {isMobileScreen && SocialLinks}
               </div>
             </div>
-            <div className={`grid ${isTabletScreen ? `${isMobileScreen ? `${width < FALLBACK_MOBILE_SCREEN_WIDTH ? "grid-cols-[1fr]" : "grid-cols-[1.2fr_1fr]"}` : "grid-cols-[5.5fr_7fr_8.5fr_7.5fr_12fr]"}` : "grid-cols-[6.5fr_7fr_8.5fr_7.5fr_9fr]"} text-[14px]`}>
+            <div className={`grid ${isTabletScreen ? `${isMobileScreen ? `${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? "grid-cols-[1fr]" : "grid-cols-[1.2fr_1fr]"}` : "grid-cols-[5.5fr_7fr_8.5fr_7.5fr_12fr]"}` : "grid-cols-[6.5fr_7fr_8.5fr_7.5fr_9fr]"} text-[14px]`}>
               <div className={`${isMobileScreen ? "pb-10 max-w-[85vw]" : ""}`}>
                 <p className="text-[var(--theme-fg-base)] font-medium mb-4">
                   {t("footer.resources")}
@@ -256,7 +256,7 @@ export default function Footer(): React.ReactNode {
               {!isMobileScreen && SocialLinks}
             </div>
             <div className="flex items-center gap-2">
-              {!isMobileScreen && (
+              {!(width < FALLBACK_MOBILE_L_SCREEN_WIDTH) && (
                 <LanguageSwitcher i18n={i18n} />
               )}
               <ThemeSwitcher theme={theme} />

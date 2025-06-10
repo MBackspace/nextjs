@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
-import { FALLBACK_MOBILE_SCREEN_WIDTH } from "@/app/lib/constants";
+import { FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 
 export default function Main(): React.ReactNode {
@@ -149,8 +149,8 @@ export default function Main(): React.ReactNode {
         <div className={`w-full max-w-screen-xl relative ${isMobileScreen ? "bottom-[65px]" : ""} z-10 text-center ${isTabletScreen ? "space-y-7 pt-5" : "space-y-3"}`}>
           <div
             style={isMobileScreen ? {
-              paddingLeft: `${width < FALLBACK_MOBILE_SCREEN_WIDTH ? width * 0.06 : width * 0.15}px`,
-              paddingRight: `${width < FALLBACK_MOBILE_SCREEN_WIDTH ? width * 0.06 : width * 0.15}px`
+              paddingLeft: `${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? width * 0.06 : width * 0.14}px`,
+              paddingRight: `${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? width * 0.06 : width * 0.14}px`
             } : undefined}
           >
             <h1 className={`font-extrabold bg-gradient-to-b from-[var(--theme-fg-light)]/95 to-[var(--theme-fg-dark)] bg-clip-text text-transparent ${isTabletScreen ? `${isMobileScreen ? "text-[48px] tracking-[-0.04em] leading-[1.1] pb-6" : "text-[50px] tracking-[-0.06em] leading-[2.4] pb-4"}` : "text-7xl tracking-tight leading-[2.4] pt-2"}`}>
