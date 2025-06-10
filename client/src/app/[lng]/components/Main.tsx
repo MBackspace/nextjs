@@ -183,8 +183,8 @@ export default function Main(): React.ReactNode {
               onMouseLeave={handleMouseLeave}
               onClick={handleCopy}
             >
-              <p className={`font-[family-name:var(--font-geist-mono)] ${isTabletScreen ? "text-xs tracking-wide" : "text-sm tracking-tighter"}`}>
-                <span className="text-[8px]">▲</span>{" "}
+              <p className="font-[family-name:var(--font-geist-mono)] text-sm tracking-tighter">
+                <span className="text-[8px]">▲{" "}</span>
                 <span>~{" "}{command}</span>
                 <span className={`absolute right-[-28px] top-1/2 -translate-y-1/2 transition duration-200 ease-in-out ${hovered ? "opacity-100" : "opacity-0"}`}>
                   {copied ? (

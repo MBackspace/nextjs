@@ -1,4 +1,4 @@
-import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY, COOKIE_CATEGORY_MAP, COOKIE_EXPIRATION_DAYS } from "./constants";
+import { COOKIE_KEYS, COOKIE_CATEGORIES, COOKIE_CATEGORY_MAP, COOKIE_EXPIRATION_DAYS } from "./constants";
 
 type CookieKey = typeof COOKIE_KEYS[keyof typeof COOKIE_KEYS];
 
@@ -20,7 +20,7 @@ export const parseConsent = (): Record<string, boolean> | undefined => {
 export const setCookie = (name: CookieKey, value: string, days: number = COOKIE_EXPIRATION_DAYS): void => {
   const type: string | undefined = getCookieCategory(name);
   const consent: Record<string, boolean> | undefined = parseConsent() || {};
-  if (name === COOKIE_KEYS.CONSENT || type === COOKIE_ESSENTIAL_KEY || (type && consent[type])) {
+  if (name === COOKIE_KEYS.CONSENT || type === COOKIE_CATEGORIES.ESSENTIAL || (type && consent[type])) {
     const date: Date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;

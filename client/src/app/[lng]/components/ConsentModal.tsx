@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, COOKIE_ESSENTIAL_KEY, FALLBACK_COOKIE_CONSENT } from "@/app/lib/constants";
+import { COOKIE_KEYS, COOKIE_CATEGORIES, FALLBACK_COOKIE_CONSENT } from "@/app/lib/constants";
 import { parseConsent, setCookie } from "@/app/lib/cookies";
 
 interface ConsentModalProps {
@@ -19,7 +19,7 @@ interface Category {
 
 const buildCookieConsent = (value: boolean): Record<string, boolean> => {
   return Object.keys(FALLBACK_COOKIE_CONSENT).reduce((acc, key): Record<string, boolean> => {
-    acc[key] = key === COOKIE_ESSENTIAL_KEY ? true : value;
+    acc[key] = key === COOKIE_CATEGORIES.ESSENTIAL ? true : value;
     return acc;
   }, {} as Record<string, boolean>);
 };
@@ -45,22 +45,22 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
   const [renderKey, setRenderKey] = useState<number>(0);
   const categories: Category[] = [
     {
-      id: COOKIE_ESSENTIAL_KEY,
+      id: COOKIE_CATEGORIES.ESSENTIAL,
       name: t("consentModal.essential.name"),
       description: t("consentModal.essential.description")
     },
     {
-      id: "marketing",
+      id: COOKIE_CATEGORIES.MARKETING,
       name: t("consentModal.marketing.name"),
       description: t("consentModal.marketing.description")
     },
     {
-      id: "analytics",
+      id: COOKIE_CATEGORIES.ANALYTICS,
       name: t("consentModal.analytics.name"),
       description: t("consentModal.analytics.description")
     },
     {
-      id: "functional",
+      id: COOKIE_CATEGORIES.FUNCTIONAL,
       name: t("consentModal.functional.name"),
       description: t("consentModal.functional.description")
     }
@@ -120,10 +120,10 @@ export default function ConsentModal({ isConsentOpen, handleConsentClose }: Cons
                         className="sr-only peer"
                         checked={cookieConsent[category.id]}
                         onChange={(): void => toggle(category)}
-                        disabled={category.id === COOKIE_ESSENTIAL_KEY}
+                        disabled={category.id === COOKIE_CATEGORIES.ESSENTIAL}
                       />
-                      <div className={`border w-[42px] h-[26.4px] rounded-full transition-all ${category.id === COOKIE_ESSENTIAL_KEY ? "bg-[var(--theme-bg-base)] border-[var(--theme-text-subtle)] cursor-not-allowed" : "bg-[var(--theme-bg-muted)] border-[var(--theme-text-subtle)] peer-checked:bg-[var(--theme-accent-blue)] peer-checked:border-[var(--theme-accent-blue)] cursor-pointer"}`}>
-                        <div className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform ${category.id === COOKIE_ESSENTIAL_KEY ? "bg-[var(--theme-bg-muted-hover)]" : "bg-[#ffffff]"} ${cookieConsent[category.id] ? "translate-x-4" : "translate-x-0"}`} />
+                      <div className={`border w-[42px] h-[26.4px] rounded-full transition-all ${category.id === COOKIE_CATEGORIES.ESSENTIAL ? "bg-[var(--theme-bg-base)] border-[var(--theme-text-subtle)] cursor-not-allowed" : "bg-[var(--theme-bg-muted)] border-[var(--theme-text-subtle)] peer-checked:bg-[var(--theme-accent-blue)] peer-checked:border-[var(--theme-accent-blue)] cursor-pointer"}`}>
+                        <div className={`w-[24.6px] h-[24.6px] rounded-full shadow transition-transform ${category.id === COOKIE_CATEGORIES.ESSENTIAL ? "bg-[var(--theme-bg-muted-hover)]" : "bg-[#ffffff]"} ${cookieConsent[category.id] ? "translate-x-4" : "translate-x-0"}`} />
                       </div>
                     </label>
                   </div>

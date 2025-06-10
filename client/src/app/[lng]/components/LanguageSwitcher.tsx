@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { i18n } from "i18next";
+import { languages } from "@/app/i18n/settings";
 
 interface LanguageSwitcherProps {
   i18n: i18n;
@@ -18,72 +19,20 @@ export default function LanguageSwitcher({ i18n }: LanguageSwitcherProps): React
   const [animationClass, setAnimationClass] = useState<string>("");
   const [localLanguage, setLocalLanguage] = useState<string>(i18n.language);
   const [collapsed, setCollapsed] = useState<boolean>(false);
-  const options: Option[] = [
-    {
-      value: "en",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">EN</text>
-        </svg>
-      )
-    },
-    {
-      value: "zh-CN",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="5" y="17" fontSize="14">简</text>
-        </svg>
-      )
-    },
-    {
-      value: "zh-TW",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="5" y="17" fontSize="14">繁</text>
-        </svg>
-      )
-    },
-    {
-      value: "ja",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">JA</text>
-        </svg>
-      )
-    },
-    {
-      value: "ko",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">KO</text>
-        </svg>
-      )
-    },
-    {
-      value: "fr",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">FR</text>
-        </svg>
-      )
-    },
-    {
-      value: "de",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">DE</text>
-        </svg>
-      )
-    },
-    {
-      value: "es",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <text x="4" y="17" fontSize="14">ES</text>
-        </svg>
-      )
-    }
-  ];
+
+  const getLangLabel = (lang: string): string => {
+    const parts: string[] = lang.split("-");
+    return parts[parts.length - 1].toUpperCase();
+  };
+
+  const options: Option[] = languages.map(lang => ({
+    value: lang,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+        <text x="2" y="18" fontSize="14">{getLangLabel(lang)}</text>
+      </svg>
+    )
+  }));
 
   const redirectToLanguagePath = (lang: string): void => {
     const segments: string[] = pathname.split("/");

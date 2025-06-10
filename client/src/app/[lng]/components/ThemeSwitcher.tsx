@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import { COOKIE_KEYS } from "@/app/lib/constants";
+import { COOKIE_KEYS, THEME_KEYS } from "@/app/lib/constants";
 import { setCookie } from "@/app/lib/cookies";
 
 interface ThemeSwitcherProps {
@@ -17,7 +17,7 @@ export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.Reac
   const [localTheme, setLocalTheme] = useState<string>(theme);
   const options: Option[] = [
     {
-      value: "light",
+      value: THEME_KEYS.LIGHT,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="4.5" />
@@ -29,7 +29,7 @@ export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.Reac
       )
     },
     {
-      value: "system",
+      value: THEME_KEYS.SYSTEM,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="5" width="19.5" height="12" rx="2" ry="2" />
@@ -39,7 +39,7 @@ export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.Reac
       )
     },
     {
-      value: "dark",
+      value: THEME_KEYS.DARK,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 13A9 9 0 1 1 11 3 7 7 0 0 0 21 13z" />
