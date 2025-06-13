@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { languages } from "@/app/i18n/settings";
 import { useT } from "@/app/i18n/client";
+import { FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { ResponsiveContextValue, useResponsiveContext } from "@/app/[lng]/components/ResponsiveContext";
 
 const languageMap: Record<string, { label: string; region: string }> = {
@@ -18,7 +19,7 @@ const languageMap: Record<string, { label: string; region: string }> = {
 export default function Main() {
   const { t } = useT("locale", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
-  const { isTabletScreen, isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
+  const { width, isTabletScreen, isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
 
   useEffect((): void => {
     setHydrated(true);
@@ -32,7 +33,7 @@ export default function Main() {
         <h1 className="text-2xl font-semibold mb-8">
           {t("main.title")}
         </h1>
-        <nav className="flex flex-wrap justify-start gap-x-[60px] gap-y-[20px]">
+        <nav className={`grid ${isTabletScreen ? `${isMobileScreen ? `${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? "grid-cols-[1fr]" : "grid-cols-[1fr_1fr]"}` : "grid-cols-[1fr_1fr_1fr_1fr]"}` : "grid-cols-[1fr_1fr_1fr_1fr]"} flex flex-wrap justify-start gap-x-[5vw] gap-y-[20px]`}>
           {languages.map((lang) => {
             const item = languageMap[lang];
             if (!item) return null;
