@@ -1,7 +1,6 @@
 {
   "layout": {
-    "title": "创建 Next 应用",
-    "description": "由 create next app 生成"
+    "title": "Vercel 出品的 Next.js —— React 框架"
   },
   "header": {
     "showcase": "案例展示",
@@ -56,6 +55,7 @@
     "releases": "发布",
     "telemetry": "遥测",
     "governance": "治理",
+    "locale": "语言和地区",
     "aboutVercel": "关于 Vercel",
     "nextjsVercel": "Next.js + Vercel",
     "openSourceSoftware": "开源软件",

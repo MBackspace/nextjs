@@ -1,7 +1,6 @@
 {
   "layout": {
-    "title": "Next 앱 만들기",
-    "description": "create next app에 의해 생성됨"
+    "title": "Vercel의 Next.js - React 프레임워크"
   },
   "header": {
     "showcase": "쇼케이스",
@@ -56,6 +55,7 @@
     "releases": "릴리스",
     "telemetry": "텔레메트리",
     "governance": "거버넌스",
+    "locale": "언어 및 지역",
     "aboutVercel": "Vercel 소개",
     "nextjsVercel": "Next.js + Vercel",
     "openSourceSoftware": "오픈 소스 소프트웨어",

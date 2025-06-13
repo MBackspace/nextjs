@@ -14,7 +14,9 @@ export default function Section(): React.ReactNode {
   if (!hydrated) return null;
 
   return (
-    <section className={`flex flex-col row-start-3 ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)]`}>
+    <section className={`flex flex-col ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)]`}>
+      <div className="w-full max-w-screen-3xl mx-auto space-y-3">
+      </div>
     </section>
   );
 }

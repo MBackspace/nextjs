@@ -1,7 +1,6 @@
 {
   "layout": {
-    "title": "Create Next App",
-    "description": "Generado por create next app"
+    "title": "Next.js de Vercel - El framework de React"
   },
   "header": {
     "showcase": "Vitrina",
@@ -56,6 +55,7 @@
     "releases": "Lanzamientos",
     "telemetry": "Telemetría",
     "governance": "Gobernanza",
+    "locale": "Idioma y región",
     "aboutVercel": "Acerca de Vercel",
     "nextjsVercel": "Next.js + Vercel",
     "openSourceSoftware": "Software de código abierto",

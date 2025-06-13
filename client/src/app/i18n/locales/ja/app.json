@@ -1,7 +1,6 @@
 {
   "layout": {
-    "title": "Next アプリを作成",
-    "description": "create next app により生成されました"
+    "title": "Vercel による Next.js － React フレームワーク"
   },
   "header": {
     "showcase": "ショーケース",
@@ -56,6 +55,7 @@
     "releases": "リリース",
     "telemetry": "テレメトリー",
     "governance": "ガバナンス",
+    "locale": "言語と地域",
     "aboutVercel": "Vercelについて",
     "nextjsVercel": "Next.js + Vercel",
     "openSourceSoftware": "オープンソースソフトウェア",

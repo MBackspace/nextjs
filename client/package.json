@@ -9,27 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/env": "15.4.0-canary.51",
+    "@next/env": "15.4.0-canary.81",
     "accept-language": "^3.0.20",
     "cross-env": "^7.0.3",
     "i18next": "^25.2.1",
-    "i18next-browser-languagedetector": "^8.1.0",
+    "i18next-browser-languagedetector": "^8.2.0",
     "i18next-resources-to-backend": "^1.2.1",
-    "next": "15.3.2",
+    "next": "15.3.3",
     "next-i18next": "^15.4.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-i18next": "^15.5.2"
+    "react-i18next": "^15.5.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "^22.15.21",
-    "@types/react": "^19.1.5",
-    "@types/react-dom": "^19.1.5",
-    "eslint": "^9.27.0",
-    "eslint-config-next": "15.4.0-canary.51",
-    "tailwindcss": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/node": "^22.15.31",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "15.4.0-canary.81",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   }
 }

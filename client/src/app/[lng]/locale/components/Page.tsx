@@ -1,16 +1,14 @@
 "use client"
 
-import Header from "./Header";
+import Header from "@/app/[lng]/components/Header";
 import Main from "./Main";
-import Section from "./Section";
-import Footer from "./Footer";
+import Footer from "@/app/[lng]/components/Footer";
 
 export default function Page(): React.ReactNode {
   return (
     <div className="pt-[120px] bg-[var(--theme-bg-base)] items-center font-[family-name:var(--font-geist-sans)]">
       <Header />
       <Main />
-      <Section />
       <Footer />
     </div>
   );

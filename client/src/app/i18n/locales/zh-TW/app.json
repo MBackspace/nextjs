@@ -1,7 +1,6 @@
 {
   "layout": {
-    "title": "建立 Next 應用程式",
-    "description": "由 create next app 產生"
+    "title": "Vercel 推出的 Next.js —— React 框架"
   },
   "header": {
     "showcase": "案例展示",
@@ -56,6 +55,7 @@
     "releases": "版本",
     "telemetry": "遙測",
     "governance": "治理",
+    "locale": "語言與地區",
     "aboutVercel": "關於 Vercel",
     "nextjsVercel": "Next.js + Vercel",
     "openSourceSoftware": "開源軟體",

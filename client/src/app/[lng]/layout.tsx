@@ -21,8 +21,7 @@ const geistMono: NextFontWithVariable = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT("app", [null, "app"]);
   return {
-    title: t("layout.title"),
-    description: t("layout.description")
+    title: t("layout.title")
   };
 };
 

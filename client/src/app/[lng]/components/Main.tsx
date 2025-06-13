@@ -39,7 +39,7 @@ export default function Main(): React.ReactNode {
 
   return (
     <>
-      <main className={`relative flex flex-col row-start-2 ${isMobileScreen ? "w-[100vw]" : "w-full"} items-center pt-[60px] pb-[130px] bg-[var(--theme-bg-base)]`}>
+      <main className={`relative flex flex-col ${isMobileScreen ? "w-[100vw]" : "w-full"} items-center pt-[60px] pb-[130px] bg-[var(--theme-bg-base)]`}>
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-full max-w-screen-xl z-0">
           <div
             className={`absolute ${isTabletScreen ? `${isMobileScreen ? "top-[-1%] left-[-2%] w-[104%] main-width-104-top" : "top-[15%] left-[2%] w-[96%] main-width-96"}` : "top-[14%] left-[-2%] w-[104%] main-width-104-top"} h-px border-t border-dashed border-[#666666] opacity-0`}

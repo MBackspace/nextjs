@@ -50,47 +50,49 @@ export default function Header(): React.ReactNode {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 ${isMobileScreen ? "w-[100vw]" : "w-full"} h-[65px] z-60 flex items-center bg-[var(--theme-bg-base)]/80 backdrop-blur-[5px] border-b border-[var(--theme-border-base)] ${isTabletScreen ? "px-6" : "px-14"} py-[15px] bg-[var(--theme-bg-base)] font-[family-name:var(--font-geist-sans)]`}>
-        <div className="flex items-center space-x-3 mr-10">
-          <Link href="/">
-            <Image
-              style={{ filter: "var(--theme-image-filter-light)" }}
-              src="/assets/vercel.svg"
-              alt="Vercel logo"
-              width={25.4}
-              height={22}
-              priority
+      <header className={`fixed top-0 left-0 ${isMobileScreen ? "w-[100vw]" : "w-full"} h-[65px] z-60 flex items-center bg-[var(--theme-bg-base)]/80 backdrop-blur-[5px] border-b border-[var(--theme-border-base)] py-[15px] bg-[var(--theme-bg-base)]`}>
+        <div className={`w-full max-w-screen-2xl mx-auto flex items-center justify-between ${isTabletScreen ? "px-[25px]" : "px-[60px]"}`}>
+          <div className="flex items-center space-x-3 mr-10">
+            <Link href="/">
+              <Image
+                style={{ filter: "var(--theme-image-filter-light)" }}
+                src="/assets/vercel.svg"
+                alt="Vercel logo"
+                width={25.4}
+                height={22}
+                priority
+              />
+            </Link>
+            <span className="text-[var(--theme-text-subtle)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="26" viewBox="0 0 12 26" fill="none" stroke="currentColor" strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="0" y1="28" x2="14" y2="0" />
+              </svg>
+            </span>
+            <Link href="/">
+              <Image
+                style={{ filter: "var(--theme-image-filter-dark)" }}
+                src="/assets/next.svg"
+                alt="Next.js logo"
+                width={89.76}
+                height={18}
+                priority
+              />
+            </Link>
+          </div>
+          {isTabletScreen ? (
+            <TabletHeader
+              t={t}
+              i18n={i18n}
+              handleSearchOpen={handleSearchOpen}
             />
-          </Link>
-          <span className="text-[var(--theme-text-subtle)]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="26" viewBox="0 0 12 26" fill="none" stroke="currentColor" strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="0" y1="28" x2="14" y2="0" />
-            </svg>
-          </span>
-          <Link href="/">
-            <Image
-              style={{ filter: "var(--theme-image-filter-dark)" }}
-              src="/assets/next.svg"
-              alt="Next.js logo"
-              width={89.76}
-              height={18}
-              priority
+          ) : (
+            <LaptopHeader
+              t={t}
+              i18n={i18n}
+              handleSearchOpen={handleSearchOpen}
             />
-          </Link>
+          )}
         </div>
-        {isTabletScreen ? (
-          <TabletHeader
-            t={t}
-            i18n={i18n}
-            handleSearchOpen={handleSearchOpen}
-          />
-        ) : (
-          <LaptopHeader
-            t={t}
-            i18n={i18n}
-            handleSearchOpen={handleSearchOpen}
-          />
-        )}
       </header>
 
       {isSearchOpen && (

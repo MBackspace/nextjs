@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_L_SCREEN_WIDTH, FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
+import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import ConsentModal from "./ConsentModal";
 import CookieBanner from "./CookieBanner";
-import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 interface NavLink {
@@ -41,7 +40,8 @@ export default function Footer(): React.ReactNode {
     { href: `/${i18n.language}/github`, label: t("footer.github") },
     { href: `/${i18n.language}/releases`, label: t("footer.releases") },
     { href: `/${i18n.language}/telemetry`, label: t("footer.telemetry") },
-    { href: `/${i18n.language}/governance`, label: t("footer.governance") }
+    { href: `/${i18n.language}/governance`, label: t("footer.governance") },
+    { href: `/${i18n.language}/locale`, label: t("footer.locale") }
   ];
   const aboutLinks: NavLink[] = [
     { href: `/${i18n.language}/nextjs-vercel`, label: t("footer.nextjsVercel") },
@@ -127,10 +127,10 @@ export default function Footer(): React.ReactNode {
         <CookieBanner />
       )}
 
-      <footer className={`row-start-4 flex flex-wrap ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
+      <footer className={`flex flex-wrap ${isMobileScreen ? "w-[100vw]" : "w-full"} py-[33px] items-center justify-center bg-[var(--theme-bg-base)] border-t border-[var(--theme-border-base)]`}>
         <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isTabletScreen ? "px-[25px]" : "px-[40px]"}`}>
           <div className={`grid ${isTabletScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
-            <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-5" : ""}`}>
+            <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-8" : ""}`}>
               <div className={`flex items-center ${isMobileScreen ? "flex-row justify-between items-center" : "flex-row items-center"} w-full`}>
                 <Link
                   href="/"
@@ -256,9 +256,6 @@ export default function Footer(): React.ReactNode {
               {!isMobileScreen && SocialLinks}
             </div>
             <div className="flex items-center gap-2">
-              {!(width < FALLBACK_MOBILE_L_SCREEN_WIDTH) && (
-                <LanguageSwitcher i18n={i18n} />
-              )}
               <ThemeSwitcher theme={theme} />
             </div>
           </div>
