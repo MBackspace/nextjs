@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Header from "@/app/[lng]/components/Header";
 import Main from "./Main";

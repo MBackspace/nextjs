@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { COOKIE_KEYS, THEME_KEYS } from "@/app/lib/constants";

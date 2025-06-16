@@ -13,9 +13,5 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>): Promise<React.ReactNode> {
-  return (
-    <>
-      {children}
-    </>
-  );
+  return children;
 }
