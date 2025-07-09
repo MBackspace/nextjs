@@ -13,7 +13,9 @@ interface Option {
   icon: React.ReactNode;
 }
 
-export default function ThemeSwitcher({ theme }: ThemeSwitcherProps): React.ReactNode {
+export default function ThemeSwitcher({
+  theme
+}: ThemeSwitcherProps): React.ReactNode {
   const [localTheme, setLocalTheme] = useState<string>(theme);
   const options: Option[] = [
     {

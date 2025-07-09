@@ -131,7 +131,7 @@ export default function Footer(): React.ReactNode {
         <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isTabletScreen ? "px-[25px]" : "px-[40px]"}`}>
           <div className={`grid ${isTabletScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
             <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-8" : ""}`}>
-              <div className={`flex items-center ${isMobileScreen ? "flex-row justify-between items-center" : "flex-row items-center"} w-full`}>
+              <div className={`flex items-center ${isMobileScreen ? "flex-row items-center justify-between pr-[8px]" : "flex-row items-center"} w-full`}>
                 <Link
                   href="/"
                   className="inline-flex"

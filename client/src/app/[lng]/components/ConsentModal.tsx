@@ -38,7 +38,9 @@ export const handleAcceptAll = (): void => {
   saveCookieConsent(acceptedCookieConsent);
 };
 
-export default function ConsentModal({ isConsentOpen, handleConsentClose }: ConsentModalProps): React.ReactNode {
+export default function ConsentModal({
+  isConsentOpen, handleConsentClose
+}: ConsentModalProps): React.ReactNode {
   const { t } = useT("app", {});
   const [cookieConsent, setCookieConsent] = useState<Record<string, boolean>>(FALLBACK_COOKIE_CONSENT);
   const [expandedIds, setExpandedIds] = useState<string[]>([]);

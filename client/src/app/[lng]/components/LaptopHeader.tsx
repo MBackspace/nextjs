@@ -17,7 +17,9 @@ interface NavLink {
   isExternal: boolean;
 }
 
-export default function LaptopHeader({ t, i18n, handleSearchOpen }: LaptopHeaderProps): React.ReactNode {
+export default function LaptopHeader({
+  t, i18n, handleSearchOpen
+}: LaptopHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
   const navLinks: NavLink[] = [
     { href: `/${i18n.language}/showcase`, label: t("header.showcase"), isExternal: false },

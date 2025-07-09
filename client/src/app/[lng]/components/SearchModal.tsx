@@ -17,7 +17,9 @@ interface SearchResult {
   label: string;
 }
 
-export default function SearchModal({ isSearchOpen, isSearchClosing, handleSearchClose }: SearchModalProps): React.ReactNode {
+export default function SearchModal({
+  isSearchOpen, isSearchClosing, handleSearchClose
+}: SearchModalProps): React.ReactNode {
   const { t, i18n } = useT("app", {});
   const { isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
