@@ -131,7 +131,7 @@ export default function Footer(): React.ReactNode {
         <div className={`w-full max-w-screen-xl flex flex-col gap-[55px] ${isTabletScreen ? "px-[25px]" : "px-[40px]"}`}>
           <div className={`grid ${isTabletScreen ? `${isMobileScreen ? "grid-cols-[1fr]" : "grid-cols-[1fr_6.5fr]"}` : "grid-cols-[1fr_6fr]"}`}>
             <div className={`text-[var(--theme-fg-base)] ${isMobileScreen ? "pb-8" : ""}`}>
-              <div className={`flex items-center ${isMobileScreen ? "flex-row items-center justify-between pr-[8px]" : "flex-row items-center"} w-full`}>
+              <div className={`flex items-center ${isMobileScreen ? "flex-row items-center justify-between pr-[8px]" : "flex-row items-center"} ${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? "w-[85vw]" : "w-full"}`}>
                 <Link
                   href="/"
                   className="inline-flex"
@@ -219,7 +219,7 @@ export default function Footer(): React.ReactNode {
                 <p className="mb-3 mr-2 text-[14px] text-[var(--theme-text-muted)]">
                   {t("footer.subscribeDescription")}
                 </p>
-                <div className="relative w-full">
+                <div className={`relative ${width < FALLBACK_MOBILE_M_SCREEN_WIDTH ? "w-[85vw]" : "w-full"}`}>
                   {submitted ? (
                     <div className="pt-1 flex items-center space-x-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="var(--theme-success)" strokeLinejoin="round">
