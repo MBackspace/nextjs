@@ -12,6 +12,7 @@ interface LaptopHeaderProps {
 }
 
 interface NavLink {
+  id: number;
   href: string;
   label: string;
   isExternal: boolean;
@@ -22,21 +23,21 @@ export default function LaptopHeader({
 }: LaptopHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
   const navLinks: NavLink[] = [
-    { href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.blog"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.templates"), isExternal: true },
-    { href: `/${i18n.language}`, label: t("header.enterprise"), isExternal: true }
+    { id: 1, href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
+    { id: 2, href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
+    { id: 3, href: `/${i18n.language}`, label: t("header.blog"), isExternal: false },
+    { id: 4, href: `/${i18n.language}`, label: t("header.templates"), isExternal: true },
+    { id: 5, href: `/${i18n.language}`, label: t("header.enterprise"), isExternal: true }
   ];
 
   return (
     <>
       <nav className="flex space-x-6 text-[14px]">
-        {navLinks.map(({ href, label, isExternal }): React.ReactNode => (
+        {navLinks.map(({ id, href, label, isExternal }): React.ReactNode => (
           <Link
-            key={href}
+            key={id}
             href={href}
-            className={`transition duration-200 ease-in-out ${pathname === href ? "text-[var(--theme-primary)] font-medium" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
+            className={`transition duration-200 ease-in-out ${pathname !== href ? "text-[var(--theme-primary)] font-medium" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
           >
             {label}
             {isExternal && (

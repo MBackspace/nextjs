@@ -13,6 +13,7 @@ interface SearchModalProps {
 }
 
 interface SearchResult {
+  id: number;
   href: string;
   label: string;
 }
@@ -25,13 +26,13 @@ export default function SearchModal({
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
   const SearchResults: SearchResult[] = [
-    { href: `/${i18n.language}`, label: t("header.search.introduction") },
-    { href: `/${i18n.language}`, label: t("header.search.gettingStarted") },
-    { href: `/${i18n.language}`, label: t("header.search.appRouter") },
-    { href: `/${i18n.language}`, label: t("header.search.architecture") },
-    { href: `/${i18n.language}`, label: t("header.search.pagesRouter") },
-    { href: `/${i18n.language}`, label: t("header.search.apiReference") },
-    { href: `/${i18n.language}`, label: t("header.search.accessibility") }
+    { id: 1, href: `/${i18n.language}`, label: t("header.search.introduction") },
+    { id: 2, href: `/${i18n.language}`, label: t("header.search.gettingStarted") },
+    { id: 3, href: `/${i18n.language}`, label: t("header.search.appRouter") },
+    { id: 4, href: `/${i18n.language}`, label: t("header.search.architecture") },
+    { id: 5, href: `/${i18n.language}`, label: t("header.search.pagesRouter") },
+    { id: 6, href: `/${i18n.language}`, label: t("header.search.apiReference") },
+    { id: 7, href: `/${i18n.language}`, label: t("header.search.accessibility") }
   ];
 
   return (
@@ -77,9 +78,9 @@ export default function SearchModal({
               </div>
             </div>
             <div className="p-2 text-[var(--theme-fg-base)]">
-              {SearchResults.map(({ href, label }, index): React.ReactNode => (
+              {SearchResults.map(({ id, href, label }, index): React.ReactNode => (
                 <Link
-                  key={href}
+                  key={id}
                   href={href}
                   className={`transition duration-200 ease-in-out flex items-center p-[9px] ${isMobileScreen ? "py-[13px]" : "py-[11px]"} text-sm rounded ${!isMobileScreen ? index === selectedResultIndex ? "bg-[var(--theme-bg-muted)]" : "hover:bg-[var(--theme-bg-muted)]" : ""}`}
                   onMouseEnter={(): void => setSelectedResultIndex(index)}

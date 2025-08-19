@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { i18n, TFunction } from "i18next";
 
@@ -11,6 +12,7 @@ interface TabletHeaderProps {
 }
 
 interface NavLink {
+  id: number;
   href: string;
   label: string;
   isExternal: boolean;
@@ -19,17 +21,18 @@ interface NavLink {
 export default function TabletHeader({
   t, i18n, handleSearchOpen
 }: TabletHeaderProps): React.ReactNode {
+  const pathname: string = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navLinks: NavLink[] = [
-    { href: `/${i18n.language}`, label: t("header.learn"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.deploy"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.blog"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.nextjsCommerce"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.templates"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.enterprise"), isExternal: false },
-    { href: `/${i18n.language}`, label: t("header.github"), isExternal: false }
+    { id: 1, href: `/${i18n.language}`, label: t("header.learn"), isExternal: false },
+    { id: 2, href: `/${i18n.language}`, label: t("header.deploy"), isExternal: false },
+    { id: 3, href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
+    { id: 4, href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
+    { id: 5, href: `/${i18n.language}`, label: t("header.blog"), isExternal: false },
+    { id: 6, href: `/${i18n.language}`, label: t("header.nextjsCommerce"), isExternal: false },
+    { id: 7, href: `/${i18n.language}`, label: t("header.templates"), isExternal: false },
+    { id: 8, href: `/${i18n.language}`, label: t("header.enterprise"), isExternal: false },
+    { id: 9, href: `/${i18n.language}`, label: t("header.github"), isExternal: false }
   ];
 
   return (
@@ -71,11 +74,11 @@ export default function TabletHeader({
 
       {isMenuOpen && (
         <div className="fixed top-[65px] left-0 w-full h-[calc(100vh+120px)] bg-[var(--theme-bg-base)] z-40 flex flex-col pl-[25px] pt-[15px] shadow font-[family-name:var(--font-geist-sans)]">
-          {navLinks.map(({ href, label }): React.ReactNode => (
+          {navLinks.map(({ id, href, label }): React.ReactNode => (
             <Link
-              key={href}
+              key={id}
               href={href}
-              className=" transition duration-200 ease-in-out text-left text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)] text-[16px] font-medium py-[10px]"
+              className={`transition duration-200 ease-in-out text-left ${pathname !== href ? "text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)]"} hover:text-[var(--theme-fg-base)] text-[16px] font-medium py-[10px]`}
             >
               {label}
             </Link>

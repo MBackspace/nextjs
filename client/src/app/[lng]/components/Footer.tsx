@@ -12,6 +12,7 @@ import CookieBanner from "./CookieBanner";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 interface NavLink {
+  id: number;
   href: string;
   label: string;
 }
@@ -25,35 +26,35 @@ export default function Footer(): React.ReactNode {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [subscriptionEmail, setSubscriptionEmail] = useState<string>("");
   const resourcesLinks: NavLink[] = [
-    { href: `/${i18n.language}`, label: t("footer.docs") },
-    { href: `/${i18n.language}`, label: t("footer.supportPolicy") },
-    { href: `/${i18n.language}`, label: t("footer.learn") },
-    { href: `/${i18n.language}`, label: t("footer.showcase") },
-    { href: `/${i18n.language}`, label: t("footer.blog") },
-    { href: `/${i18n.language}`, label: t("footer.team") },
-    { href: `/${i18n.language}`, label: t("footer.analytics") },
-    { href: `/${i18n.language}`, label: t("footer.nextjsConf") },
-    { href: `/${i18n.language}`, label: t("footer.previews") }
+    { id: 1, href: `/${i18n.language}`, label: t("footer.docs") },
+    { id: 2, href: `/${i18n.language}`, label: t("footer.supportPolicy") },
+    { id: 3, href: `/${i18n.language}`, label: t("footer.learn") },
+    { id: 4, href: `/${i18n.language}`, label: t("footer.showcase") },
+    { id: 5, href: `/${i18n.language}`, label: t("footer.blog") },
+    { id: 6, href: `/${i18n.language}`, label: t("footer.team") },
+    { id: 7, href: `/${i18n.language}`, label: t("footer.analytics") },
+    { id: 8, href: `/${i18n.language}`, label: t("footer.nextjsConf") },
+    { id: 9, href: `/${i18n.language}`, label: t("footer.previews") }
   ];
   const moreLinks: NavLink[] = [
-    { href: `/${i18n.language}`, label: t("footer.nextjsCommerce") },
-    { href: `/${i18n.language}`, label: t("footer.contactSales") },
-    { href: `/${i18n.language}`, label: t("footer.community") },
-    { href: `/${i18n.language}`, label: t("footer.github") },
-    { href: `/${i18n.language}`, label: t("footer.releases") },
-    { href: `/${i18n.language}`, label: t("footer.telemetry") },
-    { href: `/${i18n.language}`, label: t("footer.governance") },
-    { href: `/${i18n.language}/locale`, label: t("footer.locale") }
+    { id: 1, href: `/${i18n.language}`, label: t("footer.nextjsCommerce") },
+    { id: 2, href: `/${i18n.language}`, label: t("footer.contactSales") },
+    { id: 3, href: `/${i18n.language}`, label: t("footer.community") },
+    { id: 4, href: `/${i18n.language}`, label: t("footer.github") },
+    { id: 5, href: `/${i18n.language}`, label: t("footer.releases") },
+    { id: 6, href: `/${i18n.language}`, label: t("footer.telemetry") },
+    { id: 7, href: `/${i18n.language}`, label: t("footer.governance") },
+    { id: 8, href: `/${i18n.language}/locale`, label: t("footer.locale") }
   ];
   const aboutLinks: NavLink[] = [
-    { href: `/${i18n.language}`, label: t("footer.nextjsVercel") },
-    { href: `/${i18n.language}`, label: t("footer.openSourceSoftware") },
-    { href: `/${i18n.language}`, label: t("footer.github") },
-    { href: `/${i18n.language}`, label: t("footer.bluesky") },
-    { href: `/${i18n.language}`, label: t("footer.x") }
+    { id: 1, href: `/${i18n.language}`, label: t("footer.nextjsVercel") },
+    { id: 2, href: `/${i18n.language}`, label: t("footer.openSourceSoftware") },
+    { id: 3, href: `/${i18n.language}`, label: t("footer.github") },
+    { id: 4, href: `/${i18n.language}`, label: t("footer.bluesky") },
+    { id: 5, href: `/${i18n.language}`, label: t("footer.x") }
   ];
   const legalLinks: NavLink[] = [
-    { href: `/${i18n.language}`, label: t("footer.privacyPolicy") }
+    { id: 1, href: `/${i18n.language}`, label: t("footer.privacyPolicy") }
   ];
   const SocialLinks: React.ReactNode = (
     <div className="flex flex-row items-center gap-x-3">
@@ -161,9 +162,9 @@ export default function Footer(): React.ReactNode {
                   {t("footer.resources")}
                 </p>
                 <nav className="flex flex-col items-start space-y-3">
-                  {resourcesLinks.map(({ href, label }): React.ReactNode => (
+                  {resourcesLinks.map(({ id, href, label }): React.ReactNode => (
                     <Link
-                      key={href}
+                      key={id}
                       href={href}
                       className="transition duration-200 ease-in-out inline-flex text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"
                     >
@@ -177,9 +178,9 @@ export default function Footer(): React.ReactNode {
                   {t("footer.more")}
                 </p>
                 <nav className="flex flex-col items-start space-y-3">
-                  {moreLinks.map(({ href, label }): React.ReactNode => (
+                  {moreLinks.map(({ id, href, label }): React.ReactNode => (
                     <Link
-                      key={href}
+                      key={id}
                       href={href}
                       className="transition duration-200 ease-in-out inline-flex text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"
                     >
@@ -193,9 +194,9 @@ export default function Footer(): React.ReactNode {
                   {t("footer.aboutVercel")}
                 </p>
                 <nav className="flex flex-col items-start space-y-3">
-                  {aboutLinks.map(({ href, label }): React.ReactNode => (
+                  {aboutLinks.map(({ id, href, label }): React.ReactNode => (
                     <Link
-                      key={href}
+                      key={id}
                       href={href}
                       className="transition duration-200 ease-in-out inline-flex text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"
                     >
@@ -209,9 +210,9 @@ export default function Footer(): React.ReactNode {
                   {t("footer.legal")}
                 </p>
                 <nav className="flex flex-col items-start space-y-3">
-                  {legalLinks.map(({ href, label }): React.ReactNode => (
+                  {legalLinks.map(({ id, href, label }): React.ReactNode => (
                     <Link
-                      key={href}
+                      key={id}
                       href={href}
                       className="transition duration-200 ease-in-out inline-flex text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"
                     >
