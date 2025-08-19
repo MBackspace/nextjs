@@ -5,6 +5,9 @@ import { ConfigModule } from '@nestjs/config';
 import { I18nModule, I18nJsonLoader, QueryResolver, HeaderResolver, CookieResolver, AcceptLanguageResolver } from 'nestjs-i18n';
 import * as path from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
+import { Subscription, SubscriptionSchema } from './subscription/schemas/subscription.schema';
+import { SubscriptionService } from './subscription/subscription.service';
+import { SubscriptionController } from './subscription/subscription.controller';
 
 @Module({
   imports: [
@@ -26,9 +29,10 @@ import { MongooseModule } from '@nestjs/mongoose';
         AcceptLanguageResolver
       ]
     }),
-    MongooseModule.forRoot(process.env.MONGO_URL ?? 'mongodb://localhost:27017/nextjs')
+    MongooseModule.forRoot(process.env.MONGO_URL ?? 'mongodb://localhost:27017/nextjs'),
+    MongooseModule.forFeature([{ name: Subscription.name, schema: SubscriptionSchema }])
   ],
-  controllers: [AppController],
-  providers: [AppService]
+  controllers: [AppController, SubscriptionController],
+  providers: [AppService, SubscriptionService]
 })
 export class AppModule {}

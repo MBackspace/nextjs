@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/app/i18n/client";
+import { createSubscription } from "@/app/services/subscription";
 import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
@@ -22,6 +23,7 @@ export default function Footer(): React.ReactNode {
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<string>(FALLBACK_THEME);
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [subscriptionEmail, setSubscriptionEmail] = useState<string>("");
   const resourcesLinks: NavLink[] = [
     { href: `/${i18n.language}/docs`, label: t("footer.docs") },
     { href: `/${i18n.language}/support-policy`, label: t("footer.supportPolicy") },
@@ -104,14 +106,24 @@ export default function Footer(): React.ReactNode {
     setIsConsentOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubscriptionEmailChange = (e: React.ChangeEvent) => {
+    const target: HTMLInputElement = e.target as HTMLInputElement;
+    setSubscriptionEmail(target.value);
+  };
+
+  const handleSubscriptionEmailSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const form: HTMLFormElement = e.currentTarget as HTMLFormElement;
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    setSubmitted(true);
+    const response = await createSubscription({
+      email: subscriptionEmail.trim().toLowerCase()
+    });
+    if (response.ok) {
+      setSubmitted(true);
+    }
   };
 
   if (!hydrated) return null;
@@ -230,11 +242,13 @@ export default function Footer(): React.ReactNode {
                       </p>
                     </div>
                   ) : (
-                    <form noValidate onSubmit={handleSubmit}>
+                    <form noValidate onSubmit={handleSubscriptionEmailSubmit}>
                       <input
                         className="w-full border border-[var(--theme-bg-muted)] bg-[var(--theme-bg-muted)] text-[14px] text-[var(--theme-fg-base)] placeholder-[var(--theme-text-muted)] px-[10px] py-[5px] rounded-lg focus:outline-none focus:ring-2 ring-offset-2 focus:ring-[var(--theme-primary-light)] ring-offset-[var(--theme-bg-base)]"
                         type="email"
-                        name="email"
+                        name="subscriptionEmail"
+                        value={subscriptionEmail}
+                        onChange={handleSubscriptionEmailChange}
                         placeholder="you@domain.com"
                         required
                       />

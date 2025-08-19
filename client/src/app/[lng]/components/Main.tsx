@@ -184,7 +184,7 @@ export default function Main(): React.ReactNode {
               onClick={handleCopy}
             >
               <p className="font-[family-name:var(--font-geist-mono)] text-sm tracking-tighter">
-                <span className="text-[8px]">▲{" "}</span>
+                <span>▲{" "}</span>
                 <span>~{" "}{command}</span>
                 <span className={`absolute right-[-28px] top-1/2 -translate-y-1/2 transition duration-200 ease-in-out ${hovered ? "opacity-100" : "opacity-0"}`}>
                   {copied ? (

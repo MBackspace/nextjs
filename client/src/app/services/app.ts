@@ -1,5 +1,5 @@
 import { get } from "@/app/lib/https";
 
-export const app = async (): Promise<Response> => {
-  return get("", {}, {});
+export const getHello = async (): Promise<Response> => {
+  return get("v1/app/get-hello", {}, {});
 };
