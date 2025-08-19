@@ -164,13 +164,13 @@ export default function Main(): React.ReactNode {
           </div>
           <div className={`flex justify-center gap-4 ${isMobileScreen ? "mt-14" : "mt-20"} mb-4`}>
             <Link
-              href={`/${i18n.language}/started`}
+              href={`/${i18n.language}`}
               className={`cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-base text-[var(--theme-border-base)] font-medium px-5 py-3 rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out`}
             >
               {t("main.started")}
             </Link>
             <Link
-              href={`/${i18n.language}/learn`}
+              href={`/${i18n.language}`}
               className={`cursor-pointer border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-base text-[var(--theme-fg-base)] font-medium px-5 py-3 rounded-lg hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out`}
             >
               {t("main.learn")}

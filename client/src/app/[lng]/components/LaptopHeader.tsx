@@ -22,11 +22,11 @@ export default function LaptopHeader({
 }: LaptopHeaderProps): React.ReactNode {
   const pathname: string = usePathname();
   const navLinks: NavLink[] = [
-    { href: `/${i18n.language}/showcase`, label: t("header.showcase"), isExternal: false },
-    { href: `/${i18n.language}/docs`, label: t("header.docs"), isExternal: false },
-    { href: `/${i18n.language}/blog`, label: t("header.blog"), isExternal: false },
-    { href: `/${i18n.language}/templates`, label: t("header.templates"), isExternal: true },
-    { href: `/${i18n.language}/enterprise`, label: t("header.enterprise"), isExternal: true }
+    { href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.blog"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.templates"), isExternal: true },
+    { href: `/${i18n.language}`, label: t("header.enterprise"), isExternal: true }
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function LaptopHeader({
           </span>
         </button>
         <Link
-          href={`/${i18n.language}/deploy`}
+          href={`/${i18n.language}`}
           className="cursor-pointer flex items-center border border-[var(--theme-border-base)] bg-[var(--theme-bg-base)] text-[14px] text-[var(--theme-fg-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-bg-muted)] hover:border-[var(--theme-text-subtle)] transition duration-200 ease-in-out"
         >
           <Image
@@ -79,7 +79,7 @@ export default function LaptopHeader({
           </span>
         </Link>
         <Link
-          href={`/${i18n.language}/learn`}
+          href={`/${i18n.language}`}
           className="cursor-pointer border border-[var(--theme-fg-base)] bg-[var(--theme-fg-base)] text-[14px] text-[var(--theme-border-base)] font-medium px-3 py-[5px] rounded-lg hover:bg-[var(--theme-text-muted)] hover:border-[var(--theme-text-muted)] transition duration-200 ease-in-out"
         >
           {t("header.learn")}

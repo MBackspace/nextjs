@@ -25,13 +25,13 @@ export default function SearchModal({
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);
   const SearchResults: SearchResult[] = [
-    { href: `/${i18n.language}/docs`, label: t("header.search.introduction") },
-    { href: `/${i18n.language}/docs/getting-started`, label: t("header.search.gettingStarted") },
-    { href: `/${i18n.language}/docs/app-Router`, label: t("header.search.appRouter") },
-    { href: `/${i18n.language}/docs/architecture`, label: t("header.search.architecture") },
-    { href: `/${i18n.language}/docs/pages-router`, label: t("header.search.pagesRouter") },
-    { href: `/${i18n.language}/docs/api-reference`, label: t("header.search.apiReference") },
-    { href: `/${i18n.language}/docs/accessibility`, label: t("header.search.accessibility") }
+    { href: `/${i18n.language}`, label: t("header.search.introduction") },
+    { href: `/${i18n.language}`, label: t("header.search.gettingStarted") },
+    { href: `/${i18n.language}`, label: t("header.search.appRouter") },
+    { href: `/${i18n.language}`, label: t("header.search.architecture") },
+    { href: `/${i18n.language}`, label: t("header.search.pagesRouter") },
+    { href: `/${i18n.language}`, label: t("header.search.apiReference") },
+    { href: `/${i18n.language}`, label: t("header.search.accessibility") }
   ];
 
   return (

@@ -41,7 +41,7 @@ export const handleAcceptAll = (): void => {
 export default function ConsentModal({
   isConsentOpen, handleConsentClose
 }: ConsentModalProps): React.ReactNode {
-  const { t } = useT("app", {});
+  const { t, i18n } = useT("app", {});
   const [cookieConsent, setCookieConsent] = useState<Record<string, boolean>>(FALLBACK_COOKIE_CONSENT);
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   const [renderKey, setRenderKey] = useState<number>(0);
@@ -170,7 +170,7 @@ export default function ConsentModal({
             </div>
             <div className="text-[12px] pt-4 text-[var(--theme-text-muted)] bg-[var(--theme-bg-dark)] p-6 pt-0 rounded-[12px]">
               {t("consentModal.privacyPolicy")}{" "}
-              <Link href="#" className="text-[var(--theme-fg-base)] hover:text-[var(--theme-text-muted)]">
+              <Link href={`/${i18n.language}`} className="text-[var(--theme-fg-base)] hover:text-[var(--theme-text-muted)]">
                 {t("consentModal.privacyPolicyLink")}
               </Link>
             </div>

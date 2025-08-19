@@ -21,15 +21,15 @@ export default function TabletHeader({
 }: TabletHeaderProps): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navLinks: NavLink[] = [
-    { href: `/${i18n.language}/learn`, label: t("header.learn"), isExternal: false },
-    { href: `/${i18n.language}/deploy`, label: t("header.deploy"), isExternal: false },
-    { href: `/${i18n.language}/showcase`, label: t("header.showcase"), isExternal: false },
-    { href: `/${i18n.language}/docs`, label: t("header.docs"), isExternal: false },
-    { href: `/${i18n.language}/blog`, label: t("header.blog"), isExternal: false },
-    { href: `/${i18n.language}/nextjs-commerce`, label: t("header.nextjsCommerce"), isExternal: false },
-    { href: `/${i18n.language}/templates`, label: t("header.templates"), isExternal: false },
-    { href: `/${i18n.language}/enterprise`, label: t("header.enterprise"), isExternal: false },
-    { href: `/${i18n.language}/github`, label: t("header.github"), isExternal: false }
+    { href: `/${i18n.language}`, label: t("header.learn"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.deploy"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.blog"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.nextjsCommerce"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.templates"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.enterprise"), isExternal: false },
+    { href: `/${i18n.language}`, label: t("header.github"), isExternal: false }
   ];
 
   return (
