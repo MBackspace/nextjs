@@ -39,7 +39,7 @@ services:
     ports:
       - "4001:4001"
     environment:
-      - NEXT_PUBLIC_API_URL=http://nextjs-server:4000/api
+      - NEXT_PUBLIC_API_URL=http://nextjs-server:4000
     networks:
       - nextjs-network
     depends_on:
