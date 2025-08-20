@@ -5,7 +5,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const requestHeader: Headers = request.headers;
   const response: Response = await fetch(requestUrl.toString(), {
     method: "GET",
-    headers: requestHeader
+    headers: requestHeader,
+    credentials: "include"
   });
   const responseBody: BodyInit = await response.text();
 
