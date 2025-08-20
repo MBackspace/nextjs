@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { i18n, TFunction } from "i18next";
 import { useT } from "@/app/i18n/client";
 import { FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 
 export default function Main(): React.ReactNode {
-  const { t, i18n } = useT("app", {});
+  const { t, i18n }: { t: TFunction, i18n: i18n } = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
   const { width, isTabletScreen, isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [hovered, setHovered] = useState<boolean>(false);

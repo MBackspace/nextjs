@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { i18n, TFunction } from "i18next";
 import { useT } from "@/app/i18n/client";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 
@@ -21,7 +22,7 @@ interface SearchResult {
 export default function SearchModal({
   isSearchOpen, isSearchClosing, handleSearchClose
 }: SearchModalProps): React.ReactNode {
-  const { t, i18n } = useT("app", {});
+  const { t, i18n }: { t: TFunction, i18n: i18n } = useT("app", {});
   const { isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [searchActiveTab, setSearchActiveTab] = useState<string>("app");
   const [selectedResultIndex, setSelectedResultIndex] = useState<number>(0);

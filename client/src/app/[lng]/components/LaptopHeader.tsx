@@ -1,12 +1,12 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { i18n, TFunction } from "i18next";
 
 interface LaptopHeaderProps {
-  t: TFunction<string | string[], undefined>;
+  t: TFunction;
   i18n: i18n;
   handleSearchOpen: () => void;
 }
@@ -21,7 +21,7 @@ interface NavLink {
 export default function LaptopHeader({
   t, i18n, handleSearchOpen
 }: LaptopHeaderProps): React.ReactNode {
-  const pathname: string = usePathname();
+  // const pathname: string = usePathname();
   const navLinks: NavLink[] = [
     { id: 1, href: `/${i18n.language}`, label: t("header.showcase"), isExternal: false },
     { id: 2, href: `/${i18n.language}`, label: t("header.docs"), isExternal: false },
@@ -37,7 +37,8 @@ export default function LaptopHeader({
           <Link
             key={id}
             href={href}
-            className={`transition duration-200 ease-in-out ${pathname !== href ? "text-[var(--theme-primary)] font-medium" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
+            // className={`transition duration-200 ease-in-out ${pathname === href ? "text-[var(--theme-primary)] font-medium" : "text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"}`}
+            className="transition duration-200 ease-in-out text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)]"
           >
             {label}
             {isExternal && (

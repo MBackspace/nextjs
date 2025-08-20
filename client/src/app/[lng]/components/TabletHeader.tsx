@@ -6,7 +6,7 @@ import Link from "next/link";
 import { i18n, TFunction } from "i18next";
 
 interface TabletHeaderProps {
-  t: TFunction<string | string[], undefined>;
+  t: TFunction;
   i18n: i18n;
   handleSearchOpen: () => void;
 }
@@ -78,7 +78,8 @@ export default function TabletHeader({
             <Link
               key={id}
               href={href}
-              className={`transition duration-200 ease-in-out text-left ${pathname !== href ? "text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)]"} hover:text-[var(--theme-fg-base)] text-[16px] font-medium py-[10px]`}
+              // className={`transition duration-200 ease-in-out text-left ${pathname === href ? "text-[var(--theme-fg-base)]" : "text-[var(--theme-text-muted)]"} hover:text-[var(--theme-fg-base)] text-[16px] font-medium py-[10px]`}
+              className="transition duration-200 ease-in-out text-left text-[var(--theme-text-muted)] hover:text-[var(--theme-fg-base)] text-[16px] font-medium py-[10px]"
             >
               {label}
             </Link>

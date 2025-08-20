@@ -13,7 +13,7 @@ export function middleware(req: NextRequest) {
   // Ignore paths with "icon" or "chrome"
   if (req.nextUrl.pathname.indexOf("icon") > -1 || req.nextUrl.pathname.indexOf("chrome") > -1) return NextResponse.next();
   
-  let lng
+  let lng;
   // Try to get language from cookie
   if (req.cookies.has(cookieName)) lng = acceptLanguage.get(req.cookies.get(cookieName)?.value);
   // If no cookie, check the Accept-Language header
