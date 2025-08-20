@@ -2,6 +2,7 @@ FROM node:22-alpine
 
 WORKDIR /usr/nextjs
 
+COPY ./client/.env.production.local .
 COPY ./client/package.json .
 COPY ./yarn.lock .
 

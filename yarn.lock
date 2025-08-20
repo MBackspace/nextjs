@@ -10252,6 +10252,7 @@ __metadata:
     "@types/supertest": "npm:^6.0.3"
     class-transformer: "npm:^0.5.1"
     class-validator: "npm:^0.14.2"
+    cross-env: "npm:^10.0.0"
     eslint: "npm:^9.33.0"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-prettier: "npm:^5.5.4"

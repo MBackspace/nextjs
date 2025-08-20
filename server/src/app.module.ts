@@ -12,7 +12,7 @@ import { SubscriptionController } from './subscription/subscription.controller';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: `.env.${process.env.NODE_ENV}.local`,
       isGlobal: true
     }),
     I18nModule.forRoot({
