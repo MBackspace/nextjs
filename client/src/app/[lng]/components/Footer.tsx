@@ -119,7 +119,7 @@ export default function Footer(): React.ReactNode {
       form.reportValidity();
       return;
     }
-    const response = await createSubscription({
+    const response: Response = await createSubscription({
       email: subscriptionEmail.trim().toLowerCase()
     });
     if (response.ok) {

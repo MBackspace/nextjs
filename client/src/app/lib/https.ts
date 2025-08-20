@@ -1,15 +1,13 @@
 import { cookieName, headerName } from "@/app/i18n/settings";
 import i18next from "@/app/i18n/i18next";
 
-const BASE_URL: string = process.env.NEXT_PUBLIC_API_URL || "";
-
 type Params = string | string[][] | Record<string, string> | URLSearchParams | undefined;
 type Body = Record<string, string | number | boolean | null | undefined>;
 
 const buildUrl = (url: string, params?: Params): string => {
-  const fullUrl = new URL(url, BASE_URL);
+  const fullUrl: URL = new URL(url);
   if (params) {
-    const searchParams = new URLSearchParams(params);
+    const searchParams: URLSearchParams = new URLSearchParams(params);
     searchParams.forEach((value, key) => fullUrl.searchParams.append(key, value));
   }
   return fullUrl.toString();
