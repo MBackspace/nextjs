@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import { TFunction } from "i18next";
 import { getT } from "@/app/i18n/index";
+import { OptionalI18n } from "@/app/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { t }: { t: TFunction } = await getT("locale", [null, "locale"]);
+  const { t }: OptionalI18n = await getT("locale", [null, "locale"]);
 
   return {
     title: t("layout.title")

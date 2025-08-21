@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { i18n, TFunction } from "i18next";
 import { useT } from "@/app/i18n/client";
-import { createSubscription } from "@/app/services/v1/subscription";
-import { COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
+import { OptionalI18n, COOKIE_KEYS, FALLBACK_THEME, FALLBACK_MOBILE_M_SCREEN_WIDTH } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
+import { createSubscription } from "@/app/services/v1/subscription";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import ConsentModal from "./ConsentModal";
 import CookieBanner from "./CookieBanner";
@@ -19,7 +18,7 @@ interface NavLink {
 }
 
 export default function Footer(): React.ReactNode {
-  const { t, i18n }: { t: TFunction, i18n: i18n } = useT("app", {});
+  const { t, i18n }: OptionalI18n = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
   const { width, isTabletScreen, isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);

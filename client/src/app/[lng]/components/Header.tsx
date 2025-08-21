@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { i18n, TFunction } from "i18next";
 import { useT } from "@/app/i18n/client";
+import { OptionalI18n } from "@/app/lib/constants";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import LaptopHeader from "./LaptopHeader";
 import TabletHeader from "./TabletHeader";
 import SearchModal from "./SearchModal";
 
 export default function Header(): React.ReactNode {
-  const { t, i18n }: { t: TFunction, i18n: i18n } = useT("app", {});
+  const { t, i18n }: OptionalI18n = useT("app", {});
   const [hydrated, setHydrated] = useState<boolean>(false);
   const { isTabletScreen, isMobileScreen }: ResponsiveContextValue = useResponsiveContext();
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);

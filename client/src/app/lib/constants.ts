@@ -1,3 +1,10 @@
+import { i18n, TFunction } from "i18next";
+
+export type OptionalI18n = {
+  t?: TFunction;
+  i18n?: i18n;
+};
+
 export const COOKIE_KEYS: Record<string, string> = {
   CONSENT: "fides_consent",
   THEME: "theme"

@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TFunction } from "i18next";
 import { useT } from "@/app/i18n/client";
-import { COOKIE_KEYS, FALLBACK_MOBILE_L_SCREEN_WIDTH } from "@/app/lib/constants";
+import { OptionalI18n, COOKIE_KEYS, FALLBACK_MOBILE_L_SCREEN_WIDTH } from "@/app/lib/constants";
 import { getCookie } from "@/app/lib/cookies";
 import { ResponsiveContextValue, useResponsiveContext } from "./ResponsiveContext";
 import ConsentModal, { handleDeny, handleAcceptAll } from "./ConsentModal";
 
 export default function CookieBanner(): React.ReactNode {
-  const { t }: { t: TFunction } = useT("app", {});
+  const { t }: OptionalI18n = useT("app", {});
   const { width }: ResponsiveContextValue = useResponsiveContext();
   const [visible, setVisible] = useState<boolean>(false);
   const [isConsentOpen, setIsConsentOpen] = useState<boolean>(false);
