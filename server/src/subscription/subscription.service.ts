@@ -8,13 +8,13 @@ import { CreateSubscriptionRequest } from './request/create-subscription.request
 export class SubscriptionService {
   constructor(@InjectModel(Subscription.name) private readonly subscriptionModel: Model<SubscriptionDocument>) {}
 
-  async createSubscription(request: CreateSubscriptionRequest): Promise<void> {
-    const { email } = request;
+  async createSubscription(requestBody: CreateSubscriptionRequest): Promise<void> {
+    const { email } = requestBody;
     const existing = await this.subscriptionModel.findOne({ email }).exec();
     if (existing) {
       return;
     }
-    const created = new this.subscriptionModel(request);
+    const created = new this.subscriptionModel(requestBody);
     await created.save();
   }
 }
