@@ -36,6 +36,8 @@ services:
       - "4001:4001"
     networks:
       - nextjs-network
+    extra_hosts:
+      - "server:host-gateway"
     depends_on:
       - nextjs-server
     restart: no
